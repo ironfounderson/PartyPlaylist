@@ -21,7 +21,7 @@
 - (id)initTrackWithQuery:(NSString *)query {    
     self = [super init];
     if (self) {
-        baseURLString_ = @"http://ws.spotify.com/search/1/track";
+        baseURLString_ = @"http://ws.spotify.com/search/1/track.json";
         query_ = [query copy];
         page_ = NSUIntegerMax;
     }
@@ -47,6 +47,10 @@
             baseURLString_, 
             parameterString.length > 0 ? @"?" : @"",
             parameterString];
+}
+
+- (NSURL *)URL {
+    return [NSURL URLWithString:self.URLString];
 }
 
 @end

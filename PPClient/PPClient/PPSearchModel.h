@@ -11,7 +11,9 @@
 @class PPSearchModel;
 
 @protocol PPSearchModelDelegate
-@optional
+- (void)searchModel:(PPSearchModel *)model 
+   receivedResponse:(NSData *)response 
+         withStatus:(int)statusCode;
 @end 
 
 /**
@@ -21,7 +23,15 @@
     
 }
 
+/**
+ The delegate that will be notified about the result of a search
+ */
 @property (nonatomic, assign) id <PPSearchModelDelegate> delegate;
+
+/**
+ Searches for a track
+ @param query strign to search for
+ */
 - (void)searchTrack:(NSString *)query;
 
 @end

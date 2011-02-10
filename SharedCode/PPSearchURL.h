@@ -29,6 +29,7 @@
 
 
 @property (nonatomic, readonly) NSString *URLString;
+@property (nonatomic, readonly) NSURL *URL;
 @property (nonatomic, copy) NSString *query;
 @property (nonatomic) NSUInteger page;
 

@@ -92,4 +92,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return searchModel_;
 }
 
+#pragma mark - PPSearchModelDelegate
+
+- (void)searchModel:(PPSearchModel *)model 
+   receivedResponse:(NSData *)response 
+         withStatus:(int)statusCode {
+    NSLog(@"%d: %@", statusCode, response);
+}
+
 @end

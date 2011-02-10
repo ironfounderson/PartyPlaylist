@@ -19,17 +19,17 @@
 
 - (void)testURLString_WithSingleWordQuery {
     PPSearchURL *searchURL = [PPSearchURL trackURLWithQuery:@"backstreet"];
-    STAssertEqualObjects(@"http://ws.spotify.com/search/1/track?q=backstreet", searchURL.URLString, nil);
+    STAssertEqualObjects(@"http://ws.spotify.com/search/1/track.json?q=backstreet", searchURL.URLString, nil);
 }
 
 - (void)testURLString_WithQueryAndPage {
     PPSearchURL *searchURL = [PPSearchURL trackURLWithQuery:@"backstreet"];
     searchURL.page = 2;
-    STAssertEqualObjects(@"http://ws.spotify.com/search/1/track?q=backstreet&page=2", searchURL.URLString, nil);
+    STAssertEqualObjects(@"http://ws.spotify.com/search/1/track.json?q=backstreet&page=2", searchURL.URLString, nil);
 }
 
 - (void)testURLString_WithTwoWordQuery {
     PPSearchURL *searchURL = [PPSearchURL trackURLWithQuery:@"new york"];
-    STAssertEqualObjects(@"http://ws.spotify.com/search/1/track?q=new%20york", searchURL.URLString, nil);
+    STAssertEqualObjects(@"http://ws.spotify.com/search/1/track.json?q=new%20york", searchURL.URLString, nil);
 }
 @end

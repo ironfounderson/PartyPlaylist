@@ -30,6 +30,16 @@
 		E1BED68213045D6F00064E6A /* PPSearchURL.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED68113045D6F00064E6A /* PPSearchURL.m */; };
 		E1BED68313045D6F00064E6A /* PPSearchURL.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED68113045D6F00064E6A /* PPSearchURL.m */; };
 		E1BED6861304628000064E6A /* PPSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6851304628000064E6A /* PPSearchModel.m */; };
+		E1BED6A11304664D00064E6A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BED6A01304664D00064E6A /* CFNetwork.framework */; };
+		E1BED6A31304665900064E6A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BED6A21304665900064E6A /* SystemConfiguration.framework */; };
+		E1BED6A51304666400064E6A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BED6A41304666300064E6A /* MobileCoreServices.framework */; };
+		E1BED6A71304667200064E6A /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E1BED6A61304667200064E6A /* libz.1.2.3.dylib */; };
+		E1BED6BA130466AD00064E6A /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6AB130466AD00064E6A /* ASIAuthenticationDialog.m */; };
+		E1BED6BB130466AD00064E6A /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6AE130466AD00064E6A /* ASIDataCompressor.m */; };
+		E1BED6BC130466AD00064E6A /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6B0130466AD00064E6A /* ASIDataDecompressor.m */; };
+		E1BED6BD130466AD00064E6A /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6B2130466AD00064E6A /* ASIHTTPRequest.m */; };
+		E1BED6BE130466AD00064E6A /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6B6130466AD00064E6A /* ASIInputStream.m */; };
+		E1BED6BF130466AD00064E6A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6B9130466AD00064E6A /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +86,27 @@
 		E1BED68113045D6F00064E6A /* PPSearchURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSearchURL.m; sourceTree = "<group>"; };
 		E1BED6841304628000064E6A /* PPSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSearchModel.h; sourceTree = "<group>"; };
 		E1BED6851304628000064E6A /* PPSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSearchModel.m; sourceTree = "<group>"; };
+		E1BED69E1304662500064E6A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		E1BED6A01304664D00064E6A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		E1BED6A21304665900064E6A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E1BED6A41304666300064E6A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		E1BED6A61304667200064E6A /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		E1BED6AA130466AD00064E6A /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		E1BED6AB130466AD00064E6A /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		E1BED6AC130466AD00064E6A /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		E1BED6AD130466AD00064E6A /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		E1BED6AE130466AD00064E6A /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		E1BED6AF130466AD00064E6A /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		E1BED6B0130466AD00064E6A /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
+		E1BED6B1130466AD00064E6A /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		E1BED6B2130466AD00064E6A /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		E1BED6B3130466AD00064E6A /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		E1BED6B4130466AD00064E6A /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		E1BED6B5130466AD00064E6A /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		E1BED6B6130466AD00064E6A /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		E1BED6B7130466AD00064E6A /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		E1BED6B8130466AD00064E6A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		E1BED6B9130466AD00064E6A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +114,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1BED6A71304667200064E6A /* libz.1.2.3.dylib in Frameworks */,
+				E1BED6A51304666400064E6A /* MobileCoreServices.framework in Frameworks */,
+				E1BED6A31304665900064E6A /* SystemConfiguration.framework in Frameworks */,
+				E1BED6A11304664D00064E6A /* CFNetwork.framework in Frameworks */,
 				E1A631C51304548400EFF8E5 /* UIKit.framework in Frameworks */,
 				E1A631C71304548400EFF8E5 /* Foundation.framework in Frameworks */,
 				E1A631C91304548400EFF8E5 /* CoreGraphics.framework in Frameworks */,
@@ -105,6 +140,7 @@
 		E1A631B51304548400EFF8E5 = {
 			isa = PBXGroup;
 			children = (
+				E1BED6A8130466AC00064E6A /* ExternalCode */,
 				E1BED67F13045D5100064E6A /* SharedCode */,
 				E1A631CA1304548400EFF8E5 /* PPClient */,
 				E1A631F01304548400EFF8E5 /* PPClientTests */,
@@ -125,6 +161,11 @@
 		E1A631C31304548400EFF8E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1BED6A61304667200064E6A /* libz.1.2.3.dylib */,
+				E1BED6A41304666300064E6A /* MobileCoreServices.framework */,
+				E1BED6A21304665900064E6A /* SystemConfiguration.framework */,
+				E1BED6A01304664D00064E6A /* CFNetwork.framework */,
+				E1BED69E1304662500064E6A /* Security.framework */,
 				E1A631C41304548400EFF8E5 /* UIKit.framework */,
 				E1A631C61304548400EFF8E5 /* Foundation.framework */,
 				E1A631C81304548400EFF8E5 /* CoreGraphics.framework */,
@@ -228,6 +269,38 @@
 			);
 			name = SharedCode;
 			path = ../SharedCode;
+			sourceTree = "<group>";
+		};
+		E1BED6A8130466AC00064E6A /* ExternalCode */ = {
+			isa = PBXGroup;
+			children = (
+				E1BED6A9130466AD00064E6A /* ASIHTTP */,
+			);
+			name = ExternalCode;
+			path = ../ExternalCode;
+			sourceTree = "<group>";
+		};
+		E1BED6A9130466AD00064E6A /* ASIHTTP */ = {
+			isa = PBXGroup;
+			children = (
+				E1BED6AA130466AD00064E6A /* ASIAuthenticationDialog.h */,
+				E1BED6AB130466AD00064E6A /* ASIAuthenticationDialog.m */,
+				E1BED6AC130466AD00064E6A /* ASICacheDelegate.h */,
+				E1BED6AD130466AD00064E6A /* ASIDataCompressor.h */,
+				E1BED6AE130466AD00064E6A /* ASIDataCompressor.m */,
+				E1BED6AF130466AD00064E6A /* ASIDataDecompressor.h */,
+				E1BED6B0130466AD00064E6A /* ASIDataDecompressor.m */,
+				E1BED6B1130466AD00064E6A /* ASIHTTPRequest.h */,
+				E1BED6B2130466AD00064E6A /* ASIHTTPRequest.m */,
+				E1BED6B3130466AD00064E6A /* ASIHTTPRequestConfig.h */,
+				E1BED6B4130466AD00064E6A /* ASIHTTPRequestDelegate.h */,
+				E1BED6B5130466AD00064E6A /* ASIInputStream.h */,
+				E1BED6B6130466AD00064E6A /* ASIInputStream.m */,
+				E1BED6B7130466AD00064E6A /* ASIProgressDelegate.h */,
+				E1BED6B8130466AD00064E6A /* Reachability.h */,
+				E1BED6B9130466AD00064E6A /* Reachability.m */,
+			);
+			path = ASIHTTP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +421,12 @@
 				E1BED6791304590800064E6A /* PPSettingsController.m in Sources */,
 				E1BED68213045D6F00064E6A /* PPSearchURL.m in Sources */,
 				E1BED6861304628000064E6A /* PPSearchModel.m in Sources */,
+				E1BED6BA130466AD00064E6A /* ASIAuthenticationDialog.m in Sources */,
+				E1BED6BB130466AD00064E6A /* ASIDataCompressor.m in Sources */,
+				E1BED6BC130466AD00064E6A /* ASIDataDecompressor.m in Sources */,
+				E1BED6BD130466AD00064E6A /* ASIHTTPRequest.m in Sources */,
+				E1BED6BE130466AD00064E6A /* ASIInputStream.m in Sources */,
+				E1BED6BF130466AD00064E6A /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

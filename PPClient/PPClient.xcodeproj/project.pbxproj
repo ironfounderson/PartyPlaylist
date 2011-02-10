@@ -70,6 +70,7 @@
 		E1BED6761304590700064E6A /* PPSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSettingsController.h; sourceTree = "<group>"; };
 		E1BED6771304590700064E6A /* PPSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSettingsController.m; sourceTree = "<group>"; };
 		E1BED6781304590700064E6A /* PPSettingsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPSettingsController.xib; sourceTree = "<group>"; };
+		E1BED67B13045A9800064E6A /* developmentlog.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = developmentlog.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +136,7 @@
 				E1A631CB1304548400EFF8E5 /* Supporting Files */,
 				E1A631D31304548400EFF8E5 /* PPClientAppDelegate.h */,
 				E1A631D41304548400EFF8E5 /* PPClientAppDelegate.m */,
+				E1BED67B13045A9800064E6A /* developmentlog.md */,
 			);
 			path = PPClient;
 			sourceTree = "<group>";

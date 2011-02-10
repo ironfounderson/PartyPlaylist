@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPSearchModel.h"
 
-
-@interface PPSearchController : UIViewController {
+@interface PPSearchController : UIViewController <PPSearchModelDelegate> {
     
 }
+
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) PPSearchModel *searchModel;
 
 @end

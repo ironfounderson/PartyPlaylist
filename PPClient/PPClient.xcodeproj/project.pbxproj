@@ -29,6 +29,7 @@
 		E1BED67E13045CFB00064E6A /* PPSearchURLTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED67D13045CFB00064E6A /* PPSearchURLTests.m */; };
 		E1BED68213045D6F00064E6A /* PPSearchURL.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED68113045D6F00064E6A /* PPSearchURL.m */; };
 		E1BED68313045D6F00064E6A /* PPSearchURL.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED68113045D6F00064E6A /* PPSearchURL.m */; };
+		E1BED6861304628000064E6A /* PPSearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6851304628000064E6A /* PPSearchModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,8 @@
 		E1BED67D13045CFB00064E6A /* PPSearchURLTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSearchURLTests.m; sourceTree = "<group>"; };
 		E1BED68013045D6F00064E6A /* PPSearchURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSearchURL.h; sourceTree = "<group>"; };
 		E1BED68113045D6F00064E6A /* PPSearchURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSearchURL.m; sourceTree = "<group>"; };
+		E1BED6841304628000064E6A /* PPSearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSearchModel.h; sourceTree = "<group>"; };
+		E1BED6851304628000064E6A /* PPSearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSearchModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +214,8 @@
 		E1BED6661304584D00064E6A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E1BED6841304628000064E6A /* PPSearchModel.h */,
+				E1BED6851304628000064E6A /* PPSearchModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -342,6 +347,7 @@
 				E1BED674130458F100064E6A /* PPSearchController.m in Sources */,
 				E1BED6791304590800064E6A /* PPSettingsController.m in Sources */,
 				E1BED68213045D6F00064E6A /* PPSearchURL.m in Sources */,
+				E1BED6861304628000064E6A /* PPSearchModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

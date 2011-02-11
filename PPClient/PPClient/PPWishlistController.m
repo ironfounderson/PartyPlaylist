@@ -6,10 +6,12 @@
 //  Copyright 2011 rhoglund coding. All rights reserved.
 //
 
-#import "PPWishController.h"
+#import "PPWishlistController.h"
+#import "PPWishlistModel.h"
 
+@implementation PPWishlistController
 
-@implementation PPWishController
+@synthesize wishlist = wishlist_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -20,8 +22,8 @@
     return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
+    [wishlist_ release];
     [super dealloc];
 }
 

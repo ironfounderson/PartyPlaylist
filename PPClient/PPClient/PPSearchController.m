@@ -19,6 +19,7 @@
 @synthesize tableView = tableView_;
 @synthesize searchModel = searchModel_;
 @synthesize tracks = tracks_;
+@synthesize wishlist = wishlist_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -92,6 +93,7 @@
 
 - (void)tableView:(UITableView *)tableView 
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 
 }
 
 - (PPSearchModel *)searchModel {

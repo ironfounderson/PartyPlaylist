@@ -20,7 +20,7 @@
 		E1A631F51304548500EFF8E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1A631F31304548500EFF8E5 /* InfoPlist.strings */; };
 		E1BED66A130458C900064E6A /* PPPlayingController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED668130458C900064E6A /* PPPlayingController.m */; };
 		E1BED66B130458C900064E6A /* PPPlayingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1BED669130458C900064E6A /* PPPlayingController.xib */; };
-		E1BED66F130458DD00064E6A /* PPWishController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED66D130458DD00064E6A /* PPWishController.m */; };
+		E1BED66F130458DD00064E6A /* PPWishlistController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED66D130458DD00064E6A /* PPWishlistController.m */; };
 		E1BED670130458DD00064E6A /* PPWishController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1BED66E130458DD00064E6A /* PPWishController.xib */; };
 		E1BED674130458F100064E6A /* PPSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED672130458F100064E6A /* PPSearchController.m */; };
 		E1BED675130458F100064E6A /* PPSearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1BED673130458F100064E6A /* PPSearchController.xib */; };
@@ -62,6 +62,7 @@
 		E1BED6F013046E3F00064E6A /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6E013046E3F00064E6A /* CJSONSerializer.m */; };
 		E1BED6F113046E3F00064E6A /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6E013046E3F00064E6A /* CJSONSerializer.m */; };
 		E1BED6F21304712900064E6A /* PPTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6C813046CC100064E6A /* PPTrack.m */; };
+		E1FD036913051C290085B2AA /* PPWishlistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD036813051C290085B2AA /* PPWishlistModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,8 +94,8 @@
 		E1BED667130458C900064E6A /* PPPlayingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPlayingController.h; sourceTree = "<group>"; };
 		E1BED668130458C900064E6A /* PPPlayingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlayingController.m; sourceTree = "<group>"; };
 		E1BED669130458C900064E6A /* PPPlayingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPPlayingController.xib; sourceTree = "<group>"; };
-		E1BED66C130458DD00064E6A /* PPWishController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPWishController.h; sourceTree = "<group>"; };
-		E1BED66D130458DD00064E6A /* PPWishController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPWishController.m; sourceTree = "<group>"; };
+		E1BED66C130458DD00064E6A /* PPWishlistController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PPWishlistController.h; sourceTree = "<group>"; };
+		E1BED66D130458DD00064E6A /* PPWishlistController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPWishlistController.m; sourceTree = "<group>"; };
 		E1BED66E130458DD00064E6A /* PPWishController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPWishController.xib; sourceTree = "<group>"; };
 		E1BED671130458F100064E6A /* PPSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSearchController.h; sourceTree = "<group>"; };
 		E1BED672130458F100064E6A /* PPSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSearchController.m; sourceTree = "<group>"; };
@@ -152,6 +153,8 @@
 		E1BED6DF13046E3F00064E6A /* CJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializer.h; sourceTree = "<group>"; };
 		E1BED6E013046E3F00064E6A /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
 		E1BED6E113046E3F00064E6A /* JSONRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRepresentation.h; sourceTree = "<group>"; };
+		E1FD036713051C290085B2AA /* PPWishlistModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPWishlistModel.h; sourceTree = "<group>"; };
+		E1FD036813051C290085B2AA /* PPWishlistModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPWishlistModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -281,8 +284,8 @@
 			children = (
 				E1BED667130458C900064E6A /* PPPlayingController.h */,
 				E1BED668130458C900064E6A /* PPPlayingController.m */,
-				E1BED66C130458DD00064E6A /* PPWishController.h */,
-				E1BED66D130458DD00064E6A /* PPWishController.m */,
+				E1BED66C130458DD00064E6A /* PPWishlistController.h */,
+				E1BED66D130458DD00064E6A /* PPWishlistController.m */,
 				E1BED671130458F100064E6A /* PPSearchController.h */,
 				E1BED672130458F100064E6A /* PPSearchController.m */,
 				E1BED6761304590700064E6A /* PPSettingsController.h */,
@@ -303,6 +306,8 @@
 			children = (
 				E1BED6841304628000064E6A /* PPSearchModel.h */,
 				E1BED6851304628000064E6A /* PPSearchModel.m */,
+				E1FD036713051C290085B2AA /* PPWishlistModel.h */,
+				E1FD036813051C290085B2AA /* PPWishlistModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -525,7 +530,7 @@
 				E1A631D21304548400EFF8E5 /* main.m in Sources */,
 				E1A631D51304548400EFF8E5 /* PPClientAppDelegate.m in Sources */,
 				E1BED66A130458C900064E6A /* PPPlayingController.m in Sources */,
-				E1BED66F130458DD00064E6A /* PPWishController.m in Sources */,
+				E1BED66F130458DD00064E6A /* PPWishlistController.m in Sources */,
 				E1BED674130458F100064E6A /* PPSearchController.m in Sources */,
 				E1BED6791304590800064E6A /* PPSettingsController.m in Sources */,
 				E1BED68213045D6F00064E6A /* PPSearchURL.m in Sources */,
@@ -546,6 +551,7 @@
 				E1BED6EC13046E3F00064E6A /* CJSONDeserializer.m in Sources */,
 				E1BED6EE13046E3F00064E6A /* CJSONScanner.m in Sources */,
 				E1BED6F013046E3F00064E6A /* CJSONSerializer.m in Sources */,
+				E1FD036913051C290085B2AA /* PPWishlistModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

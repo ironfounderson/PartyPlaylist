@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class PPWishlistModel;
 
-@interface PPWishController : UIViewController {
+@interface PPWishlistController : UIViewController {
     
 }
+
+@property (nonatomic, retain) IBOutlet PPWishlistModel *wishlist;
 
 @end

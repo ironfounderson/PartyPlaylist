@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "PPSearchModel.h"
 
+@class PPWishlistModel;
+
 @interface PPSearchController : UIViewController <PPSearchModelDelegate> {
 @private
     dispatch_queue_t parseQueue_;
@@ -16,5 +18,6 @@
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) PPSearchModel *searchModel;
+@property (nonatomic, retain) IBOutlet PPWishlistModel *wishlist;
 
 @end

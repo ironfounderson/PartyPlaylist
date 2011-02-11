@@ -7,18 +7,22 @@
 //
 
 #import "PPClientAppDelegate.h"
+#import "PPSearchController.h"
+#import "PPWishlistController.h"
 
 @implementation PPClientAppDelegate
 
 
-@synthesize window=_window;
+@synthesize window=window_;
+@synthesize tabBarController=tabBarController_;
+@synthesize wishlist = wishlist_;
+@synthesize searchController = searchController_;
+@synthesize wishlistController = wishlistController_;
 
-@synthesize tabBarController=_tabBarController;
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
-    // Add the tab bar controller's current view as a subview of the window
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    self.searchController.wishlist = self.wishlist;
+    self.wishlistController = self.wishlist;
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
@@ -63,10 +67,12 @@
      */
 }
 
-- (void)dealloc
-{
-    [_window release];
-    [_tabBarController release];
+- (void)dealloc {
+    [window_ release];
+    [tabBarController_ release];
+    [wishlistController_ release];
+    [searchController_ release];
+    [wishlist_ release];
     [super dealloc];
 }
 

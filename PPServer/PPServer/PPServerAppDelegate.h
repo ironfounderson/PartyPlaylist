@@ -9,12 +9,18 @@
 #import <Cocoa/Cocoa.h>
 
 @class PPTwitterClient;
+@class PPSpotifyController;
 
 @interface PPServerAppDelegate : NSObject <NSApplicationDelegate> {
 @private
-    NSWindow *window;
     PPTwitterClient *twitterClient_;
+    PPSpotifyController *spotifyController_;
 }
 
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet NSTextField *username;
+@property (assign) IBOutlet NSTextField *password;
+
+- (IBAction)loginToSpotify:(id)sender;
+
 @end

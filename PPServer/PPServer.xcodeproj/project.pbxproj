@@ -13,6 +13,9 @@
 		E1E7581A130562DF0048344E /* libspotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E75815130562DF0048344E /* libspotify.framework */; };
 		E1E7581B130562DF0048344E /* osx-audio.c in Sources */ = {isa = PBXBuildFile; fileRef = E1E75816130562DF0048344E /* osx-audio.c */; };
 		E1E7581D130563160048344E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E7581C130563160048344E /* AudioToolbox.framework */; };
+		E1E758211305661F0048344E /* PPSpotifySession.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E758201305661F0048344E /* PPSpotifySession.m */; };
+		E1E7582413056A5A0048344E /* PPSpotifyController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E7582313056A590048344E /* PPSpotifyController.m */; };
+		E1E7582613056DCB0048344E /* libspotify.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E1E75815130562DF0048344E /* libspotify.framework */; };
 		E1FD037B1305479B0085B2AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD037A1305479B0085B2AA /* Cocoa.framework */; };
 		E1FD03851305479B0085B2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1FD03831305479B0085B2AA /* InfoPlist.strings */; };
 		E1FD03881305479B0085B2AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD03871305479B0085B2AA /* main.m */; };
@@ -75,6 +78,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E1E7582513056DB20048344E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E1E7582613056DCB0048344E /* libspotify.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		E1E75806130556F70048344E /* PPTwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTwitterClient.h; sourceTree = "<group>"; };
 		E1E75807130556F70048344E /* PPTwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTwitterClient.m; sourceTree = "<group>"; };
@@ -85,6 +101,10 @@
 		E1E75816130562DF0048344E /* osx-audio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "osx-audio.c"; sourceTree = "<group>"; };
 		E1E75817130562DF0048344E /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
 		E1E7581C130563160048344E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E1E7581F1305661F0048344E /* PPSpotifySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifySession.h; sourceTree = "<group>"; };
+		E1E758201305661F0048344E /* PPSpotifySession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifySession.m; sourceTree = "<group>"; };
+		E1E7582213056A590048344E /* PPSpotifyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifyController.h; sourceTree = "<group>"; };
+		E1E7582313056A590048344E /* PPSpotifyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyController.m; sourceTree = "<group>"; };
 		E1FD03761305479B0085B2AA /* PPServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1FD037A1305479B0085B2AA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E1FD037D1305479B0085B2AA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -245,6 +265,10 @@
 		E1E7581E130563350048344E /* Spotify */ = {
 			isa = PBXGroup;
 			children = (
+				E1E7581F1305661F0048344E /* PPSpotifySession.h */,
+				E1E758201305661F0048344E /* PPSpotifySession.m */,
+				E1E7582213056A590048344E /* PPSpotifyController.h */,
+				E1E7582313056A590048344E /* PPSpotifyController.m */,
 			);
 			name = Spotify;
 			sourceTree = "<group>";
@@ -505,6 +529,7 @@
 				E1FD03721305479B0085B2AA /* Sources */,
 				E1FD03731305479B0085B2AA /* Frameworks */,
 				E1FD03741305479B0085B2AA /* Resources */,
+				E1E7582513056DB20048344E /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -649,6 +674,8 @@
 				E1E75818130562DF0048344E /* appkey.c in Sources */,
 				E1E75819130562DF0048344E /* audio.c in Sources */,
 				E1E7581B130562DF0048344E /* osx-audio.c in Sources */,
+				E1E758211305661F0048344E /* PPSpotifySession.m in Sources */,
+				E1E7582413056A5A0048344E /* PPSpotifyController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

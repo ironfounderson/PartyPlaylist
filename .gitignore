@@ -16,3 +16,5 @@ profile
 .DS_Store
 
 PPServer/PPServer/twitterkey.m
+
+ExternalCode/libspotify/appkey.c

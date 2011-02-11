@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		E1E75808130556F70048344E /* PPTwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75807130556F70048344E /* PPTwitterClient.m */; };
+		E1E75818130562DF0048344E /* appkey.c in Sources */ = {isa = PBXBuildFile; fileRef = E1E75812130562DF0048344E /* appkey.c */; };
+		E1E75819130562DF0048344E /* audio.c in Sources */ = {isa = PBXBuildFile; fileRef = E1E75813130562DF0048344E /* audio.c */; };
+		E1E7581A130562DF0048344E /* libspotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E75815130562DF0048344E /* libspotify.framework */; };
+		E1E7581B130562DF0048344E /* osx-audio.c in Sources */ = {isa = PBXBuildFile; fileRef = E1E75816130562DF0048344E /* osx-audio.c */; };
+		E1E7581D130563160048344E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E7581C130563160048344E /* AudioToolbox.framework */; };
 		E1FD037B1305479B0085B2AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD037A1305479B0085B2AA /* Cocoa.framework */; };
 		E1FD03851305479B0085B2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1FD03831305479B0085B2AA /* InfoPlist.strings */; };
 		E1FD03881305479B0085B2AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD03871305479B0085B2AA /* main.m */; };
@@ -73,6 +78,13 @@
 /* Begin PBXFileReference section */
 		E1E75806130556F70048344E /* PPTwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTwitterClient.h; sourceTree = "<group>"; };
 		E1E75807130556F70048344E /* PPTwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTwitterClient.m; sourceTree = "<group>"; };
+		E1E75812130562DF0048344E /* appkey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = appkey.c; sourceTree = "<group>"; };
+		E1E75813130562DF0048344E /* audio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = audio.c; sourceTree = "<group>"; };
+		E1E75814130562DF0048344E /* audio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio.h; sourceTree = "<group>"; };
+		E1E75815130562DF0048344E /* libspotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libspotify.framework; path = ../ExternalCode/libspotify/libspotify.framework; sourceTree = "<group>"; };
+		E1E75816130562DF0048344E /* osx-audio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "osx-audio.c"; sourceTree = "<group>"; };
+		E1E75817130562DF0048344E /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
+		E1E7581C130563160048344E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E1FD03761305479B0085B2AA /* PPServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1FD037A1305479B0085B2AA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E1FD037D1305479B0085B2AA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -185,7 +197,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1E7581D130563160048344E /* AudioToolbox.framework in Frameworks */,
 				E1FD037B1305479B0085B2AA /* Cocoa.framework in Frameworks */,
+				E1E7581A130562DF0048344E /* libspotify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +230,25 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		E1E75811130562DF0048344E /* libspotify */ = {
+			isa = PBXGroup;
+			children = (
+				E1E75812130562DF0048344E /* appkey.c */,
+				E1E75813130562DF0048344E /* audio.c */,
+				E1E75814130562DF0048344E /* audio.h */,
+				E1E75816130562DF0048344E /* osx-audio.c */,
+				E1E75817130562DF0048344E /* queue.h */,
+			);
+			path = libspotify;
+			sourceTree = "<group>";
+		};
+		E1E7581E130563350048344E /* Spotify */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Spotify;
+			sourceTree = "<group>";
+		};
 		E1FD036B1305479B0085B2AA = {
 			isa = PBXGroup;
 			children = (
@@ -239,6 +272,8 @@
 		E1FD03791305479B0085B2AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E1E7581C130563160048344E /* AudioToolbox.framework */,
+				E1E75815130562DF0048344E /* libspotify.framework */,
 				E1FD037A1305479B0085B2AA /* Cocoa.framework */,
 				E1FD037C1305479B0085B2AA /* Other Frameworks */,
 			);
@@ -258,6 +293,7 @@
 		E1FD03801305479B0085B2AA /* PPServer */ = {
 			isa = PBXGroup;
 			children = (
+				E1E7581E130563350048344E /* Spotify */,
 				E1E75805130556A70048344E /* Models */,
 				E1E75803130556A40048344E /* Views */,
 				E1FD04B71305564C0085B2AA /* Controllers */,
@@ -305,6 +341,7 @@
 		E1FD03AE1305483E0085B2AA /* ExternalCode */ = {
 			isa = PBXGroup;
 			children = (
+				E1E75811130562DF0048344E /* libspotify */,
 				E1FD046F13054A630085B2AA /* oauthconsumer */,
 				E1FD043013054A410085B2AA /* TouchJSON */,
 				E1FD03C01305483E0085B2AA /* MGTwitterEngine */,
@@ -609,6 +646,9 @@
 				E1FD04AA13054A630085B2AA /* OATokenManager.m in Sources */,
 				E1FD04AE13054DA80085B2AA /* twitterkey.m in Sources */,
 				E1E75808130556F70048344E /* PPTwitterClient.m in Sources */,
+				E1E75818130562DF0048344E /* appkey.c in Sources */,
+				E1E75819130562DF0048344E /* audio.c in Sources */,
+				E1E7581B130562DF0048344E /* osx-audio.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,6 +742,10 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../ExternalCode/libspotify\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -718,6 +762,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../ExternalCode/libspotify\"",
+				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PPServer/PPServer-Prefix.pch";

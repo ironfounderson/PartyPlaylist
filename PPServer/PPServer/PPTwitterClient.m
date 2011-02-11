@@ -93,7 +93,6 @@
     NSLog(@"Request succeeded for connectionIdentifier = %@", connectionIdentifier);
 }
 
-
 - (void)requestFailed:(NSString *)connectionIdentifier withError:(NSError *)error {
     NSLog(@"Request failed for connectionIdentifier = %@, error = %@ (%@)", 
           connectionIdentifier, 

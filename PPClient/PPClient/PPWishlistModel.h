@@ -8,9 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+@class PPTrack;
+
+extern NSString * const PPWishlistTrackAddedNotification;
+extern NSString * const PPWishlistTrackRemovedNotification;
+extern NSString * const PPWishlistTrackKeyName;
 
 @interface PPWishlistModel : NSObject {
-    
+    NSMutableArray *favoriteTracks_;
 }
+
+- (BOOL)isFavoriteTrack:(PPTrack *)track;
+
+- (void)toggleFavoriteTrack:(PPTrack *)track;
 
 @end

@@ -9,9 +9,12 @@
 #import "PPSearchController.h"
 #import "PPTrackParser.h"
 #import "PPTrack.h"
+#import "PPWishlistModel.h"
 
 @interface PPSearchController()
 @property (nonatomic, retain) NSArray *tracks;
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+- (NSIndexPath *)indexPathForTrack:(PPTrack *)track;
 @end
 
 @implementation PPSearchController
@@ -35,6 +38,7 @@
     [searchModel_ release];
     [tracks_ release];
     dispatch_release(parseQueue_);
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 
@@ -44,12 +48,22 @@
 
 - (void)viewDidUnload {
     self.tableView = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super viewDidUnload];
 }
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
+    NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
+    [dc addObserver:self 
+           selector:@selector(handleWishlistUpdate:) 
+               name:PPWishlistTrackAddedNotification 
+             object:nil];
+    [dc addObserver:self 
+           selector:@selector(handleWishlistUpdate:) 
+               name:PPWishlistTrackRemovedNotification 
+             object:nil];
     [super viewDidLoad];
 }
 
@@ -57,8 +71,43 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (UITableViewCellAccessoryType)acceortyTypeForTrack:(PPTrack *)track {
+    if ([self.wishlist isFavoriteTrack:track]) {
+        return UITableViewCellAccessoryCheckmark;
+    }
+    else {
+        return UITableViewCellAccessoryNone;        
+    }
+}
+
+- (void)handleWishlistUpdate:(NSNotification *)notif {
+    PPTrack *track = [notif.userInfo objectForKey:PPWishlistTrackKeyName];
+    NSIndexPath *indexPath = [self indexPathForTrack:track];
+    if (!indexPath) {
+        return;
+    }
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    cell.accessoryType = cell.accessoryType = [self acceortyTypeForTrack:track]; 
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] 
+                          withRowAnimation:UITableViewRowAnimationFade];
+}
+
+- (NSIndexPath *)indexPathForTrack:(PPTrack *)track {
+    NSUInteger index = [self.tracks indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
+        PPTrack *item = (PPTrack *)obj;
+        if ([track.link isEqualToString:item.link]) {
+            *stop = YES;
+            return YES;
+        }
+        return NO;
+    }];
+
+    return (index == NSNotFound) ? nil : [NSIndexPath indexPathForRow:index inSection:0];
+}
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     PPTrack *track = [self.tracks objectAtIndex:indexPath.row];
+    cell.accessoryType = [self acceortyTypeForTrack:track];
     cell.textLabel.text = track.title;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", track.artistName, track.albumName];
 }
@@ -93,7 +142,8 @@
 
 - (void)tableView:(UITableView *)tableView 
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // 
+    PPTrack *track = [self.tracks objectAtIndex:indexPath.row];
+    [self.wishlist toggleFavoriteTrack:track];
 }
 
 - (PPSearchModel *)searchModel {

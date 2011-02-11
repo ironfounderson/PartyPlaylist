@@ -8,7 +8,6 @@
 
 #import "PPClientAppDelegate.h"
 #import "PPSearchController.h"
-#import "PPWishlistController.h"
 
 @implementation PPClientAppDelegate
 
@@ -21,8 +20,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    self.searchController.wishlist = self.wishlist;
-    self.wishlistController = self.wishlist;
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;

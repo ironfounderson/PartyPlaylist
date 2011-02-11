@@ -35,18 +35,18 @@
 		E1FD037D1305479B0085B2AA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		E1FD037E1305479B0085B2AA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E1FD037F1305479B0085B2AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		E1FD03821305479B0085B2AA /* PPServer-Info.plist */ = {isa = PBXFileReference; path = "PPServer-Info.plist"; sourceTree = "<group>"; };
+		E1FD03821305479B0085B2AA /* PPServer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PPServer-Info.plist"; sourceTree = "<group>"; };
 		E1FD03841305479B0085B2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E1FD03861305479B0085B2AA /* PPServer-Prefix.pch */ = {isa = PBXFileReference; path = "PPServer-Prefix.pch"; sourceTree = "<group>"; };
+		E1FD03861305479B0085B2AA /* PPServer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PPServer-Prefix.pch"; sourceTree = "<group>"; };
 		E1FD03871305479B0085B2AA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E1FD038A1305479B0085B2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		E1FD038C1305479B0085B2AA /* PPServerAppDelegate.h */ = {isa = PBXFileReference; path = PPServerAppDelegate.h; sourceTree = "<group>"; };
+		E1FD038C1305479B0085B2AA /* PPServerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPServerAppDelegate.h; sourceTree = "<group>"; };
 		E1FD038D1305479B0085B2AA /* PPServerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPServerAppDelegate.m; sourceTree = "<group>"; };
 		E1FD03901305479C0085B2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E1FD03971305479C0085B2AA /* PPServerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PPServerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1FD039D1305479C0085B2AA /* PPServerTests-Info.plist */ = {isa = PBXFileReference; path = "PPServerTests-Info.plist"; sourceTree = "<group>"; };
+		E1FD039D1305479C0085B2AA /* PPServerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PPServerTests-Info.plist"; sourceTree = "<group>"; };
 		E1FD039F1305479C0085B2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E1FD03A11305479C0085B2AA /* PPServerTests-Prefix.pch */ = {isa = PBXFileReference; path = "PPServerTests-Prefix.pch"; sourceTree = "<group>"; };
+		E1FD03A11305479C0085B2AA /* PPServerTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PPServerTests-Prefix.pch"; sourceTree = "<group>"; };
 		E1FD03A21305479C0085B2AA /* PPServerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPServerTests.h; sourceTree = "<group>"; };
 		E1FD03A41305479C0085B2AA /* PPServerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPServerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */

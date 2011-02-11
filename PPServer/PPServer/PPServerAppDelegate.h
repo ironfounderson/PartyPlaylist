@@ -10,17 +10,22 @@
 
 @class PPTwitterClient;
 @class PPSpotifyController;
+@class PPPlaylistViewController;
+@class PPPlaylist;
 
 @interface PPServerAppDelegate : NSObject <NSApplicationDelegate> {
 @private
     PPTwitterClient *twitterClient_;
     PPSpotifyController *spotifyController_;
+    PPPlaylist *playlist_;
 }
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet NSTextField *username;
 @property (assign) IBOutlet NSTextField *password;
+@property (assign) IBOutlet PPPlaylistViewController *playlistController;
 
 - (IBAction)loginToSpotify:(id)sender;
+- (IBAction)testResolveTrack:(id)sender;
 
 @end

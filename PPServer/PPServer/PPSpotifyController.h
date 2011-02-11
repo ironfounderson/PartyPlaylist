@@ -9,13 +9,16 @@
 #import <Foundation/Foundation.h>
 #import "PPSpotifySession.h"
 
+@class PPSpotifyTrack;
+
 @interface PPSpotifyController : NSObject <PPSpotifySessionDelegate> {
 @private
     __block PPSpotifySession *spotifySession_;
     dispatch_queue_t spotifyQueue_;
+    __block NSMutableArray *updateArray_;
 }
 
 - (void)startSession;
 - (void)loginUser:(NSString *)username password:(NSString *)password;
-
+- (void)updateSpotifyTrack:(PPSpotifyTrack *)track;
 @end

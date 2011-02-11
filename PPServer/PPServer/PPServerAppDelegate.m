@@ -9,24 +9,37 @@
 #import "PPServerAppDelegate.h"
 #import "PPTwitterClient.h"
 #import "PPSpotifyController.h"
+#import "PPPlaylist.h"
+#import "PPPlaylistViewController.h"
 
 @implementation PPServerAppDelegate
 
 @synthesize window;
 @synthesize username;
 @synthesize password;
+@synthesize playlistController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    twitterClient_ = [[PPTwitterClient alloc] init];
-    //[twitterClient_ startListen];
-    
     spotifyController_ = [[PPSpotifyController alloc] init];
-    [spotifyController_ startSession];
+
+    playlist_ = [[PPPlaylist alloc] init];
+    playlist_.spotifyController = spotifyController_;
+    
+    self.playlistController.playlist = playlist_;
+    
+    twitterClient_ = [[PPTwitterClient alloc] init];
+    twitterClient_.playlist = playlist_;
+    
+    [spotifyController_ startSession];    
 }
 
 - (IBAction)loginToSpotify:(id)sender {
     [spotifyController_ loginUser:self.username.stringValue 
                          password:self.password.stringValue];
+}
+
+- (IBAction)testResolveTrack:(id)sender {
+    [playlist_ addTrackFromLink:@"spotify:track:70O39qQUEKZpAAbuq2lsbj" byUser:nil];
 }
 
 @end

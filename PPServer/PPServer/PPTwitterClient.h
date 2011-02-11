@@ -14,6 +14,8 @@ extern NSString * const PPTwitterConsumerSecret;
 extern NSString * const PPTwitterAccessToken;
 extern NSString * const PPTwitterAccessTokenSecret;
 
+@class PPPlaylist;
+
 /**
  Handles the twitter communications
  */
@@ -25,6 +27,7 @@ extern NSString * const PPTwitterAccessTokenSecret;
 
 @property (nonatomic, retain) MGTwitterEngine *twitterEngine;
 @property (copy) NSString *username;
+@property (assign) PPPlaylist *playlist;
 
 /**
  starts polling the time line to see if there are any new responses that needs to be handled

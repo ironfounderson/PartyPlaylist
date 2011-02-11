@@ -8,11 +8,14 @@
 
 #import "PPTwitterClient.h"
 #import "OAToken.h"
+#import "PPPlaylist.h"
+#import "PPPlaylistUser.h"
 
 @implementation PPTwitterClient
 
 @synthesize twitterEngine = twitterEngine_;
 @synthesize username = username_;
+@synthesize playlist;
 
 - (id)init {
     self = [super init];
@@ -34,7 +37,8 @@
         [pollTimer_ release];
     }
     
-    pollTimer_ = [[NSTimer scheduledTimerWithTimeInterval:10 
+    const int POLLTIME = 60;
+    pollTimer_ = [[NSTimer scheduledTimerWithTimeInterval:POLLTIME 
                                                    target:self 
                                                  selector:@selector(pollTwitter) 
                                                  userInfo:nil
@@ -73,12 +77,26 @@
 #pragma mark MGTwitterEngineDelegate methods
 
 - (void)statusesReceived:(NSArray *)statuses forRequest:(NSString *)connectionIdentifier {
-    NSLog(@"got %lu responses", statuses.count);
     for (NSDictionary *reply in statuses) {
+        // Parse message to make sure it is in the correct format
+        //
         NSString *text = [reply objectForKey:@"text"];
         MGTwitterEngineID tweetId = [[reply objectForKey:@"id"] longLongValue];
+        NSString *link = @"spotify:track:70O39qQUEKZpAAbuq2lsbj";
         
-        NSLog(@"%llu said %@", tweetId, text);
+        // Get or create a user associated with the twitter account that sent the request
+        //
+        NSDictionary *userDict = [reply objectForKey:@"user"];
+        MGTwitterEngineID userId = [[userDict objectForKey:@"id"] longLongValue];
+        PPPlaylistUser *playlistUser = [self.playlist userWithTwitterId:userId];
+        if (!playlistUser) {
+            playlistUser = [self.playlist createTwitterUser:userDict];
+        }
+        
+        [self.playlist addTrackFromLink:link byUser:playlistUser];
+        
+        // This value needs to be persisted so we don't parse old requests
+        //
         if (tweetId > highestSeenTweetId_) {
             highestSeenTweetId_ = tweetId;
         }

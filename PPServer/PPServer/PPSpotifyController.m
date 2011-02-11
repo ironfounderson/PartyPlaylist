@@ -7,7 +7,7 @@
 //
 
 #import "PPSpotifyController.h"
-
+#import "PPSpotifyTrack.h"
 
 @implementation PPSpotifyController
 
@@ -15,6 +15,7 @@
     self = [super init];
     if (self) {
         spotifyQueue_ = dispatch_queue_create("com.roberthoglund.partyplaylist", NULL);
+        updateArray_ = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -23,6 +24,7 @@
 - (void)dealloc {
     dispatch_release(spotifyQueue_);
     [spotifySession_ release];
+    [updateArray_ release];
     [super dealloc];
 }
 
@@ -55,6 +57,35 @@
     });
 }
 
+- (void)updateSpotifyTrack:(PPSpotifyTrack *)track {
+    dispatch_async(spotifyQueue_, ^{
+        sp_link *link = sp_link_create_from_string([track.link UTF8String]);
+        if (link == NULL || sp_link_type(link) != SP_LINKTYPE_TRACK) {
+            [track setTrack:NULL];
+            NSLog(@"'%@' not a valid track link", track.link);
+            if (link) {
+                sp_link_release(link);
+            }
+            return;
+        }
+        NSLog(@"finding track...");
+        sp_track *t = sp_link_as_track(link);
+        [track setTrack:t];
+        if (sp_track_is_loaded(t)) {
+            NSLog(@"track was loaded directly");
+            track.trackIsLoaded = YES;
+        }
+        else {
+            track.trackIsLoaded = NO;
+            [updateArray_ addObject:track];
+        }
+        sp_link_release(link);
+    });
+
+}
+- (void)trackFromLink:(NSString *)text {
+}
+
 #pragma mark - Spotify Session
 
 - (void)sessionLoggedIn:(PPSpotifySession *)session {
@@ -63,6 +94,22 @@
 
 - (void)session:(PPSpotifySession *)session loginFailedWithError:(NSError *)error {
     NSLog(@"Login to Spotify failed:%@", error);
+}
+
+- (void)sessionUpdatedMetadata:(PPSpotifySession *)session {
+    NSLog(@"did receive updated meta notification");
+    dispatch_async(spotifyQueue_, ^{
+        __block NSMutableIndexSet *discardedItems = [NSMutableIndexSet indexSet];
+        [updateArray_ enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            PPSpotifyTrack *track = obj;
+            if (sp_track_is_loaded([track track])) {
+                NSLog(@"track was loaded later");
+                track.trackIsLoaded = YES;
+                [discardedItems addIndex:idx];
+            }
+        }];
+        [updateArray_ removeObjectsAtIndexes:discardedItems];
+    });
 }
 
 @end

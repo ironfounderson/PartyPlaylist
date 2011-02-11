@@ -8,14 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "MGTwitterEngine.h"
+#import "PPPlaylistTrack.h"
 
 @class PPSpotifyTrack;
-@class PPPlaylistTrack;
 @class PPPlaylistUser;
 @class PPSpotifyController;
 
-@interface PPPlaylist : NSObject {
+@interface PPPlaylist : NSObject <PPPlaylistTrackDelegate> {
 @private
+    NSMutableArray *tracks_;
 }
 
 @property (assign) PPSpotifyController *spotifyController;

@@ -68,11 +68,10 @@
             }
             return;
         }
-        NSLog(@"finding track...");
+
         sp_track *t = sp_link_as_track(link);
         [track setTrack:t];
         if (sp_track_is_loaded(t)) {
-            NSLog(@"track was loaded directly");
             track.trackIsLoaded = YES;
         }
         else {
@@ -97,13 +96,11 @@
 }
 
 - (void)sessionUpdatedMetadata:(PPSpotifySession *)session {
-    NSLog(@"did receive updated meta notification");
     dispatch_async(spotifyQueue_, ^{
         __block NSMutableIndexSet *discardedItems = [NSMutableIndexSet indexSet];
         [updateArray_ enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             PPSpotifyTrack *track = obj;
             if (sp_track_is_loaded([track track])) {
-                NSLog(@"track was loaded later");
                 track.trackIsLoaded = YES;
                 [discardedItems addIndex:idx];
             }

@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "PPSpotifySession.h"
 
+extern NSString * const PPSpotifyLoggedInNotification;
+extern NSString * const PPSpotifyLoggedOutNotification;
+
 @class PPSpotifyTrack;
 
 @interface PPSpotifyController : NSObject <PPSpotifySessionDelegate> {

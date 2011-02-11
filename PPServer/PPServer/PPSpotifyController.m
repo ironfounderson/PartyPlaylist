@@ -9,6 +9,9 @@
 #import "PPSpotifyController.h"
 #import "PPSpotifyTrack.h"
 
+NSString * const PPSpotifyLoggedInNotification = @"PPSpotifyLoggedInNotification";
+NSString * const PPSpotifyLoggedOutNotification = @"PPSpotifyLoggedOutNotification";
+
 @implementation PPSpotifyController
 
 - (id)init {
@@ -88,12 +91,13 @@
 #pragma mark - Spotify Session
 
 - (void)sessionLoggedIn:(PPSpotifySession *)session {
-    NSLog(@"Logged in to spotify");
+    [[NSNotificationCenter defaultCenter] postNotificationName:PPSpotifyLoggedInNotification 
+                                                        object:self];
 }
 
 - (void)session:(PPSpotifySession *)session loginFailedWithError:(NSError *)error {
-    NSLog(@"Login to Spotify failed:%@", error);
-}
+    [[NSNotificationCenter defaultCenter] postNotificationName:PPSpotifyLoggedOutNotification 
+                                                        object:self];}
 
 - (void)sessionUpdatedMetadata:(PPSpotifySession *)session {
     dispatch_async(spotifyQueue_, ^{

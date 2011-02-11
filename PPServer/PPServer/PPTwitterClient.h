@@ -15,6 +15,7 @@ extern NSString * const PPTwitterAccessToken;
 extern NSString * const PPTwitterAccessTokenSecret;
 
 @class PPPlaylist;
+@class PPSpotifyTweetParser;
 
 /**
  Handles the twitter communications
@@ -23,6 +24,7 @@ extern NSString * const PPTwitterAccessTokenSecret;
 @private
     NSTimer *pollTimer_;
     MGTwitterEngineID highestSeenTweetId_;
+    PPSpotifyTweetParser *tweetParser_;
 }
 
 @property (nonatomic, retain) MGTwitterEngine *twitterEngine;

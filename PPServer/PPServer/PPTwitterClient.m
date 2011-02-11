@@ -10,6 +10,8 @@
 #import "OAToken.h"
 #import "PPPlaylist.h"
 #import "PPPlaylistUser.h"
+#import "PPSpotifyTweetParser.h"
+#import "PPSpotifyController.h"
 
 @implementation PPTwitterClient
 
@@ -21,6 +23,16 @@
     self = [super init];
     if (self) {
         highestSeenTweetId_ = 0;
+        username_ = [[NSString stringWithString:@"janesplaylist"] retain];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(handleSpotifyLoggedIn:) 
+                                                     name:PPSpotifyLoggedInNotification
+                                                   object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(handleSpotifyLoggedOut:) 
+                                                     name:PPSpotifyLoggedOutNotification
+                                                   object:nil];
     }
     
     return self;
@@ -28,16 +40,33 @@
 
 - (void)dealloc {
     [twitterEngine_ release];
+    [tweetParser_ release];
     [super dealloc];
 }
 
+- (void)handleSpotifyLoggedIn:(NSNotification *)notif {
+    [self startListen];
+}
+
+- (void)handleSpotifyLoggedOut:(NSNotification *)notif {
+    [self stopListen];
+}
+
 - (void)startListen {
+    if (tweetParser_) {
+        [tweetParser_ release];
+        tweetParser_ = nil;
+    }
+    tweetParser_ = [[PPSpotifyTweetParser alloc] initWithTweetHandle:
+                    [NSString stringWithFormat:@"@%@", self.username]];
+    
     if (pollTimer_) {
         [pollTimer_ invalidate];
         [pollTimer_ release];
     }
     
-    const int POLLTIME = 60;
+    
+    const int POLLTIME = 20;
     pollTimer_ = [[NSTimer scheduledTimerWithTimeInterval:POLLTIME 
                                                    target:self 
                                                  selector:@selector(pollTwitter) 
@@ -58,13 +87,10 @@
 
 - (MGTwitterEngine *)twitterEngine {
     if (!twitterEngine_) {
-        
-        username_ = [[NSString stringWithString:@"janesplayslist"] retain];
-        
         twitterEngine_ = [[MGTwitterEngine alloc] initWithDelegate:self];
         [twitterEngine_ setUsesSecureConnection:NO];
         [twitterEngine_ setConsumerKey:PPTwitterConsumerKey secret:PPTwitterConsumerSecret];
-        [twitterEngine_ setUsername:username_];
+        [twitterEngine_ setUsername:self.username];
         
         OAToken *token = [[[OAToken alloc] initWithKey:PPTwitterAccessToken 
                                                 secret:PPTwitterAccessTokenSecret] autorelease];
@@ -78,11 +104,22 @@
 
 - (void)statusesReceived:(NSArray *)statuses forRequest:(NSString *)connectionIdentifier {
     for (NSDictionary *reply in statuses) {
+        MGTwitterEngineID tweetId = [[reply objectForKey:@"id"] longLongValue];
+        // This value needs to be persisted so we don't parse old requests
+        //
+        if (tweetId > highestSeenTweetId_) {
+            highestSeenTweetId_ = tweetId;
+        }
+
+        
         // Parse message to make sure it is in the correct format
         //
         NSString *text = [reply objectForKey:@"text"];
-        MGTwitterEngineID tweetId = [[reply objectForKey:@"id"] longLongValue];
-        NSString *link = @"spotify:track:70O39qQUEKZpAAbuq2lsbj";
+        PPSpotifyTweetParserResult *parseResult = [tweetParser_ parseTweet:text error:nil];
+        if (!parseResult) {
+            NSLog(@"tweet in format %@ not recognized", text);
+            continue;
+        }
         
         // Get or create a user associated with the twitter account that sent the request
         //
@@ -93,13 +130,8 @@
             playlistUser = [self.playlist createTwitterUser:userDict];
         }
         
-        [self.playlist addTrackFromLink:link byUser:playlistUser];
+        [self.playlist addTrackFromLink:parseResult.link byUser:playlistUser];
         
-        // This value needs to be persisted so we don't parse old requests
-        //
-        if (tweetId > highestSeenTweetId_) {
-            highestSeenTweetId_ = tweetId;
-        }
     }
 }
 

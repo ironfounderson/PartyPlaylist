@@ -16,6 +16,8 @@
 
 @property BOOL trackIsLoaded;
 @property (copy) NSString *link;
+@property (readonly) NSString *artistName;
+@property (readonly) NSString *title;
 - (void)setTrack:(sp_track *)track;
 - (sp_track *)track;
 

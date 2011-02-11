@@ -13,7 +13,7 @@
 @class PPPlaylistTrack;
 
 @protocol PPPlaylistTrackDelegate <NSObject>
-- (void)playlistTrackIsLoaded:(PPSpotifyTrack *)track;
+- (void)playlistTrackIsLoaded:(PPPlaylistTrack *)track;
 @end
 
 @interface PPPlaylistTrack : NSObject {
@@ -25,7 +25,14 @@
 @property (assign) NSObject<PPPlaylistTrackDelegate> *delegate;
 @property (retain) PPSpotifyTrack *spotifyTrack;
 @property (readonly) NSString *link;
+@property (readonly) NSUInteger wishCount;
 
 - (void)addUser:(PPPlaylistUser *)user;
+
+/**
+ Convienience method for displaying data in an NSTableView
+ */
+- (id)valueForIdentifier:(NSString *)identifier;
+
 
 @end

@@ -47,4 +47,19 @@
     return track_;
 }
 
+- (NSString *)title {
+    if (!track_) {
+        return @"TRACK NOT LOADED";
+    }
+    return [NSString stringWithUTF8String:sp_track_name(track_)];
+}
+
+- (NSString *)artistName {
+    if (!track_) {
+        return @"TRACK NOT LOADED";
+    }
+    return [NSString stringWithUTF8String:sp_track_name(track_)];
+}
+
+
 @end

@@ -11,10 +11,10 @@
 @class PPPlaylist;
 
 @interface PPPlaylistViewController : NSViewController {
-@private
-    
+@private    
 }
 
 @property (retain) PPPlaylist *playlist;
+@property (assign) IBOutlet NSTableView *tableView;
 
 @end

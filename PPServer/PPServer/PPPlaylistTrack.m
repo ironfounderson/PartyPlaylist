@@ -57,4 +57,26 @@
 - (void)addUser:(PPPlaylistUser *)user {
     NSLog(@"adding user");
 }
+
+- (NSUInteger)wishCount {
+    return 0;
+}
+/**
+ Convienience method for displaying data in an NSTableView
+ */
+- (id)valueForIdentifier:(NSString *)identifier {
+    if ([identifier isEqualToString:@"artistName"]) {
+        return self.spotifyTrack.artistName;
+    }
+    if ([identifier isEqualToString:@"title"]) {
+        return self.spotifyTrack.title;
+    }
+    if ([identifier isEqualToString:@"wishCount"]) {
+        return [NSNumber numberWithLong:self.wishCount];
+    }
+    
+    NSLog(@"Could not handle identifier '%@'", identifier);
+    return nil;
+}
+
 @end

@@ -1,0 +1,460 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E1FD037B1305479B0085B2AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD037A1305479B0085B2AA /* Cocoa.framework */; };
+		E1FD03851305479B0085B2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1FD03831305479B0085B2AA /* InfoPlist.strings */; };
+		E1FD03881305479B0085B2AA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD03871305479B0085B2AA /* main.m */; };
+		E1FD038B1305479B0085B2AA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E1FD03891305479B0085B2AA /* Credits.rtf */; };
+		E1FD038E1305479B0085B2AA /* PPServerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD038D1305479B0085B2AA /* PPServerAppDelegate.m */; };
+		E1FD03911305479C0085B2AA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1FD038F1305479C0085B2AA /* MainMenu.xib */; };
+		E1FD03981305479C0085B2AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD037A1305479B0085B2AA /* Cocoa.framework */; };
+		E1FD03A01305479C0085B2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1FD039E1305479C0085B2AA /* InfoPlist.strings */; };
+		E1FD03A31305479C0085B2AA /* PPServerTests.h in Resources */ = {isa = PBXBuildFile; fileRef = E1FD03A21305479C0085B2AA /* PPServerTests.h */; };
+		E1FD03A51305479C0085B2AA /* PPServerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD03A41305479C0085B2AA /* PPServerTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E1FD03991305479C0085B2AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1FD036D1305479B0085B2AA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1FD03751305479B0085B2AA;
+			remoteInfo = PPServer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E1FD03761305479B0085B2AA /* PPServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1FD037A1305479B0085B2AA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E1FD037D1305479B0085B2AA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		E1FD037E1305479B0085B2AA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E1FD037F1305479B0085B2AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E1FD03821305479B0085B2AA /* PPServer-Info.plist */ = {isa = PBXFileReference; path = "PPServer-Info.plist"; sourceTree = "<group>"; };
+		E1FD03841305479B0085B2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E1FD03861305479B0085B2AA /* PPServer-Prefix.pch */ = {isa = PBXFileReference; path = "PPServer-Prefix.pch"; sourceTree = "<group>"; };
+		E1FD03871305479B0085B2AA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E1FD038A1305479B0085B2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		E1FD038C1305479B0085B2AA /* PPServerAppDelegate.h */ = {isa = PBXFileReference; path = PPServerAppDelegate.h; sourceTree = "<group>"; };
+		E1FD038D1305479B0085B2AA /* PPServerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPServerAppDelegate.m; sourceTree = "<group>"; };
+		E1FD03901305479C0085B2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		E1FD03971305479C0085B2AA /* PPServerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PPServerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1FD039D1305479C0085B2AA /* PPServerTests-Info.plist */ = {isa = PBXFileReference; path = "PPServerTests-Info.plist"; sourceTree = "<group>"; };
+		E1FD039F1305479C0085B2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E1FD03A11305479C0085B2AA /* PPServerTests-Prefix.pch */ = {isa = PBXFileReference; path = "PPServerTests-Prefix.pch"; sourceTree = "<group>"; };
+		E1FD03A21305479C0085B2AA /* PPServerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPServerTests.h; sourceTree = "<group>"; };
+		E1FD03A41305479C0085B2AA /* PPServerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPServerTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E1FD03731305479B0085B2AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1FD037B1305479B0085B2AA /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1FD03931305479C0085B2AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1FD03981305479C0085B2AA /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E1FD036B1305479B0085B2AA = {
+			isa = PBXGroup;
+			children = (
+				E1FD03801305479B0085B2AA /* PPServer */,
+				E1FD039B1305479C0085B2AA /* PPServerTests */,
+				E1FD03791305479B0085B2AA /* Frameworks */,
+				E1FD03771305479B0085B2AA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E1FD03771305479B0085B2AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1FD03761305479B0085B2AA /* PPServer.app */,
+				E1FD03971305479C0085B2AA /* PPServerTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E1FD03791305479B0085B2AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1FD037A1305479B0085B2AA /* Cocoa.framework */,
+				E1FD037C1305479B0085B2AA /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1FD037C1305479B0085B2AA /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1FD037D1305479B0085B2AA /* AppKit.framework */,
+				E1FD037E1305479B0085B2AA /* CoreData.framework */,
+				E1FD037F1305479B0085B2AA /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		E1FD03801305479B0085B2AA /* PPServer */ = {
+			isa = PBXGroup;
+			children = (
+				E1FD038C1305479B0085B2AA /* PPServerAppDelegate.h */,
+				E1FD038D1305479B0085B2AA /* PPServerAppDelegate.m */,
+				E1FD038F1305479C0085B2AA /* MainMenu.xib */,
+				E1FD03811305479B0085B2AA /* Supporting Files */,
+			);
+			path = PPServer;
+			sourceTree = "<group>";
+		};
+		E1FD03811305479B0085B2AA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E1FD03821305479B0085B2AA /* PPServer-Info.plist */,
+				E1FD03831305479B0085B2AA /* InfoPlist.strings */,
+				E1FD03861305479B0085B2AA /* PPServer-Prefix.pch */,
+				E1FD03871305479B0085B2AA /* main.m */,
+				E1FD03891305479B0085B2AA /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E1FD039B1305479C0085B2AA /* PPServerTests */ = {
+			isa = PBXGroup;
+			children = (
+				E1FD03A21305479C0085B2AA /* PPServerTests.h */,
+				E1FD03A41305479C0085B2AA /* PPServerTests.m */,
+				E1FD039C1305479C0085B2AA /* Supporting Files */,
+			);
+			path = PPServerTests;
+			sourceTree = "<group>";
+		};
+		E1FD039C1305479C0085B2AA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E1FD039D1305479C0085B2AA /* PPServerTests-Info.plist */,
+				E1FD039E1305479C0085B2AA /* InfoPlist.strings */,
+				E1FD03A11305479C0085B2AA /* PPServerTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E1FD03751305479B0085B2AA /* PPServer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1FD03A81305479C0085B2AA /* Build configuration list for PBXNativeTarget "PPServer" */;
+			buildPhases = (
+				E1FD03721305479B0085B2AA /* Sources */,
+				E1FD03731305479B0085B2AA /* Frameworks */,
+				E1FD03741305479B0085B2AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PPServer;
+			productName = PPServer;
+			productReference = E1FD03761305479B0085B2AA /* PPServer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E1FD03961305479C0085B2AA /* PPServerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1FD03AB1305479C0085B2AA /* Build configuration list for PBXNativeTarget "PPServerTests" */;
+			buildPhases = (
+				E1FD03921305479C0085B2AA /* Sources */,
+				E1FD03931305479C0085B2AA /* Frameworks */,
+				E1FD03941305479C0085B2AA /* Resources */,
+				E1FD03951305479C0085B2AA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E1FD039A1305479C0085B2AA /* PBXTargetDependency */,
+			);
+			name = PPServerTests;
+			productName = PPServerTests;
+			productReference = E1FD03971305479C0085B2AA /* PPServerTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E1FD036D1305479B0085B2AA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "rhoglund coding";
+			};
+			buildConfigurationList = E1FD03701305479B0085B2AA /* Build configuration list for PBXProject "PPServer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E1FD036B1305479B0085B2AA;
+			productRefGroup = E1FD03771305479B0085B2AA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E1FD03751305479B0085B2AA /* PPServer */,
+				E1FD03961305479C0085B2AA /* PPServerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E1FD03741305479B0085B2AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1FD03851305479B0085B2AA /* InfoPlist.strings in Resources */,
+				E1FD038B1305479B0085B2AA /* Credits.rtf in Resources */,
+				E1FD03911305479C0085B2AA /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1FD03941305479C0085B2AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1FD03A01305479C0085B2AA /* InfoPlist.strings in Resources */,
+				E1FD03A31305479C0085B2AA /* PPServerTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E1FD03951305479C0085B2AA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E1FD03721305479B0085B2AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1FD03881305479B0085B2AA /* main.m in Sources */,
+				E1FD038E1305479B0085B2AA /* PPServerAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1FD03921305479C0085B2AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1FD03A51305479C0085B2AA /* PPServerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E1FD039A1305479C0085B2AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1FD03751305479B0085B2AA /* PPServer */;
+			targetProxy = E1FD03991305479C0085B2AA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E1FD03831305479B0085B2AA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1FD03841305479B0085B2AA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E1FD03891305479B0085B2AA /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1FD038A1305479B0085B2AA /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		E1FD038F1305479C0085B2AA /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1FD03901305479C0085B2AA /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		E1FD039E1305479C0085B2AA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1FD039F1305479C0085B2AA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E1FD03A61305479C0085B2AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E1FD03A71305479C0085B2AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E1FD03A91305479C0085B2AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PPServer/PPServer-Prefix.pch";
+				INFOPLIST_FILE = "PPServer/PPServer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E1FD03AA1305479C0085B2AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PPServer/PPServer-Prefix.pch";
+				INFOPLIST_FILE = "PPServer/PPServer-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E1FD03AC1305479C0085B2AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PPServer.app/Contents/MacOS/PPServer";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PPServerTests/PPServerTests-Prefix.pch";
+				INFOPLIST_FILE = "PPServerTests/PPServerTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		E1FD03AD1305479C0085B2AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PPServer.app/Contents/MacOS/PPServer";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PPServerTests/PPServerTests-Prefix.pch";
+				INFOPLIST_FILE = "PPServerTests/PPServerTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E1FD03701305479B0085B2AA /* Build configuration list for PBXProject "PPServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1FD03A61305479C0085B2AA /* Debug */,
+				E1FD03A71305479C0085B2AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1FD03A81305479C0085B2AA /* Build configuration list for PBXNativeTarget "PPServer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1FD03A91305479C0085B2AA /* Debug */,
+				E1FD03AA1305479C0085B2AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E1FD03AB1305479C0085B2AA /* Build configuration list for PBXNativeTarget "PPServerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1FD03AC1305479C0085B2AA /* Debug */,
+				E1FD03AD1305479C0085B2AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E1FD036D1305479B0085B2AA /* Project object */;
+}

@@ -7,14 +7,15 @@
 //
 
 #import "PPServerAppDelegate.h"
+#import "PPTwitterClient.h"
 
 @implementation PPServerAppDelegate
 
 @synthesize window;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    // Insert code here to initialize your application
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    twitterClient_ = [[PPTwitterClient alloc] init];
+    [twitterClient_ startListen];
 }
 
 @end

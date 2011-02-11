@@ -8,11 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class PPTwitterClient;
+
 @interface PPServerAppDelegate : NSObject <NSApplicationDelegate> {
 @private
     NSWindow *window;
+    PPTwitterClient *twitterClient_;
 }
 
 @property (assign) IBOutlet NSWindow *window;
-
 @end

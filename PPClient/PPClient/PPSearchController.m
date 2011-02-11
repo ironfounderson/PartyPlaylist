@@ -117,6 +117,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (!parseQueue_) {
         parseQueue_ = dispatch_queue_create("com.roberthoglund.partyplaylist.parsequeue", NULL);
     }
+    
+    self.tracks = nil;
+    [self.tableView reloadData];
+    
     __block __typeof__(self)_self = self;    
     dispatch_async(parseQueue_, ^{
         PPTrackParser *trackParser = [[PPTrackParser alloc] init];

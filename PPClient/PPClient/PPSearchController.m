@@ -7,11 +7,18 @@
 //
 
 #import "PPSearchController.h"
+#import "PPTrackParser.h"
+#import "PPTrack.h"
+
+@interface PPSearchController()
+@property (nonatomic, retain) NSArray *tracks;
+@end
 
 @implementation PPSearchController
 
 @synthesize tableView = tableView_;
 @synthesize searchModel = searchModel_;
+@synthesize tracks = tracks_;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -25,6 +32,8 @@
 - (void)dealloc {
     [tableView_ release];
     [searchModel_ release];
+    [tracks_ release];
+    dispatch_release(parseQueue_);
     [super dealloc];
 }
 
@@ -47,11 +56,10 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark - UISearchbar Delegate
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [self.searchModel searchTrack:searchBar.text];
-    [searchBar resignFirstResponder];
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    PPTrack *track = [self.tracks objectAtIndex:indexPath.row];
+    cell.textLabel.text = track.title;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", track.artistName, track.albumName];
 }
 
 #pragma mark - UITableView Datasource
@@ -62,19 +70,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView 
  numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return self.tracks.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView 
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"TrackCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
+                                       reuseIdentifier:CellIdentifier] autorelease];
     }
     
+    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
@@ -92,12 +102,30 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     return searchModel_;
 }
 
+#pragma mark - UISearchbar Delegate
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self.searchModel searchTrack:searchBar.text];
+    [searchBar resignFirstResponder];
+}
+
 #pragma mark - PPSearchModelDelegate
 
 - (void)searchModel:(PPSearchModel *)model 
    receivedResponse:(NSData *)response 
          withStatus:(int)statusCode {
-    NSLog(@"%d: %@", statusCode, response);
+    if (!parseQueue_) {
+        parseQueue_ = dispatch_queue_create("com.roberthoglund.partyplaylist.parsequeue", NULL);
+    }
+    __block __typeof__(self)_self = self;    
+    dispatch_async(parseQueue_, ^{
+        PPTrackParser *trackParser = [[PPTrackParser alloc] init];
+        _self.tracks = [trackParser parseData:response];
+        [trackParser release];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_self.tableView reloadData];
+        });
+    });
 }
 
 @end

@@ -10,7 +10,8 @@
 #import "PPSearchModel.h"
 
 @interface PPSearchController : UIViewController <PPSearchModelDelegate> {
-    
+@private
+    dispatch_queue_t parseQueue_;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;

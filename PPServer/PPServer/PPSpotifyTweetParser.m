@@ -28,12 +28,12 @@
 }
 
 - (PPSpotifyTweetParserResult *)parseTweet:(NSString *)text error:(NSError **)error{
+    // a propert tweet looks like: @username OPERATION spotify:link
     NSArray *components = [text componentsSeparatedByString:@" "];
     if (components.count != 3) {
         return nil;
     }
     
-    NSLog(@"handle = %@", self.handle);
     NSString *handle = [components objectAtIndex:0];
     if (![handle isEqualToString:self.handle]) {
         return nil;

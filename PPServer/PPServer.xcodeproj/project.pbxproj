@@ -10,6 +10,8 @@
 		E124C8E613059F340097A72F /* PPSpotifyTweetParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8E513059F330097A72F /* PPSpotifyTweetParser.m */; };
 		E124C8E713059F340097A72F /* PPSpotifyTweetParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8E513059F330097A72F /* PPSpotifyTweetParser.m */; };
 		E124C8EB13059F690097A72F /* PPSpotifyTweetParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8EA13059F690097A72F /* PPSpotifyTweetParserTests.m */; };
+		E124C8EF1305CA160097A72F /* PPPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8ED1305CA160097A72F /* PPPlayingViewController.m */; };
+		E124C8F31305CB510097A72F /* PPTrackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E124C8F21305CB510097A72F /* PPTrackView.xib */; };
 		E1E75808130556F70048344E /* PPTwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75807130556F70048344E /* PPTwitterClient.m */; };
 		E1E75818130562DF0048344E /* appkey.c in Sources */ = {isa = PBXBuildFile; fileRef = E1E75812130562DF0048344E /* appkey.c */; };
 		E1E75819130562DF0048344E /* audio.c in Sources */ = {isa = PBXBuildFile; fileRef = E1E75813130562DF0048344E /* audio.c */; };
@@ -101,6 +103,9 @@
 		E124C8E413059F330097A72F /* PPSpotifyTweetParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifyTweetParser.h; sourceTree = "<group>"; };
 		E124C8E513059F330097A72F /* PPSpotifyTweetParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyTweetParser.m; sourceTree = "<group>"; };
 		E124C8EA13059F690097A72F /* PPSpotifyTweetParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyTweetParserTests.m; sourceTree = "<group>"; };
+		E124C8EC1305CA160097A72F /* PPPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPlayingViewController.h; sourceTree = "<group>"; };
+		E124C8ED1305CA160097A72F /* PPPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlayingViewController.m; sourceTree = "<group>"; };
+		E124C8F21305CB510097A72F /* PPTrackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPTrackView.xib; sourceTree = "<group>"; };
 		E1E75806130556F70048344E /* PPTwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTwitterClient.h; sourceTree = "<group>"; };
 		E1E75807130556F70048344E /* PPTwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTwitterClient.m; sourceTree = "<group>"; };
 		E1E75812130562DF0048344E /* appkey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = appkey.c; sourceTree = "<group>"; };
@@ -251,6 +256,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E124C8F11305CB1F0097A72F /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				E1FD038F1305479C0085B2AA /* MainMenu.xib */,
+				E124C8F21305CB510097A72F /* PPTrackView.xib */,
+			);
+			name = Xibs;
+			sourceTree = "<group>";
+		};
 		E1E75803130556A40048344E /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,9 +370,9 @@
 				E1E75805130556A70048344E /* Models */,
 				E1E75803130556A40048344E /* Views */,
 				E1FD04B71305564C0085B2AA /* Controllers */,
+				E124C8F11305CB1F0097A72F /* Xibs */,
 				E1FD038C1305479B0085B2AA /* PPServerAppDelegate.h */,
 				E1FD038D1305479B0085B2AA /* PPServerAppDelegate.m */,
-				E1FD038F1305479C0085B2AA /* MainMenu.xib */,
 				E1FD04AC13054DA80085B2AA /* twitterkey.m */,
 				E1FD03811305479B0085B2AA /* Supporting Files */,
 			);
@@ -551,6 +565,8 @@
 			children = (
 				E1E75833130573960048344E /* PPPlaylistViewController.h */,
 				E1E75834130573960048344E /* PPPlaylistViewController.m */,
+				E124C8EC1305CA160097A72F /* PPPlayingViewController.h */,
+				E124C8ED1305CA160097A72F /* PPPlayingViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -631,6 +647,7 @@
 				E1FD03911305479C0085B2AA /* MainMenu.xib in Resources */,
 				E1FD04A813054A630085B2AA /* OATestServer.rb in Resources */,
 				E1FD04AB13054A630085B2AA /* README in Resources */,
+				E124C8F31305CB510097A72F /* PPTrackView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +734,7 @@
 				E1E7583A130576030048344E /* PPSpotifyTrack.m in Sources */,
 				E1E7583D130576430048344E /* PPPlaylistUser.m in Sources */,
 				E124C8E613059F340097A72F /* PPSpotifyTweetParser.m in Sources */,
+				E124C8EF1305CA160097A72F /* PPPlayingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -58,7 +58,19 @@
     if (!track_) {
         return @"TRACK NOT LOADED";
     }
-    return [NSString stringWithUTF8String:sp_track_name(track_)];
+    
+    // Let's get the first artist
+    int numArtists = sp_track_num_artists(track_);
+    NSString *artistName;
+    if (numArtists == 0) {
+        artistName = @"<UNKNOWN>";
+    }
+    else {
+        sp_artist *artist = sp_track_artist(track_, 0);
+        artistName = [NSString stringWithUTF8String:sp_artist_name(artist)];
+    }
+
+    return artistName;
 }
 
 

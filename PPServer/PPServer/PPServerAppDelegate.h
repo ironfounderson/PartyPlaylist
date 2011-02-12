@@ -12,6 +12,7 @@
 @class PPSpotifyController;
 @class PPPlaylistViewController;
 @class PPPlaylist;
+@class PPPlayingViewController;
 
 @interface PPServerAppDelegate : NSObject <NSApplicationDelegate> {
 @private
@@ -24,6 +25,7 @@
 @property (assign) IBOutlet NSTextField *username;
 @property (assign) IBOutlet NSTextField *password;
 @property (assign) IBOutlet PPPlaylistViewController *playlistController;
+@property (assign) IBOutlet PPPlayingViewController *playingController;
 
 - (IBAction)loginToSpotify:(id)sender;
 - (IBAction)testResolveTrack:(id)sender;

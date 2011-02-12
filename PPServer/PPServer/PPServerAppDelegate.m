@@ -18,6 +18,7 @@
 @synthesize username;
 @synthesize password;
 @synthesize playlistController;
+@synthesize playingController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     spotifyController_ = [[PPSpotifyController alloc] init];

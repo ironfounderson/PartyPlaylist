@@ -12,12 +12,14 @@
 #import "PPPlaylistUser.h"
 #import "PPSpotifyTweetParser.h"
 #import "PPSpotifyController.h"
+#import "PPUserlist.h"
 
 @implementation PPTwitterClient
 
 @synthesize twitterEngine = twitterEngine_;
 @synthesize username = username_;
 @synthesize playlist;
+@synthesize userlist;
 
 - (id)init {
     self = [super init];
@@ -125,13 +127,12 @@
         //
         NSDictionary *userDict = [reply objectForKey:@"user"];
         MGTwitterEngineID userId = [[userDict objectForKey:@"id"] longLongValue];
-        PPPlaylistUser *playlistUser = [self.playlist userWithTwitterId:userId];
+        PPPlaylistUser *playlistUser = [self.userlist userWithTwitterId:userId];
         if (!playlistUser) {
-            playlistUser = [self.playlist createTwitterUser:userDict];
+            playlistUser = [self.userlist createTwitterUser:userDict];
         }
         
         [self.playlist addTrackFromLink:parseResult.link byUser:playlistUser];
-        
     }
 }
 

@@ -18,6 +18,10 @@
 
 @interface PPPlaylistTrack : NSObject {
 @private
+    /**
+     List of of all users that requested this track
+     */
+    NSMutableArray *users_;
 }
 
 - (id)initWithSpotifyTrack:(PPSpotifyTrack *)spTrack;
@@ -34,5 +38,22 @@
  */
 - (id)valueForIdentifier:(NSString *)identifier;
 
+
+@end
+
+/**
+ The time of a request will probably be included in how a track is selected for playing in the playlist. 
+ This way we now when each user made the request. This class can be excluded if it turns out that only the first
+ time a request was made is important.
+ */
+@interface PPPlaylistTrackUser : NSObject {
+    
+}
+
++ (id)playlistTrackUserWithUser:(PPPlaylistUser *)user requestTime:(NSDate *)time;
+- (id)initWithUser:(PPPlaylistUser *)user requestTime:(NSDate *)time;
+
+@property (retain) PPPlaylistUser *user;
+@property (retain) NSDate *requestTime;
 
 @end

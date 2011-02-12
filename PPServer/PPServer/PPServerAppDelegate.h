@@ -12,6 +12,7 @@
 @class PPSpotifyController;
 @class PPPlaylistViewController;
 @class PPPlaylist;
+@class PPUserlist;
 @class PPPlayingViewController;
 
 @interface PPServerAppDelegate : NSObject <NSApplicationDelegate> {
@@ -19,6 +20,7 @@
     PPTwitterClient *twitterClient_;
     PPSpotifyController *spotifyController_;
     PPPlaylist *playlist_;
+    PPUserlist *userlist_;
 }
 
 @property (assign) IBOutlet NSWindow *window;

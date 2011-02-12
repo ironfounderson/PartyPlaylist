@@ -8,9 +8,11 @@
 
 #import "PPPlaylistTrack.h"
 #import "PPSpotifyTrack.h"
+#import "PPPlaylistUser.h"
 
 @interface PPPlaylistTrack()
 - (void)subscribeToSpotifyTrack;
+- (PPPlaylistUser *)findUser:(PPPlaylistUser *)user;
 @end
 @implementation PPPlaylistTrack
 
@@ -20,6 +22,7 @@
 - (id)initWithSpotifyTrack:(PPSpotifyTrack *)spTrack {
     self = [super init];
     if (self) {
+        users_ = [[NSMutableArray alloc] init];
         spotifyTrack_ = [spTrack retain];
         [self subscribeToSpotifyTrack];
     }
@@ -29,6 +32,7 @@
 
 - (void)dealloc {
     [spotifyTrack_ release];
+    [users_ release];
     [super dealloc];
 }
 
@@ -55,12 +59,20 @@
 }
 
 - (void)addUser:(PPPlaylistUser *)user {
-    NSLog(@"adding user");
+    // A user may only cast one vote on each track.
+    if ([self findUser:user]) {
+        return;
+    }
+    
+    PPPlaylistTrackUser *trackUser = [PPPlaylistTrackUser playlistTrackUserWithUser:user 
+                                                                        requestTime:[NSDate date]];
+    [users_ addObject:trackUser];
 }
 
 - (NSUInteger)wishCount {
-    return 0;
+    return users_.count;
 }
+
 /**
  Convienience method for displaying data in an NSTableView
  */
@@ -79,4 +91,41 @@
     return nil;
 }
 
+- (PPPlaylistUser *)findUser:(PPPlaylistUser *)user {
+    NSUInteger index = [users_ indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
+        PPPlaylistTrackUser *pltUser = obj;
+        if ([pltUser.user.userId isEqualToString:user.userId]) {
+            *stop = YES;
+            return YES;
+        }
+        return NO;
+    }];
+    return index != NSNotFound ? [users_ objectAtIndex:index] : nil;
+}
+
+@end
+
+@implementation PPPlaylistTrackUser
+
+@synthesize user = user_;
+@synthesize requestTime = requestTime_;
+
++ (id)playlistTrackUserWithUser:(PPPlaylistUser *)user requestTime:(NSDate *)time {
+    return [[[self alloc] initWithUser:user requestTime:time] autorelease];
+}
+
+- (id)initWithUser:(PPPlaylistUser *)user requestTime:(NSDate *)time {
+    self = [super init];
+    if (self) {
+        user_ = [user retain];
+        requestTime_ = [requestTime_ retain];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [user_ release];
+    [requestTime_ release];
+    [super dealloc];
+}
 @end

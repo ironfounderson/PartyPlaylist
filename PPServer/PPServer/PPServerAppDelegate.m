@@ -11,6 +11,7 @@
 #import "PPSpotifyController.h"
 #import "PPPlaylist.h"
 #import "PPPlaylistViewController.h"
+#import "PPUserlist.h"
 
 @implementation PPServerAppDelegate
 
@@ -21,17 +22,30 @@
 @synthesize playingController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    // These are the only instances of spotifycontroller, userlist and playlist that should be created.
+    // They are considered singletons but they are not implemented as such but rather injected where they
+    // are needed.
     spotifyController_ = [[PPSpotifyController alloc] init];
-
+    userlist_ = [[PPUserlist alloc] init];
     playlist_ = [[PPPlaylist alloc] init];
-    playlist_.spotifyController = spotifyController_;
     
-    self.playlistController.playlist = playlist_;
+    playlist_.spotifyController = spotifyController_;
+    playlist_.userlist = userlist_;
     
     twitterClient_ = [[PPTwitterClient alloc] init];
     twitterClient_.playlist = playlist_;
+    twitterClient_.userlist = userlist_;
+    
+    self.playlistController.playlist = playlist_;
     
     [spotifyController_ startSession];    
+}
+
+- (void)dealloc {
+    [userlist_ release];
+    [playlist_ release];
+    [spotifyController_ release];
+    [super dealloc];
 }
 
 - (IBAction)loginToSpotify:(id)sender {

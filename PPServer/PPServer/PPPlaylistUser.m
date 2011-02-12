@@ -11,8 +11,11 @@
 
 @implementation PPPlaylistUser
 
-- (id)init
-{
+@synthesize name = name_;
+@synthesize screenName = screenName_;
+@synthesize userId = userId_;
+
+- (id)init {
     self = [super init];
     if (self) {
         // Initialization code here.
@@ -22,6 +25,9 @@
 }
 
 - (void)dealloc {
+    [name_ release];
+    [screenName_ release];
+    [userId_ release];
     [super dealloc];
 }
 

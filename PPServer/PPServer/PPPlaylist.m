@@ -20,6 +20,7 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
 @implementation PPPlaylist
 
 @synthesize spotifyController;
+@synthesize userlist;
 
 - (id)init {
     self = [super init];
@@ -45,20 +46,20 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
         
         plTrack = [[[PPPlaylistTrack alloc] initWithSpotifyTrack:spTrack] autorelease];
         plTrack.delegate = self;
-        [tracks_ addObject:plTrack];
         
         [self.spotifyController updateSpotifyTrack:spTrack];
         [spTrack release];
+        [tracks_ addObject:plTrack];
     }
     
     [plTrack addUser:user];
-    
+    [self addTrack:plTrack byUser:user];
     [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistChangeNotification 
                                                         object:self];
-
 }
 
-- (void)addTrack:(PPSpotifyTrack *)track byUser:(PPPlaylistUser *)user {
+- (void)addTrack:(PPPlaylistTrack *)track byUser:(PPPlaylistUser *)user {
+        
     
 }
 
@@ -79,13 +80,7 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
 }
 
 
-- (PPPlaylistUser *)userWithTwitterId:(MGTwitterEngineID)userId {
-    return nil;
-}
 
-- (PPPlaylistUser *)createTwitterUser:(NSDictionary *)userDict {
-    return nil;
-}
 
 - (PPPlaylistTrack *)findTrackWithLink:(NSString *)link {
     NSUInteger index = [tracks_ indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {

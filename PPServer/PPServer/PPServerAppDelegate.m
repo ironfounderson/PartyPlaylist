@@ -31,7 +31,6 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 @synthesize playingController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    return;
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
     // These are the only instances of spotifycontroller, userlist and playlist that should be created.

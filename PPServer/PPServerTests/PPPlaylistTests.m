@@ -33,10 +33,12 @@
     [super tearDown];
 }
 
-- (void)test_addTrackFromLink {
-    NSString *link = @"link it baby";
+- (void)test_addTrackFromLink_trackIsAvailable {
+    NSString *link = @"spotify:track:randomlinktestdude";
     [playlist addTrackFromLink:link byUser:[self sampleUserWithId:@"userid"]];
-}
+    NSArray *tracks = [playlist upcomingItems];
+    STAssertEquals((NSUInteger)0, tracks.count, nil);
+}     
 
 - (PPPlaylistUser *)sampleUserWithId:(NSString *)userId {
     PPPlaylistUser *user = [[PPPlaylistUser alloc] init];

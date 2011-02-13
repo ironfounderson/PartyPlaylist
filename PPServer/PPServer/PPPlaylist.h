@@ -27,7 +27,8 @@ extern NSString * const PPPlaylistTrackLoadedNotification;
 @interface PPPlaylist : NSObject <PPPlaylistTrackDelegate> {
 @private
     dispatch_queue_t playlistQueue_;
-    __block NSMutableArray *tracks_;
+    NSMutableArray *tracks_;    
+    NSMutableArray *playedTracks_;
 }
 
 /**

@@ -9,6 +9,9 @@
 #import "PPPlaylist.h"
 #import "PPSpotifyController.h"
 #import "PPSpotifyTrack.h"
+#import "DDLog.h"
+
+static int ddLogLevel = LOG_LEVEL_INFO;
 
 NSString * const PPPlaylistItemAddedNotification = @"PPPlaylistItemAddedNotification";
 NSString * const PPPlaylistItemUpdatedNotification = @"PPPlaylistItemUpdatedNotification";
@@ -28,6 +31,7 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
     self = [super init];
     if (self) {
         tracks_ = [[NSMutableArray alloc] init];
+        playedTracks_ = [[NSMutableArray alloc] init];
         playlistQueue_ = dispatch_queue_create("com.roberthoglund.partyplaylist.playlist", NULL);
     }
     
@@ -36,6 +40,7 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
 
 - (void)dealloc {
     [tracks_ release];
+    [playedTracks_ release];
     dispatch_release(playlistQueue_);
     [super dealloc];
 }
@@ -43,24 +48,22 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
 - (void)addTrackFromLink:(NSString *)link byUser:(PPPlaylistUser *)user {
     PPPlaylistTrack *plTrack = [self findTrackWithLink:link];
     if (!plTrack) {
-        
         PPSpotifyTrack *spTrack = [[[PPSpotifyTrack alloc] init] autorelease];
         spTrack.link = link;
         
         plTrack = [[[PPPlaylistTrack alloc] initWithSpotifyTrack:spTrack] autorelease];
         plTrack.delegate = self;
-
+        
         [self.spotifyController updateSpotifyTrack:spTrack];
-                 
         [tracks_ addObject:plTrack];
         [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistItemAddedNotification 
-                                                           object:self];
-         
+                                                            object:plTrack];
     }
     
-    [plTrack addUser:user];    
+    [plTrack addUser:user];
     [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistItemUpdatedNotification 
                                                         object:plTrack];
+    
 }
 
 - (void)playlistTrackIsLoaded:(PPPlaylistTrack *)track {
@@ -72,17 +75,15 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
     __block NSMutableArray *items = [NSMutableArray array];
     dispatch_sync(playlistQueue_, ^{
         for (PPPlaylistTrack *track in tracks_) {
-            [items addObject:track];
+            if (track.spotifyTrack.trackIsLoaded) {
+                [items addObject:track];
+            }
         }
     });    
     return items;
 }
 
 - (PPPlaylistTrack *)findTrackWithLink:(NSString *)link {
-    if (tracks_.count == 0) {
-        return nil;
-    }
-    
     NSUInteger index = [tracks_ indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
         PPPlaylistTrack *plTrack = obj;
         if ([plTrack.link isEqualToString:link]) {

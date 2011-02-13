@@ -53,14 +53,8 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
     }
     
     [plTrack addUser:user];
-    [self addTrack:plTrack byUser:user];
     [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistChangeNotification 
                                                         object:self];
-}
-
-- (void)addTrack:(PPPlaylistTrack *)track byUser:(PPPlaylistUser *)user {
-        
-    
 }
 
 - (void)playlistTrackIsLoaded:(PPSpotifyTrack *)track {

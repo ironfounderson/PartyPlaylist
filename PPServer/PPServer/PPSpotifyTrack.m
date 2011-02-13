@@ -15,11 +15,13 @@
 @synthesize artistName = artistName_;
 @synthesize title = title_;
 @synthesize trackIsLoaded;
+@synthesize invalidLink;
 
 - (id)init {
     self = [super init];
     if (self) {
-        // Initialization code here.
+        invalidLink = NO;
+        trackIsLoaded = NO;
     }
     
     return self;

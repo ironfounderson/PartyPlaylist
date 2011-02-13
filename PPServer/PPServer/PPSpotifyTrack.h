@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ Represents an sp_track where the spotify URI is used as the link. 
+ */
 @interface PPSpotifyTrack : NSObject {
 @private
 }
 
 @property BOOL trackIsLoaded;
+@property BOOL invalidLink;
 @property (copy) NSString *link;
 @property (copy) NSString *artistName;
 @property (copy) NSString *title;

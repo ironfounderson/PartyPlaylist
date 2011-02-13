@@ -1,16 +1,15 @@
 //
-//  PPPlaylistTests.m
+//  PPPlaylistTrackTests.m
 //  PPServer
 //
-//  Created by Robert Höglund on 2/12/11.
+//  Created by Robert Höglund on 2/13/11.
 //  Copyright 2011 rhoglund coding. All rights reserved.
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "PPPlaylist.h"
-#import "PPPlaylistTrack.h"
 
-@interface PPPlaylistTests : SenTestCase {
+
+@interface PPPlaylistTrackTests : SenTestCase {
 @private
     
 }
@@ -18,13 +17,17 @@
 @end
 
 
-@implementation PPPlaylistTests
+@implementation PPPlaylistTrackTests
 
 - (void)setUp {
     [super setUp];
+    
+    // Set-up code here.
 }
 
 - (void)tearDown {
+    // Tear-down code here.
+    
     [super tearDown];
 }
 

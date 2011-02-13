@@ -102,6 +102,7 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
     dispatch_async(spotifyQueue_, ^{
         sp_link *link = sp_link_create_from_string([spTrack.link UTF8String]);
         if (link == NULL || sp_link_type(link) != SP_LINKTYPE_TRACK) {
+            spTrack.invalidLink = YES;
             DDLogWarn(@"'%@' not a valid track link", spTrack.link);
             if (link) {
                 sp_link_release(link);

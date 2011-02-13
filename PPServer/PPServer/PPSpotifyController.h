@@ -26,6 +26,13 @@ extern NSString * const PPSpotifyTrackEndedPlayingNotification;
 @property (retain) PPSpotifySessionObj *spotifySession;
 - (void)startSession;
 - (void)loginUser:(NSString *)username password:(NSString *)password;
+/**
+ Will query libspotify and find the track associated with track.link
+ If the link is invalid the track.invalidLink will be set to YES
+ This method is asyncronous and when the track information has been received from spotify 
+ track.trackIsLoaded is set to YES
+ @param track the track the should get updated.
+ */
 - (void)updateSpotifyTrack:(PPSpotifyTrack *)track;
 - (void)playTrack:(PPSpotifyTrack *)track;
 @end

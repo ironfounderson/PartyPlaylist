@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MGTwitterEngine.h"
 #import "PPPlaylistTrack.h"
 
 extern NSString * const PPPlaylistChangeNotification;
@@ -41,8 +40,6 @@ extern NSString * const PPPlaylistTrackLoadedNotification;
  Finds the track associated with the supplied spotify URI and adds it to the playlist.
  */
 - (void)addTrackFromLink:(NSString *)link byUser:(PPPlaylistUser *)user;
-
-- (void)addTrack:(PPPlaylistTrack *)track byUser:(PPPlaylistUser *)user;
 
 - (NSArray *)upcomingItems;
 @end

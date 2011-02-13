@@ -6,6 +6,14 @@ function addTweet(link, text) {
     newItem.fadeIn();
 }
 
+function addRequest(link, text) {
+    newItem = $('<li id="' + link + '">' + text + '</li>').hide();
+    
+    $("#requestlist").prepend(newItem);
+    
+    newItem.fadeIn();
+}
+
 function updateTweet(link, text) {
   $('#'+link).html(text);
 }

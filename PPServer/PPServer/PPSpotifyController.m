@@ -175,7 +175,14 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
 
 - (void)updateSpotifyTrack:(PPSpotifyTrack *)spTrack fromTrack:(sp_track *)track {
     spTrack.title = [NSString stringWithUTF8String:sp_track_name(track)];
-    DDLogInfo(@"Track: %@ is now loaded", spTrack.title);
+    if (sp_track_num_artists(track) > 0) {
+        sp_artist *artist = sp_track_artist(track, 0);
+        spTrack.artistName = [NSString stringWithUTF8String:sp_artist_name(artist)];
+    }
+    else {
+        DDLogWarn(@"Could not find artist for track %@ (%@)", spTrack.title, spTrack.link);
+        spTrack.artistName = @"UNKNOWN";
+    }
     spTrack.loaded = YES;
 }
 

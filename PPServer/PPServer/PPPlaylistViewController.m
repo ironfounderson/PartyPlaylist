@@ -168,8 +168,12 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 
 - (void)showTrackRequest:(PPTrackRequest *)trackRequest {
     PPSpotifyTrack *spTrack = trackRequest.track.spotifyTrack;
-    DDLogInfo(@"%@ requested %@ by %@", 
-              trackRequest.user.screenName, spTrack.title, spTrack.artistName);
+    NSString *message = [NSString stringWithFormat:@"%@ requested %@ by %@", 
+                         trackRequest.user.screenName, 
+                         [spTrack.title stringByReplacingOccurrencesOfString:@"'" withString:@""], 
+                         spTrack.artistName];
+    NSString *method = [NSString stringWithFormat:@"addRequest('', '%@');", message];
+    [self updateWebView:method];
 }
 
 #pragma mark -

@@ -42,6 +42,8 @@
 		E18DEADD13080D6F00CA4226 /* PPSpotifyTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75839130576010048344E /* PPSpotifyTrack.m */; };
 		E18DEADE13080D7800CA4226 /* PPPlaylistTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E7582C130570F70048344E /* PPPlaylistTrack.m */; };
 		E18DEAE11308102F00CA4226 /* PPPlaylistTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAE01308102E00CA4226 /* PPPlaylistTrackTests.m */; };
+		E18DEAE2130811C600CA4226 /* PPPlaylistUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E7583C130576400048344E /* PPPlaylistUser.m */; };
+		E18DEAE3130814F400CA4226 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAB61307E59200CA4226 /* DDLog.m */; };
 		E1D029B41306FDF600874960 /* PPPlaylistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D029B31306FDF600874960 /* PPPlaylistTests.m */; };
 		E1D029B81306FED000874960 /* PPUserlist.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D029B71306FECF00874960 /* PPUserlist.m */; };
 		E1E75808130556F70048344E /* PPTwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75807130556F70048344E /* PPTwitterClient.m */; };
@@ -947,6 +949,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E18DEAE3130814F400CA4226 /* DDLog.m in Sources */,
+				E18DEAE2130811C600CA4226 /* PPPlaylistUser.m in Sources */,
 				E18DEADE13080D7800CA4226 /* PPPlaylistTrack.m in Sources */,
 				E18DEADD13080D6F00CA4226 /* PPSpotifyTrack.m in Sources */,
 				E124C8E713059F340097A72F /* PPSpotifyTweetParser.m in Sources */,

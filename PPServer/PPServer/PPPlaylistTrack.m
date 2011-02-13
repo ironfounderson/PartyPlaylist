@@ -9,15 +9,28 @@
 #import "PPPlaylistTrack.h"
 #import "PPSpotifyTrack.h"
 #import "PPPlaylistUser.h"
+#import "DDLog.h"
+
+static int ddLogLevel = LOG_LEVEL_INFO;
+
+NSString * const PPPlaylistTrackArtistNameIdentifier = @"artistName";
+NSString * const PPPlaylistTrackWishCountIdentifier = @"wishCount";
+NSString * const PPPlaylistTrackTitleIdentifier = @"title";
+
 
 @interface PPPlaylistTrack()
 - (void)subscribeToSpotifyTrack;
 - (PPPlaylistUser *)findUser:(PPPlaylistUser *)user;
 @end
+
 @implementation PPPlaylistTrack
 
 @synthesize delegate;
 @synthesize spotifyTrack = spotifyTrack_;
+
++ (id)playlistTrackWithSpotifyTrack:(PPSpotifyTrack *)spTrack {
+    return [[[PPPlaylistTrack alloc] initWithSpotifyTrack:spTrack] autorelease];
+}
 
 - (id)initWithSpotifyTrack:(PPSpotifyTrack *)spTrack {
     self = [super init];
@@ -77,17 +90,17 @@
  Convienience method for displaying data in an NSTableView
  */
 - (id)valueForIdentifier:(NSString *)identifier {
-    if ([identifier isEqualToString:@"artistName"]) {
+    if ([identifier isEqualToString:PPPlaylistTrackArtistNameIdentifier]) {
         return self.spotifyTrack.artistName;
     }
-    if ([identifier isEqualToString:@"title"]) {
+    if ([identifier isEqualToString:PPPlaylistTrackTitleIdentifier]) {
         return self.spotifyTrack.title;
     }
-    if ([identifier isEqualToString:@"wishCount"]) {
+    if ([identifier isEqualToString:PPPlaylistTrackWishCountIdentifier]) {
         return [NSNumber numberWithLong:self.wishCount];
     }
     
-    NSLog(@"Could not handle identifier '%@'", identifier);
+    DDLogWarn(@"Could not handle identifier '%@'", identifier);
     return nil;
 }
 
@@ -101,6 +114,16 @@
         return NO;
     }];
     return index != NSNotFound ? [users_ objectAtIndex:index] : nil;
+}
+
+#pragma mark - Dynamic Logging
+
++ (int)ddLogLevel {
+    return ddLogLevel;
+}
+
++ (void)ddSetLogLevel:(int)logLevel {
+    ddLogLevel = logLevel;
 }
 
 @end

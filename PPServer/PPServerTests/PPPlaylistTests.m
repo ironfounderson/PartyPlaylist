@@ -8,7 +8,7 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import "PPPlaylist.h"
-#import "PPPlaylistTrack.h"
+
 
 @interface PPPlaylistTests : SenTestCase {
 @private
@@ -27,5 +27,7 @@
 - (void)tearDown {
     [super tearDown];
 }
+
+
 
 @end

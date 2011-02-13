@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const PPPlaylistTrackArtistNameIdentifier;
+extern NSString * const PPPlaylistTrackWishCountIdentifier;
+extern NSString * const PPPlaylistTrackTitleIdentifier;
+
 @class PPSpotifyTrack;
 @class PPPlaylistUser;
 @class PPPlaylistTrack;
@@ -23,6 +27,8 @@
      */
     NSMutableArray *users_;
 }
+
++ (id)playlistTrackWithSpotifyTrack:(PPSpotifyTrack *)spTrack;
 
 - (id)initWithSpotifyTrack:(PPSpotifyTrack *)spTrack;
 

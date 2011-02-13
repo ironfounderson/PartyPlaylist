@@ -126,7 +126,7 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 
 - (void)handlePlaylistChange:(NSNotification *)notification {
     PPPlaylist *pl= [notification object];
-    self.tracks = [pl upcomingItems];
+    self.tracks = [pl availableTracks];
     
     NSString *jquery = @"addTweet();";
     [[self.webView windowScriptObject] evaluateWebScript:jquery];

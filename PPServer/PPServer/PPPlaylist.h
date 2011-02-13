@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PPPlaylistTrack.h"
+#import "PPTrackScheduler.h"
 
 extern NSString * const PPPlaylistItemAddedNotification;
 extern NSString * const PPPlaylistItemUpdatedNotification;
@@ -32,6 +33,12 @@ extern NSString * const PPPlaylistTrackLoadedNotification;
 }
 
 /**
+ The scheduler responsible for selecting the next track that should be played.
+ If not set, PPPlaylist will just select the tracks in the order they were added.
+ */
+@property (retain) PPSTrackSchedulerObj *trackScheduler;
+
+/**
  */
 @property (assign) PPSpotifyController *spotifyController;
 
@@ -39,10 +46,28 @@ extern NSString * const PPPlaylistTrackLoadedNotification;
  */
 @property (assign) PPUserlist *userlist;
 
+@property (readonly) PPPlaylistTrack *currentTrack;
+@property (readonly) PPPlaylistTrack *nextTrack;
+@property (readonly) PPPlaylistTrack *previousTrack;
+
 /**
  Finds the track associated with the supplied spotify URI and adds it to the playlist.
  */
-- (void)addTrackFromLink:(NSString *)link byUser:(PPPlaylistUser *)user;
+- (PPPlaylistTrack *)addTrackFromLink:(NSString *)link byUser:(PPPlaylistUser *)user;
 
-- (NSArray *)upcomingItems;
+/**
+ Returns the tracj that should be scheduled as the next one to play.
+ */
+- (PPPlaylistTrack *)nextScheduledTrack;
+
+/**
+ Moves the playlist to the next track as well as finds the track that should be played next. The first time this
+ method is called it just sets the next track so when starting out it's necessary to call step twice.
+ */
+- (void)step;
+
+/**
+ Tracks that have been loaded and not yet been scheduled to be played or been played.
+ */
+- (NSArray *)availableTracks;
 @end

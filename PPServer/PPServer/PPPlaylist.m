@@ -26,6 +26,10 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
 
 @synthesize spotifyController;
 @synthesize userlist;
+@synthesize trackScheduler = trackScheduler_;
+@synthesize currentTrack = currentTrack_;
+@synthesize nextTrack = nextTrack_;
+@synthesize previousTrack = previousTrack_;
 
 - (id)init {
     self = [super init];
@@ -41,11 +45,15 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
 - (void)dealloc {
     [tracks_ release];
     [playedTracks_ release];
+    [trackScheduler_ release];
+    [currentTrack_ release];
+    [nextTrack_ release];
+    [previousTrack_ release];
     dispatch_release(playlistQueue_);
     [super dealloc];
 }
 
-- (void)addTrackFromLink:(NSString *)link byUser:(PPPlaylistUser *)user {
+- (PPPlaylistTrack *)addTrackFromLink:(NSString *)link byUser:(PPPlaylistUser *)user {
     PPPlaylistTrack *plTrack = [self findTrackWithLink:link];
     if (!plTrack) {
         PPSpotifyTrack *spTrack = [[[PPSpotifyTrack alloc] init] autorelease];
@@ -63,7 +71,7 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
     [plTrack addUser:user];
     [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistItemUpdatedNotification 
                                                         object:plTrack];
-    
+    return plTrack;
 }
 
 - (void)playlistTrackIsLoaded:(PPPlaylistTrack *)track {
@@ -71,7 +79,7 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
                                                         object:track];
 }
 
-- (NSArray *)upcomingItems {
+- (NSArray *)availableTracks {
     __block NSMutableArray *items = [NSMutableArray array];
     dispatch_sync(playlistQueue_, ^{
         for (PPPlaylistTrack *track in tracks_) {
@@ -81,6 +89,59 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
         }
     });    
     return items;
+}
+
+- (PPPlaylistTrack *)nextScheduledTrack {
+    if (self.trackScheduler) {
+        return [self.trackScheduler nextFromTracks:[self availableTracks] played:playedTracks_];
+    }
+    
+    NSArray *tracks = [self availableTracks];
+    return tracks.count > 0 ? [tracks objectAtIndex:0] : nil;
+}
+
+- (void)setCurrentTrack:(PPPlaylistTrack *)track {
+    if (currentTrack_ != track) {
+        [currentTrack_ release];
+        currentTrack_ = [track retain];
+    }
+}
+
+- (void)setPreviousTrack:(PPPlaylistTrack *)track {
+    if (previousTrack_ != track) {
+        [previousTrack_ release];
+        previousTrack_ = [track retain];
+    }
+}
+
+- (void)setNextTrack:(PPPlaylistTrack *)track {
+    if (nextTrack_ != track) {
+        [nextTrack_ release];
+        nextTrack_ = [track retain];
+    }
+}
+
+- (void)step {
+    // First we move the tracks we have
+    if (self.previousTrack) {
+        [playedTracks_ addObject:self.previousTrack];
+        [self setPreviousTrack:nil];
+    }
+    if (self.currentTrack) {
+        [self setPreviousTrack:self.currentTrack];
+        [self setCurrentTrack:nil];
+    }
+    if (self.nextTrack) {
+        [self setCurrentTrack:self.nextTrack];
+        [self setNextTrack:nil];
+    }
+    
+    // Then we schedule the next
+    PPPlaylistTrack *scheduledTrack = [self nextScheduledTrack];
+    if ([tracks_ containsObject:scheduledTrack]) {
+        [tracks_ removeObject:scheduledTrack];
+    }
+    [self setNextTrack:scheduledTrack];
 }
 
 - (PPPlaylistTrack *)findTrackWithLink:(NSString *)link {

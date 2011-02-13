@@ -12,6 +12,8 @@
 		E124C8EB13059F690097A72F /* PPSpotifyTweetParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8EA13059F690097A72F /* PPSpotifyTweetParserTests.m */; };
 		E124C8EF1305CA160097A72F /* PPPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8ED1305CA160097A72F /* PPPlayingViewController.m */; };
 		E124C8F31305CB510097A72F /* PPTrackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E124C8F21305CB510097A72F /* PPTrackView.xib */; };
+		E16337BA1307D8DA0051471A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16337B91307D8DA0051471A /* WebKit.framework */; };
+		E18DEA851307E08500CA4226 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = E18DEA841307E08500CA4226 /* index.html */; };
 		E1D029B41306FDF600874960 /* PPPlaylistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D029B31306FDF600874960 /* PPPlaylistTests.m */; };
 		E1D029B81306FED000874960 /* PPUserlist.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D029B71306FECF00874960 /* PPUserlist.m */; };
 		E1E75808130556F70048344E /* PPTwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75807130556F70048344E /* PPTwitterClient.m */; };
@@ -108,6 +110,8 @@
 		E124C8EC1305CA160097A72F /* PPPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPlayingViewController.h; sourceTree = "<group>"; };
 		E124C8ED1305CA160097A72F /* PPPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlayingViewController.m; sourceTree = "<group>"; };
 		E124C8F21305CB510097A72F /* PPTrackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPTrackView.xib; sourceTree = "<group>"; };
+		E16337B91307D8DA0051471A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		E18DEA841307E08500CA4226 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		E1D029B31306FDF600874960 /* PPPlaylistTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlaylistTests.m; sourceTree = "<group>"; };
 		E1D029B61306FECF00874960 /* PPUserlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPUserlist.h; sourceTree = "<group>"; };
 		E1D029B71306FECF00874960 /* PPUserlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUserlist.m; sourceTree = "<group>"; };
@@ -244,6 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E16337BA1307D8DA0051471A /* WebKit.framework in Frameworks */,
 				E1E7581D130563160048344E /* AudioToolbox.framework in Frameworks */,
 				E1FD037B1305479B0085B2AA /* Cocoa.framework in Frameworks */,
 				E1E7581A130562DF0048344E /* libspotify.framework in Frameworks */,
@@ -269,6 +274,14 @@
 			);
 			name = Xibs;
 			sourceTree = "<group>";
+		};
+		E18DEA831307DFC300CA4226 /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				E18DEA841307E08500CA4226 /* index.html */,
+			);
+			path = HTML;
+			sourceTree = SOURCE_ROOT;
 		};
 		E1E75803130556A40048344E /* Views */ = {
 			isa = PBXGroup;
@@ -353,6 +366,7 @@
 		E1FD03791305479B0085B2AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E16337B91307D8DA0051471A /* WebKit.framework */,
 				E1E7581C130563160048344E /* AudioToolbox.framework */,
 				E1E75815130562DF0048344E /* libspotify.framework */,
 				E1FD037A1305479B0085B2AA /* Cocoa.framework */,
@@ -374,6 +388,7 @@
 		E1FD03801305479B0085B2AA /* PPServer */ = {
 			isa = PBXGroup;
 			children = (
+				E18DEA831307DFC300CA4226 /* HTML */,
 				E1E7581E130563350048344E /* Spotify */,
 				E1E75805130556A70048344E /* Models */,
 				E1E75803130556A40048344E /* Views */,
@@ -656,6 +671,7 @@
 				E1FD04A813054A630085B2AA /* OATestServer.rb in Resources */,
 				E1FD04AB13054A630085B2AA /* README in Resources */,
 				E124C8F31305CB510097A72F /* PPTrackView.xib in Resources */,
+				E18DEA851307E08500CA4226 /* index.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,14 +7,17 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <WebKit/WebKit.h>
 
 @class PPPlaylist;
+@class PPSpotifyController;
 
 @interface PPPlaylistViewController : NSViewController {
 @private    
 }
 
+@property (assign) IBOutlet WebView *webView;
 @property (retain) PPPlaylist *playlist;
-@property (assign) IBOutlet NSTableView *tableView;
+@property (assign) PPSpotifyController *spotifyController;
 
 @end

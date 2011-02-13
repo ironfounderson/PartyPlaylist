@@ -11,8 +11,18 @@
 
 NSString * const PPSpotifyLoggedInNotification = @"PPSpotifyLoggedInNotification";
 NSString * const PPSpotifyLoggedOutNotification = @"PPSpotifyLoggedOutNotification";
+NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedPlayingNotification";
+
+@interface PPSpotifyController()
+@property (copy) NSString *playingLink;
+@property BOOL isPlaying;
+@end
 
 @implementation PPSpotifyController
+
+@synthesize playingLink = playingLink_;
+// What is the Emacs or vim command for changing ispLaying to isPlaying ??
+@synthesize isPlaying;
 
 - (id)init {
     self = [super init];
@@ -28,6 +38,7 @@ NSString * const PPSpotifyLoggedOutNotification = @"PPSpotifyLoggedOutNotificati
     dispatch_release(spotifyQueue_);
     [spotifySession_ release];
     [updateArray_ release];
+    [playingLink_ release];
     [super dealloc];
 }
 
@@ -85,7 +96,47 @@ NSString * const PPSpotifyLoggedOutNotification = @"PPSpotifyLoggedOutNotificati
     });
 
 }
+
+- (void)playTrack:(PPSpotifyTrack *)track {
+    
+    // TODO: You should be able to pause tracks so somehow I need to fix that
+    
+    if ([self.playingLink isEqualToString:track.link]) {
+        BOOL shouldPlay = !self.isPlaying;
+        dispatch_async(spotifyQueue_, ^{
+            sp_session_player_play(spotifySession_.session, shouldPlay);
+            self.isPlaying = shouldPlay;
+        });
+    }
+    
+    if (self.playingLink) {
+        // This is just so I can fake the ending of one song
+        self.playingLink= nil;
+        sp_session_player_play(spotifySession_.session, NO);
+        [[NSNotificationCenter defaultCenter] postNotificationName:PPSpotifyTrackEndedPlayingNotification
+                                                            object:self];
+        return;
+    }
+    
+    self.playingLink = track.link;
+    
+    dispatch_async(spotifyQueue_, ^{
+        
+        sp_error loadError = sp_session_player_load(spotifySession_.session, [track track]);
+        if (loadError != SP_ERROR_OK) {
+            NSLog(@"Could not load track in player :(");
+            return;
+        }
+        
+        sp_session_player_play(spotifySession_.session, YES);
+        self.isPlaying = YES;
+    });
+    
+
+}
+
 - (void)trackFromLink:(NSString *)text {
+    
 }
 
 #pragma mark - Spotify Session
@@ -113,4 +164,9 @@ NSString * const PPSpotifyLoggedOutNotification = @"PPSpotifyLoggedOutNotificati
     });
 }
 
+- (void)sessionEndedPlayingTrack:(PPSpotifySession *)session {
+    self.playingLink = nil;
+    [[NSNotificationCenter defaultCenter] postNotificationName:PPSpotifyTrackEndedPlayingNotification
+                                                        object:self];
+}
 @end

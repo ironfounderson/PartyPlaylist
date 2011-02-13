@@ -37,6 +37,7 @@
     twitterClient_.userlist = userlist_;
     
     self.playlistController.playlist = playlist_;
+    self.playlistController.spotifyController = spotifyController_;
     
     [spotifyController_ startSession];    
 }

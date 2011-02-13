@@ -11,6 +11,7 @@
 
 extern NSString * const PPSpotifyLoggedInNotification;
 extern NSString * const PPSpotifyLoggedOutNotification;
+extern NSString * const PPSpotifyTrackEndedPlayingNotification;
 
 @class PPSpotifyTrack;
 
@@ -24,4 +25,5 @@ extern NSString * const PPSpotifyLoggedOutNotification;
 - (void)startSession;
 - (void)loginUser:(NSString *)username password:(NSString *)password;
 - (void)updateSpotifyTrack:(PPSpotifyTrack *)track;
+- (void)playTrack:(PPSpotifyTrack *)track;
 @end

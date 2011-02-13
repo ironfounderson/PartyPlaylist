@@ -15,6 +15,9 @@
 #import "PPHTTPServerController.h"
 #import "DDTTYLogger.h"
 #import "DDLog.h"
+#import "PPSpotifySessionImpl.h"
+
+#import "PPSpotifyTrack.h"
 
 static int ddLogLevel = LOG_LEVEL_INFO;
 
@@ -47,6 +50,7 @@ static int ddLogLevel = LOG_LEVEL_INFO;
     self.playlistController.playlist = playlist_;
     self.playlistController.spotifyController = spotifyController_;
     
+    spotifyController_.spotifySession = [[[PPSpotifySessionImpl alloc] init] autorelease];
     [spotifyController_ startSession];
     [httpServerController_ startServer];
 }
@@ -65,7 +69,9 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 }
 
 - (IBAction)testResolveTrack:(id)sender {
-    [playlist_ addTrackFromLink:@"spotify:track:70O39qQUEKZpAAbuq2lsbj" byUser:nil];
+    PPSpotifyTrack *spTrack = [[[PPSpotifyTrack alloc] init] autorelease];
+    spTrack.link = @"spotify:track:6AqNpQbWeNdjcpFP4WTvWR";
+    [spotifyController_ playTrack:spTrack];
 }
 
 #pragma mark - Dynamic Logging

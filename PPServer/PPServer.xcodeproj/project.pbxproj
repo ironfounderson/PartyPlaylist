@@ -38,6 +38,7 @@
 		E18DEAD11307E5B500CA4226 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E18DEAD01307E5B500CA4226 /* Security.framework */; };
 		E18DEAD41307E60100CA4226 /* PPHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAD31307E60100CA4226 /* PPHTTPConnection.m */; };
 		E18DEADA1307E6B200CA4226 /* PPHTTPServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAD91307E6B200CA4226 /* PPHTTPServerController.m */; };
+		E18DEADC130800B500CA4226 /* PPPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75828130570E50048344E /* PPPlaylist.m */; };
 		E1D029B41306FDF600874960 /* PPPlaylistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D029B31306FDF600874960 /* PPPlaylistTests.m */; };
 		E1D029B81306FED000874960 /* PPUserlist.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D029B71306FECF00874960 /* PPUserlist.m */; };
 		E1E75808130556F70048344E /* PPTwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75807130556F70048344E /* PPTwitterClient.m */; };
@@ -46,7 +47,7 @@
 		E1E7581A130562DF0048344E /* libspotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E75815130562DF0048344E /* libspotify.framework */; };
 		E1E7581B130562DF0048344E /* osx-audio.c in Sources */ = {isa = PBXBuildFile; fileRef = E1E75816130562DF0048344E /* osx-audio.c */; };
 		E1E7581D130563160048344E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1E7581C130563160048344E /* AudioToolbox.framework */; };
-		E1E758211305661F0048344E /* PPSpotifySession.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E758201305661F0048344E /* PPSpotifySession.m */; };
+		E1E758211305661F0048344E /* PPSpotifySessionImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E758201305661F0048344E /* PPSpotifySessionImpl.m */; };
 		E1E7582413056A5A0048344E /* PPSpotifyController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E7582313056A590048344E /* PPSpotifyController.m */; };
 		E1E7582613056DCB0048344E /* libspotify.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E1E75815130562DF0048344E /* libspotify.framework */; };
 		E1E75829130570E50048344E /* PPPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75828130570E50048344E /* PPPlaylist.m */; };
@@ -182,6 +183,7 @@
 		E18DEAD31307E60100CA4226 /* PPHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPHTTPConnection.m; sourceTree = "<group>"; };
 		E18DEAD81307E6B200CA4226 /* PPHTTPServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPHTTPServerController.h; sourceTree = "<group>"; };
 		E18DEAD91307E6B200CA4226 /* PPHTTPServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPHTTPServerController.m; sourceTree = "<group>"; };
+		E18DEADB1307F56A00CA4226 /* PPSpotifySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifySession.h; sourceTree = "<group>"; };
 		E1D029B31306FDF600874960 /* PPPlaylistTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlaylistTests.m; sourceTree = "<group>"; };
 		E1D029B61306FECF00874960 /* PPUserlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPUserlist.h; sourceTree = "<group>"; };
 		E1D029B71306FECF00874960 /* PPUserlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUserlist.m; sourceTree = "<group>"; };
@@ -194,8 +196,8 @@
 		E1E75816130562DF0048344E /* osx-audio.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "osx-audio.c"; sourceTree = "<group>"; };
 		E1E75817130562DF0048344E /* queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = queue.h; sourceTree = "<group>"; };
 		E1E7581C130563160048344E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		E1E7581F1305661F0048344E /* PPSpotifySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifySession.h; sourceTree = "<group>"; };
-		E1E758201305661F0048344E /* PPSpotifySession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifySession.m; sourceTree = "<group>"; };
+		E1E7581F1305661F0048344E /* PPSpotifySessionImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifySessionImpl.h; sourceTree = "<group>"; };
+		E1E758201305661F0048344E /* PPSpotifySessionImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifySessionImpl.m; sourceTree = "<group>"; };
 		E1E7582213056A590048344E /* PPSpotifyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifyController.h; sourceTree = "<group>"; };
 		E1E7582313056A590048344E /* PPSpotifyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyController.m; sourceTree = "<group>"; };
 		E1E75827130570E50048344E /* PPPlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPlaylist.h; sourceTree = "<group>"; };
@@ -469,8 +471,9 @@
 		E1E7581E130563350048344E /* Spotify */ = {
 			isa = PBXGroup;
 			children = (
-				E1E7581F1305661F0048344E /* PPSpotifySession.h */,
-				E1E758201305661F0048344E /* PPSpotifySession.m */,
+				E18DEADB1307F56A00CA4226 /* PPSpotifySession.h */,
+				E1E7581F1305661F0048344E /* PPSpotifySessionImpl.h */,
+				E1E758201305661F0048344E /* PPSpotifySessionImpl.m */,
 				E1E7582213056A590048344E /* PPSpotifyController.h */,
 				E1E7582313056A590048344E /* PPSpotifyController.m */,
 				E1E75838130576010048344E /* PPSpotifyTrack.h */,
@@ -902,7 +905,7 @@
 				E1E75818130562DF0048344E /* appkey.c in Sources */,
 				E1E75819130562DF0048344E /* audio.c in Sources */,
 				E1E7581B130562DF0048344E /* osx-audio.c in Sources */,
-				E1E758211305661F0048344E /* PPSpotifySession.m in Sources */,
+				E1E758211305661F0048344E /* PPSpotifySessionImpl.m in Sources */,
 				E1E7582413056A5A0048344E /* PPSpotifyController.m in Sources */,
 				E1E75829130570E50048344E /* PPPlaylist.m in Sources */,
 				E1E7582D130570F70048344E /* PPPlaylistTrack.m in Sources */,
@@ -941,6 +944,7 @@
 			files = (
 				E124C8E713059F340097A72F /* PPSpotifyTweetParser.m in Sources */,
 				E124C8EB13059F690097A72F /* PPSpotifyTweetParserTests.m in Sources */,
+				E18DEADC130800B500CA4226 /* PPPlaylist.m in Sources */,
 				E1D029B41306FDF600874960 /* PPPlaylistTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

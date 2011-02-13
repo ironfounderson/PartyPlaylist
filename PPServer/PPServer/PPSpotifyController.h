@@ -17,11 +17,13 @@ extern NSString * const PPSpotifyTrackEndedPlayingNotification;
 
 @interface PPSpotifyController : NSObject <PPSpotifySessionDelegate> {
 @private
-    __block PPSpotifySession *spotifySession_;
+    __block PPSpotifySessionObj *spotifySession_;
     dispatch_queue_t spotifyQueue_;
     __block NSMutableArray *updateArray_;
+    __block BOOL initialized_;
 }
 
+@property (retain) PPSpotifySessionObj *spotifySession;
 - (void)startSession;
 - (void)loginUser:(NSString *)username password:(NSString *)password;
 - (void)updateSpotifyTrack:(PPSpotifyTrack *)track;

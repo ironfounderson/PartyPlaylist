@@ -7,18 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <libspotify/api.h>
 
 @interface PPSpotifyTrack : NSObject {
 @private
-    sp_track *track_;   
 }
 
 @property BOOL trackIsLoaded;
 @property (copy) NSString *link;
-@property (readonly) NSString *artistName;
-@property (readonly) NSString *title;
-- (void)setTrack:(sp_track *)track;
-- (sp_track *)track;
+@property (copy) NSString *artistName;
+@property (copy) NSString *title;
 
 @end

@@ -12,6 +12,8 @@
 @implementation PPSpotifyTrack
 
 @synthesize link = link_;
+@synthesize artistName = artistName_;
+@synthesize title = title_;
 @synthesize trackIsLoaded;
 
 - (id)init {
@@ -24,54 +26,10 @@
 }
 
 - (void)dealloc {
-    if (track_) {
-        sp_track_release(track_);
-    }
     [link_ release];
+    [artistName_ release];
+    [title_ release];
     [super dealloc];
 }
-
--(void)setTrack:(sp_track *)track {
-    if (track_) {
-        sp_track_release(track_);
-        track_ = NULL;
-    }
-
-    track_ = track;
-    if (track_) {
-        sp_track_add_ref(track);
-    }
-}
-
-- (sp_track *)track {
-    return track_;
-}
-
-- (NSString *)title {
-    if (!track_) {
-        return @"TRACK NOT LOADED";
-    }
-    return [NSString stringWithUTF8String:sp_track_name(track_)];
-}
-
-- (NSString *)artistName {
-    if (!track_) {
-        return @"TRACK NOT LOADED";
-    }
-    
-    // Let's get the first artist
-    int numArtists = sp_track_num_artists(track_);
-    NSString *artistName;
-    if (numArtists == 0) {
-        artistName = @"<UNKNOWN>";
-    }
-    else {
-        sp_artist *artist = sp_track_artist(track_, 0);
-        artistName = [NSString stringWithUTF8String:sp_artist_name(artist)];
-    }
-
-    return artistName;
-}
-
 
 @end

@@ -8,14 +8,36 @@
 
 #import "PPSpotifyController.h"
 #import "PPSpotifyTrack.h"
+#import "PPSpotifySessionImpl.h"
+#import "DDLog.h"
+
+static int ddLogLevel = LOG_LEVEL_INFO;
 
 NSString * const PPSpotifyLoggedInNotification = @"PPSpotifyLoggedInNotification";
 NSString * const PPSpotifyLoggedOutNotification = @"PPSpotifyLoggedOutNotification";
 NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedPlayingNotification";
 
+/**
+ Internal wrapper class to contain a PPSpotifyTrack and a sp_track
+ */
+@interface PPTrackWrapper : NSObject {
+    
+}
++ (id)wrapperWithSpotifyTrack:(PPSpotifyTrack *)spTrack track:(sp_track *)t;
+- (id)initWithSpotifyTrack:(PPSpotifyTrack *)spTrack track:(sp_track *)t;
+
+@property (readonly) PPSpotifyTrack *spotifyTrack;
+@property (readonly) sp_track *track;
+
+@end
+
 @interface PPSpotifyController()
 @property (copy) NSString *playingLink;
 @property BOOL isPlaying;
+@property (readonly) sp_session *session;
+@property (retain) PPTrackWrapper *queuedTrack;
+
+- (void)updateSpotifyTrack:(PPSpotifyTrack *)spTrack fromTrack:(sp_track *)track;
 @end
 
 @implementation PPSpotifyController
@@ -23,12 +45,14 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
 @synthesize playingLink = playingLink_;
 // What is the Emacs or vim command for changing ispLaying to isPlaying ??
 @synthesize isPlaying;
-
+@synthesize spotifySession = spotifySession_;
+@synthesize  queuedTrack = queuedTrack_;
 - (id)init {
     self = [super init];
     if (self) {
         spotifyQueue_ = dispatch_queue_create("com.roberthoglund.partyplaylist", NULL);
         updateArray_ = [[NSMutableArray alloc] init];
+        initialized_ = NO;
     }
     
     return self;
@@ -39,26 +63,29 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
     [spotifySession_ release];
     [updateArray_ release];
     [playingLink_ release];
+    [queuedTrack_ release];
     [super dealloc];
 }
 
+- (sp_session *)session {
+    return ((PPSpotifySessionImpl *)self.spotifySession).session;
+}
+
 - (void)startSession {
-    if (spotifySession_) {
+    if (initialized_) {
         return;
     }
-    
-    spotifySession_ = [[PPSpotifySession alloc] init];
     
     dispatch_async(spotifyQueue_, ^{
         NSError *error;
         BOOL success = [spotifySession_ createSession:&error];
         if (!success) {
-            NSLog(@"Could not create Spotify session. Got error: %@", error);
+            DDLogError(@"Could not create Spotify session. Got error: %@", error);
             return;
         }
         spotifySession_.delegate = self;
-        
-        NSLog(@"Spotify session initialized");
+        initialized_ = YES;
+        DDLogInfo(@"Spotify session initialized");
     });
 }
 
@@ -66,45 +93,46 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
     dispatch_async(spotifyQueue_, ^{
         NSError *error = nil;
         if (![spotifySession_ loginUser:username password:password error:&error]) {
-            NSLog(@"Could not log in to Spotify: %@", error.localizedDescription);
+            DDLogWarn(@"Could not log in to Spotify: %@", error.localizedDescription);
         }
     });
 }
 
-- (void)updateSpotifyTrack:(PPSpotifyTrack *)track {
+- (void)updateSpotifyTrack:(PPSpotifyTrack *)spTrack {
     dispatch_async(spotifyQueue_, ^{
-        sp_link *link = sp_link_create_from_string([track.link UTF8String]);
+        sp_link *link = sp_link_create_from_string([spTrack.link UTF8String]);
         if (link == NULL || sp_link_type(link) != SP_LINKTYPE_TRACK) {
-            [track setTrack:NULL];
-            NSLog(@"'%@' not a valid track link", track.link);
+            DDLogWarn(@"'%@' not a valid track link", spTrack.link);
             if (link) {
                 sp_link_release(link);
             }
             return;
         }
 
-        sp_track *t = sp_link_as_track(link);
-        [track setTrack:t];
-        if (sp_track_is_loaded(t)) {
-            track.trackIsLoaded = YES;
+        sp_track *track = sp_link_as_track(link);
+        if (sp_track_is_loaded(track)) {
+            [self updateSpotifyTrack:spTrack fromTrack:track];
         }
         else {
-            track.trackIsLoaded = NO;
-            [updateArray_ addObject:track];
+            // By adding the sp_track we can update PPSpotifyTrack with the loaded meta data 
+            // once libspotify returns it.
+            //
+            spTrack.trackIsLoaded = NO;
+            [updateArray_ addObject:[PPTrackWrapper wrapperWithSpotifyTrack:spTrack track:track]];
         }
         sp_link_release(link);
     });
 
 }
 
-- (void)playTrack:(PPSpotifyTrack *)track {
+- (void)playTrack:(PPSpotifyTrack *)spTrack {
     
     // TODO: You should be able to pause tracks so somehow I need to fix that
     
-    if ([self.playingLink isEqualToString:track.link]) {
+    if ([self.playingLink isEqualToString:spTrack.link]) {
         BOOL shouldPlay = !self.isPlaying;
         dispatch_async(spotifyQueue_, ^{
-            sp_session_player_play(spotifySession_.session, shouldPlay);
+            sp_session_player_play(self.session, shouldPlay);
             self.isPlaying = shouldPlay;
         });
     }
@@ -112,24 +140,32 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
     if (self.playingLink) {
         // This is just so I can fake the ending of one song
         self.playingLink= nil;
-        sp_session_player_play(spotifySession_.session, NO);
+        sp_session_player_play(self.session, NO);
         [[NSNotificationCenter defaultCenter] postNotificationName:PPSpotifyTrackEndedPlayingNotification
                                                             object:self];
         return;
     }
     
-    self.playingLink = track.link;
     
+    __block __typeof__(self) _self = self;
     dispatch_async(spotifyQueue_, ^{
-        
-        sp_error loadError = sp_session_player_load(spotifySession_.session, [track track]);
-        if (loadError != SP_ERROR_OK) {
-            NSLog(@"Could not load track in player :(");
+        sp_link *link = sp_link_create_from_string([spTrack.link UTF8String]);
+        sp_track *track = sp_link_as_track(link);
+        sp_error loadError = sp_session_player_load(self.session, track);
+        if (loadError == SP_ERROR_RESOURCE_NOT_LOADED) {
+            // When we get this error we should be notified later when the track has loaded and is ready to
+            // be played
+            _self.queuedTrack = [PPTrackWrapper wrapperWithSpotifyTrack:spTrack track:track];
             return;
         }
-        
-        sp_session_player_play(spotifySession_.session, YES);
-        self.isPlaying = YES;
+        if (loadError != SP_ERROR_OK) {
+            DDLogError(@"Track could not be loaded with error code = %d", loadError);
+            return;
+        }
+
+        _self.playingLink = spTrack.link;
+        sp_session_player_play(self.session, YES);
+        _self.isPlaying = YES;
     });
     
 
@@ -139,34 +175,104 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
     
 }
 
+- (void)updateSpotifyTrack:(PPSpotifyTrack *)spTrack fromTrack:(sp_track *)track {
+    spTrack.title = [NSString stringWithUTF8String:sp_track_name(track)];
+    spTrack.trackIsLoaded = YES;
+}
+
 #pragma mark - Spotify Session
 
-- (void)sessionLoggedIn:(PPSpotifySession *)session {
+- (void)sessionLoggedIn:(PPSpotifySessionObj *)session {
     [[NSNotificationCenter defaultCenter] postNotificationName:PPSpotifyLoggedInNotification 
                                                         object:self];
 }
 
-- (void)session:(PPSpotifySession *)session loginFailedWithError:(NSError *)error {
+- (void)session:(PPSpotifySessionObj *)session loginFailedWithError:(NSError *)error {
     [[NSNotificationCenter defaultCenter] postNotificationName:PPSpotifyLoggedOutNotification 
                                                         object:self];}
 
-- (void)sessionUpdatedMetadata:(PPSpotifySession *)session {
+- (void)playQueuedTrack {
+    __block __typeof__(self) _self = self;
+    dispatch_async(spotifyQueue_, ^{
+        if (sp_track_is_loaded(_self.queuedTrack.track)) {
+            sp_error loadError = sp_session_player_load(self.session, _self.queuedTrack.track);
+            if (loadError != SP_ERROR_OK) {
+                DDLogError(@"Track could not be loaded with error code = %d", loadError);
+                return;
+            }
+
+            _self.playingLink = _self.queuedTrack.spotifyTrack.link;
+            sp_session_player_play(self.session, YES);
+            _self.isPlaying = YES;
+            _self.queuedTrack = nil;
+        }
+    });  
+}
+
+- (void)updateTracks {
     dispatch_async(spotifyQueue_, ^{
         __block NSMutableIndexSet *discardedItems = [NSMutableIndexSet indexSet];
         [updateArray_ enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            PPSpotifyTrack *track = obj;
-            if (sp_track_is_loaded([track track])) {
-                track.trackIsLoaded = YES;
+            PPTrackWrapper *wrapper = obj;
+            if (sp_track_is_loaded(wrapper.track)) {
+                [self updateSpotifyTrack:wrapper.spotifyTrack
+                               fromTrack:wrapper.track];
                 [discardedItems addIndex:idx];
             }
         }];
         [updateArray_ removeObjectsAtIndexes:discardedItems];
     });
 }
+- (void)sessionUpdatedMetadata:(PPSpotifySessionObj *)session {
+    if (self.queuedTrack) {
+        [self playQueuedTrack];    
+    }
+    if (updateArray_.count > 0) {
+        [self updateTracks];
+    }
+}
 
-- (void)sessionEndedPlayingTrack:(PPSpotifySession *)session {
+- (void)sessionEndedPlayingTrack:(PPSpotifySessionObj *)session {
     self.playingLink = nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:PPSpotifyTrackEndedPlayingNotification
                                                         object:self];
 }
+
+#pragma mark - Dynamic Logging
+
++ (int)ddLogLevel {
+    return ddLogLevel;
+}
+
++ (void)ddSetLogLevel:(int)logLevel {
+    ddLogLevel = logLevel;
+}
+
+@end
+
+@implementation PPTrackWrapper
+
+@synthesize spotifyTrack;
+@synthesize track;
+
++ (id)wrapperWithSpotifyTrack:(PPSpotifyTrack *)spTrack track:(sp_track *)t {
+    return [[[PPTrackWrapper alloc] initWithSpotifyTrack:spTrack track:t] autorelease];
+}
+
+- (id)initWithSpotifyTrack:(PPSpotifyTrack *)spTrack track:(sp_track *)t {
+    self = [super init];
+    if (self) {
+        spotifyTrack = [spTrack retain];
+        track = t;
+        sp_track_add_ref(track);
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [spotifyTrack release];
+    sp_track_release(track);
+    [super dealloc];
+}
+
 @end

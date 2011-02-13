@@ -6,7 +6,7 @@
 //  Copyright 2011 rhoglund coding. All rights reserved.
 //
 
-#import "PPSpotifySession.h"
+#import "PPSpotifySessionImpl.h"
 
 
 extern const uint8_t g_appkey[];
@@ -22,7 +22,7 @@ NSError *makeError(sp_error code) {
 	return err;
 }
 
-@interface PPSpotifySession()
+@interface PPSpotifySessionImpl()
 - (void)processEvents;
 @property (readonly) audio_fifo_t *audiofifo;
 @end
@@ -30,8 +30,8 @@ NSError *makeError(sp_error code) {
 #pragma mark -
 #pragma mark Callbacks
 
-static PPSpotifySession *sessobj(sp_session *session) {
-	return (PPSpotifySession*)sp_session_userdata(session);
+static PPSpotifySessionImpl *sessobj(sp_session *session) {
+	return (PPSpotifySessionImpl *)sp_session_userdata(session);
 }
 
 static void logged_in(sp_session *session, sp_error error) {
@@ -166,10 +166,7 @@ static void userinfo_updated(sp_session *session) {
 		[delegate sessionUpdatedUserinfo:sessobj(session)];
 }
 
-
-
-
-@implementation PPSpotifySession
+@implementation PPSpotifySessionImpl
 
 @synthesize delegate = delegate_;
 

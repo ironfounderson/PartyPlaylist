@@ -66,7 +66,6 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
 - (void)playlistTrackIsLoaded:(PPSpotifyTrack *)track {
     [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistTrackLoadedNotification 
                                                         object:track];
-
 }
 
 - (NSArray *)upcomingItems {
@@ -78,9 +77,6 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
     });    
     return items;
 }
-
-
-
 
 - (PPPlaylistTrack *)findTrackWithLink:(NSString *)link {
     NSUInteger index = [tracks_ indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {

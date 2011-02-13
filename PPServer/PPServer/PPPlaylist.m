@@ -10,6 +10,8 @@
 #import "PPSpotifyController.h"
 #import "PPSpotifyTrack.h"
 
+NSString * const PPPlaylistItemAddedNotification = @"PPPlaylistItemAddedNotification";
+NSString * const PPPlaylistItemUpdatedNotification = @"PPPlaylistItemUpdatedNotification";
 NSString * const PPPlaylistChangeNotification = @"PPPlaylistChangeNotification";
 NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNotification";
 
@@ -50,16 +52,20 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
         [self.spotifyController updateSpotifyTrack:spTrack];
         [spTrack release];
         [tracks_ addObject:plTrack];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistItemAddedNotification 
+                                                            object:plTrack];
+
     }
     
     [plTrack addUser:user];
-    [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistChangeNotification 
-                                                        object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistItemUpdatedNotification 
+                                                        object:plTrack];
 }
 
 - (void)playlistTrackIsLoaded:(PPSpotifyTrack *)track {
+    PPPlaylistTrack *plTrack = [self findTrackWithLink:track.link];
     [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistTrackLoadedNotification 
-                                                        object:track];
+                                                        object:plTrack];
 }
 
 - (NSArray *)upcomingItems {

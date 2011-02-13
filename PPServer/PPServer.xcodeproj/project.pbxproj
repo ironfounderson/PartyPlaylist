@@ -44,6 +44,10 @@
 		E18DEAE11308102F00CA4226 /* PPPlaylistTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAE01308102E00CA4226 /* PPPlaylistTrackTests.m */; };
 		E18DEAE2130811C600CA4226 /* PPPlaylistUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E7583C130576400048344E /* PPPlaylistUser.m */; };
 		E18DEAE3130814F400CA4226 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAB61307E59200CA4226 /* DDLog.m */; };
+		E18DEAE813081A4E00CA4226 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = E18DEAE513081A4E00CA4226 /* style.css */; };
+		E18DEAE913081A4E00CA4226 /* tweetwishtemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = E18DEAE613081A4E00CA4226 /* tweetwishtemplate.html */; };
+		E18DEAEA13081A7500CA4226 /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = E18DEAE413081A4E00CA4226 /* jquery.js */; };
+		E18DEAED13081DA500CA4226 /* wishlist.js in Resources */ = {isa = PBXBuildFile; fileRef = E18DEAEB13081D9900CA4226 /* wishlist.js */; };
 		E1D029B41306FDF600874960 /* PPPlaylistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D029B31306FDF600874960 /* PPPlaylistTests.m */; };
 		E1D029B81306FED000874960 /* PPUserlist.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D029B71306FECF00874960 /* PPUserlist.m */; };
 		E1E75808130556F70048344E /* PPTwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75807130556F70048344E /* PPTwitterClient.m */; };
@@ -190,6 +194,10 @@
 		E18DEAD91307E6B200CA4226 /* PPHTTPServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPHTTPServerController.m; sourceTree = "<group>"; };
 		E18DEADB1307F56A00CA4226 /* PPSpotifySession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifySession.h; sourceTree = "<group>"; };
 		E18DEAE01308102E00CA4226 /* PPPlaylistTrackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlaylistTrackTests.m; sourceTree = "<group>"; };
+		E18DEAE413081A4E00CA4226 /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
+		E18DEAE513081A4E00CA4226 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		E18DEAE613081A4E00CA4226 /* tweetwishtemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tweetwishtemplate.html; sourceTree = "<group>"; };
+		E18DEAEB13081D9900CA4226 /* wishlist.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = wishlist.js; sourceTree = "<group>"; };
 		E1D029B31306FDF600874960 /* PPPlaylistTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlaylistTests.m; sourceTree = "<group>"; };
 		E1D029B61306FECF00874960 /* PPUserlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPUserlist.h; sourceTree = "<group>"; };
 		E1D029B71306FECF00874960 /* PPUserlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUserlist.m; sourceTree = "<group>"; };
@@ -357,7 +365,11 @@
 		E18DEA831307DFC300CA4226 /* HTML */ = {
 			isa = PBXGroup;
 			children = (
+				E18DEAE413081A4E00CA4226 /* jquery.js */,
+				E18DEAE513081A4E00CA4226 /* style.css */,
+				E18DEAE613081A4E00CA4226 /* tweetwishtemplate.html */,
 				E18DEA841307E08500CA4226 /* index.html */,
+				E18DEAEB13081D9900CA4226 /* wishlist.js */,
 			);
 			path = HTML;
 			sourceTree = SOURCE_ROOT;
@@ -824,9 +836,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E18DEAEA13081A7500CA4226 /* jquery.js in Resources */,
 				E1FD03851305479B0085B2AA /* InfoPlist.strings in Resources */,
 				E1FD038B1305479B0085B2AA /* Credits.rtf in Resources */,
 				E1FD03911305479C0085B2AA /* MainMenu.xib in Resources */,
+				E18DEAED13081DA500CA4226 /* wishlist.js in Resources */,
 				E1FD04A813054A630085B2AA /* OATestServer.rb in Resources */,
 				E1FD04AB13054A630085B2AA /* README in Resources */,
 				E124C8F31305CB510097A72F /* PPTrackView.xib in Resources */,
@@ -834,6 +848,8 @@
 				E18DEAC71307E59200CA4226 /* LICENSE.txt in Resources */,
 				E18DEAC81307E59200CA4226 /* About.txt in Resources */,
 				E18DEACA1307E59200CA4226 /* About.txt in Resources */,
+				E18DEAE813081A4E00CA4226 /* style.css in Resources */,
+				E18DEAE913081A4E00CA4226 /* tweetwishtemplate.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

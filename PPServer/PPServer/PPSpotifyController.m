@@ -178,6 +178,7 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
 
 - (void)updateSpotifyTrack:(PPSpotifyTrack *)spTrack fromTrack:(sp_track *)track {
     spTrack.title = [NSString stringWithUTF8String:sp_track_name(track)];
+    DDLogInfo(@"Track: %@ is now loaded", spTrack.title);
     spTrack.trackIsLoaded = YES;
 }
 

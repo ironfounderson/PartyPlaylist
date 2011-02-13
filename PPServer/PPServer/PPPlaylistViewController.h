@@ -13,7 +13,9 @@
 @class PPSpotifyController;
 
 @interface PPPlaylistViewController : NSViewController {
-@private    
+@private
+    dispatch_queue_t webUpdateQueue_;
+    NSMutableArray *notifications_;
 }
 
 @property (assign) IBOutlet WebView *webView;

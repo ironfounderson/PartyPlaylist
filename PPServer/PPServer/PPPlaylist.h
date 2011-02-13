@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "PPPlaylistTrack.h"
 
+extern NSString * const PPPlaylistItemAddedNotification;
+extern NSString * const PPPlaylistItemUpdatedNotification;
 extern NSString * const PPPlaylistChangeNotification;
 extern NSString * const PPPlaylistTrackLoadedNotification;
 

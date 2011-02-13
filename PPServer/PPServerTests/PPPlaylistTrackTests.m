@@ -31,7 +31,6 @@
 - (void)tearDown {
     [super tearDown];
 }
-
 - (void)test_addUser_shouldUpdateWishCount {
     PPPlaylistTrack *plTrack = [PPPlaylistTrack playlistTrackWithSpotifyTrack:[self sampleSpotifyTrack]];
     [plTrack addUser:[self sampleUserWithId:@"userid"]];

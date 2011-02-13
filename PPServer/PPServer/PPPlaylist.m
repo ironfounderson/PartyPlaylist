@@ -43,29 +43,29 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
 - (void)addTrackFromLink:(NSString *)link byUser:(PPPlaylistUser *)user {
     PPPlaylistTrack *plTrack = [self findTrackWithLink:link];
     if (!plTrack) {
-        PPSpotifyTrack *spTrack = [[PPSpotifyTrack alloc] init];
+        
+        PPSpotifyTrack *spTrack = [[[PPSpotifyTrack alloc] init] autorelease];
         spTrack.link = link;
         
         plTrack = [[[PPPlaylistTrack alloc] initWithSpotifyTrack:spTrack] autorelease];
         plTrack.delegate = self;
-        
+
         [self.spotifyController updateSpotifyTrack:spTrack];
-        [spTrack release];
+                 
         [tracks_ addObject:plTrack];
         [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistItemAddedNotification 
-                                                            object:plTrack];
-
+                                                           object:self];
+         
     }
     
-    [plTrack addUser:user];
+    [plTrack addUser:user];    
     [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistItemUpdatedNotification 
                                                         object:plTrack];
 }
 
-- (void)playlistTrackIsLoaded:(PPSpotifyTrack *)track {
-    PPPlaylistTrack *plTrack = [self findTrackWithLink:track.link];
+- (void)playlistTrackIsLoaded:(PPPlaylistTrack *)track {
     [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistTrackLoadedNotification 
-                                                        object:plTrack];
+                                                        object:track];
 }
 
 - (NSArray *)upcomingItems {
@@ -79,6 +79,10 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
 }
 
 - (PPPlaylistTrack *)findTrackWithLink:(NSString *)link {
+    if (tracks_.count == 0) {
+        return nil;
+    }
+    
     NSUInteger index = [tracks_ indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
         PPPlaylistTrack *plTrack = obj;
         if ([plTrack.link isEqualToString:link]) {

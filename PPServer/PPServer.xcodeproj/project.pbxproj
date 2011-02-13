@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E124C8E613059F340097A72F /* PPSpotifyTweetParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8E513059F330097A72F /* PPSpotifyTweetParser.m */; };
-		E124C8E713059F340097A72F /* PPSpotifyTweetParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8E513059F330097A72F /* PPSpotifyTweetParser.m */; };
-		E124C8EB13059F690097A72F /* PPSpotifyTweetParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8EA13059F690097A72F /* PPSpotifyTweetParserTests.m */; };
 		E124C8EF1305CA160097A72F /* PPPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8ED1305CA160097A72F /* PPPlayingViewController.m */; };
 		E124C8F31305CB510097A72F /* PPTrackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E124C8F21305CB510097A72F /* PPTrackView.xib */; };
 		E16337BA1307D8DA0051471A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16337B91307D8DA0051471A /* WebKit.framework */; };
@@ -38,17 +36,19 @@
 		E18DEAD11307E5B500CA4226 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E18DEAD01307E5B500CA4226 /* Security.framework */; };
 		E18DEAD41307E60100CA4226 /* PPHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAD31307E60100CA4226 /* PPHTTPConnection.m */; };
 		E18DEADA1307E6B200CA4226 /* PPHTTPServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAD91307E6B200CA4226 /* PPHTTPServerController.m */; };
-		E18DEADC130800B500CA4226 /* PPPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75828130570E50048344E /* PPPlaylist.m */; };
-		E18DEADD13080D6F00CA4226 /* PPSpotifyTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75839130576010048344E /* PPSpotifyTrack.m */; };
-		E18DEADE13080D7800CA4226 /* PPPlaylistTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E7582C130570F70048344E /* PPPlaylistTrack.m */; };
-		E18DEAE11308102F00CA4226 /* PPPlaylistTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAE01308102E00CA4226 /* PPPlaylistTrackTests.m */; };
-		E18DEAE2130811C600CA4226 /* PPPlaylistUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E7583C130576400048344E /* PPPlaylistUser.m */; };
-		E18DEAE3130814F400CA4226 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAB61307E59200CA4226 /* DDLog.m */; };
 		E18DEAE813081A4E00CA4226 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = E18DEAE513081A4E00CA4226 /* style.css */; };
 		E18DEAE913081A4E00CA4226 /* tweetwishtemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = E18DEAE613081A4E00CA4226 /* tweetwishtemplate.html */; };
 		E18DEAEA13081A7500CA4226 /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = E18DEAE413081A4E00CA4226 /* jquery.js */; };
 		E18DEAED13081DA500CA4226 /* wishlist.js in Resources */ = {isa = PBXBuildFile; fileRef = E18DEAEB13081D9900CA4226 /* wishlist.js */; };
-		E1D029B41306FDF600874960 /* PPPlaylistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D029B31306FDF600874960 /* PPPlaylistTests.m */; };
+		E19A87301308555000BECD44 /* PPSpotifyTweetParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8EA13059F690097A72F /* PPSpotifyTweetParserTests.m */; };
+		E19A87311308555000BECD44 /* PPPlaylistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D029B31306FDF600874960 /* PPPlaylistTests.m */; };
+		E19A87321308555000BECD44 /* PPPlaylistTrackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAE01308102E00CA4226 /* PPPlaylistTrackTests.m */; };
+		E19A873D1308557D00BECD44 /* PPSpotifyTweetParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8E513059F330097A72F /* PPSpotifyTweetParser.m */; };
+		E19A87421308558800BECD44 /* PPPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75828130570E50048344E /* PPPlaylist.m */; };
+		E19A87471308559500BECD44 /* PPPlaylistUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E7583C130576400048344E /* PPPlaylistUser.m */; };
+		E19A874A130855A400BECD44 /* PPSpotifyTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75839130576010048344E /* PPSpotifyTrack.m */; };
+		E19A874F130855B100BECD44 /* PPPlaylistTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E7582C130570F70048344E /* PPPlaylistTrack.m */; };
+		E19A8754130855C700BECD44 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAB61307E59200CA4226 /* DDLog.m */; };
 		E1D029B81306FED000874960 /* PPUserlist.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D029B71306FECF00874960 /* PPUserlist.m */; };
 		E1E75808130556F70048344E /* PPTwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75807130556F70048344E /* PPTwitterClient.m */; };
 		E1E75818130562DF0048344E /* appkey.c in Sources */ = {isa = PBXBuildFile; fileRef = E1E75812130562DF0048344E /* appkey.c */; };
@@ -70,8 +70,6 @@
 		E1FD038B1305479B0085B2AA /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E1FD03891305479B0085B2AA /* Credits.rtf */; };
 		E1FD038E1305479B0085B2AA /* PPServerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD038D1305479B0085B2AA /* PPServerAppDelegate.m */; };
 		E1FD03911305479C0085B2AA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1FD038F1305479C0085B2AA /* MainMenu.xib */; };
-		E1FD03981305479C0085B2AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD037A1305479B0085B2AA /* Cocoa.framework */; };
-		E1FD03A01305479C0085B2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1FD039E1305479C0085B2AA /* InfoPlist.strings */; };
 		E1FD04101305483E0085B2AA /* MGTwitterEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD03C21305483E0085B2AA /* MGTwitterEngine.m */; };
 		E1FD04111305483E0085B2AA /* MGTwitterHTTPURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD03C71305483E0085B2AA /* MGTwitterHTTPURLConnection.m */; };
 		E1FD04141305483E0085B2AA /* MGTwitterMessagesParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD03CD1305483E0085B2AA /* MGTwitterMessagesParser.m */; };
@@ -113,16 +111,6 @@
 		E1FD04AB13054A630085B2AA /* README in Resources */ = {isa = PBXBuildFile; fileRef = E1FD049813054A630085B2AA /* README */; };
 		E1FD04AE13054DA80085B2AA /* twitterkey.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD04AC13054DA80085B2AA /* twitterkey.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E1FD03991305479C0085B2AA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E1FD036D1305479B0085B2AA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E1FD03751305479B0085B2AA;
-			remoteInfo = PPServer;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		E1E7582513056DB20048344E /* CopyFiles */ = {
@@ -198,6 +186,8 @@
 		E18DEAE513081A4E00CA4226 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
 		E18DEAE613081A4E00CA4226 /* tweetwishtemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tweetwishtemplate.html; sourceTree = "<group>"; };
 		E18DEAEB13081D9900CA4226 /* wishlist.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = wishlist.js; sourceTree = "<group>"; };
+		E19A87291308553E00BECD44 /* PPServerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PPServerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E19A872A1308553E00BECD44 /* PPServerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PPServerTests-Info.plist"; sourceTree = "<group>"; };
 		E1D029B31306FDF600874960 /* PPPlaylistTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlaylistTests.m; sourceTree = "<group>"; };
 		E1D029B61306FECF00874960 /* PPUserlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPUserlist.h; sourceTree = "<group>"; };
 		E1D029B71306FECF00874960 /* PPUserlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUserlist.m; sourceTree = "<group>"; };
@@ -237,7 +227,6 @@
 		E1FD038C1305479B0085B2AA /* PPServerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PPServerAppDelegate.h; sourceTree = "<group>"; };
 		E1FD038D1305479B0085B2AA /* PPServerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PPServerAppDelegate.m; sourceTree = "<group>"; };
 		E1FD03901305479C0085B2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		E1FD03971305479C0085B2AA /* PPServerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PPServerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1FD039D1305479C0085B2AA /* PPServerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PPServerTests-Info.plist"; sourceTree = "<group>"; };
 		E1FD039F1305479C0085B2AA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E1FD03A11305479C0085B2AA /* PPServerTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PPServerTests-Prefix.pch"; sourceTree = "<group>"; };
@@ -330,6 +319,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E19A87261308553E00BECD44 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1FD03731305479B0085B2AA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,14 +335,6 @@
 				E1E7581D130563160048344E /* AudioToolbox.framework in Frameworks */,
 				E1FD037B1305479B0085B2AA /* Cocoa.framework in Frameworks */,
 				E1E7581A130562DF0048344E /* libspotify.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E1FD03931305479C0085B2AA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E1FD03981305479C0085B2AA /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +506,7 @@
 				E1FD039B1305479C0085B2AA /* PPServerTests */,
 				E1FD03791305479B0085B2AA /* Frameworks */,
 				E1FD03771305479B0085B2AA /* Products */,
+				E19A872A1308553E00BECD44 /* PPServerTests-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -525,7 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				E1FD03761305479B0085B2AA /* PPServer.app */,
-				E1FD03971305479C0085B2AA /* PPServerTests.octest */,
+				E19A87291308553E00BECD44 /* PPServerTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -768,6 +757,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E19A87281308553E00BECD44 /* PPServerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E19A872D1308553F00BECD44 /* Build configuration list for PBXNativeTarget "PPServerTests" */;
+			buildPhases = (
+				E19A87241308553E00BECD44 /* Resources */,
+				E19A87251308553E00BECD44 /* Sources */,
+				E19A87261308553E00BECD44 /* Frameworks */,
+				E19A87271308553E00BECD44 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PPServerTests;
+			productName = PPServerTests;
+			productReference = E19A87291308553E00BECD44 /* PPServerTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		E1FD03751305479B0085B2AA /* PPServer */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E1FD03A81305479C0085B2AA /* Build configuration list for PBXNativeTarget "PPServer" */;
@@ -785,25 +792,6 @@
 			productName = PPServer;
 			productReference = E1FD03761305479B0085B2AA /* PPServer.app */;
 			productType = "com.apple.product-type.application";
-		};
-		E1FD03961305479C0085B2AA /* PPServerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E1FD03AB1305479C0085B2AA /* Build configuration list for PBXNativeTarget "PPServerTests" */;
-			buildPhases = (
-				E1FD03921305479C0085B2AA /* Sources */,
-				E1FD03931305479C0085B2AA /* Frameworks */,
-				E1FD03941305479C0085B2AA /* Resources */,
-				E1FD03951305479C0085B2AA /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E1FD039A1305479C0085B2AA /* PBXTargetDependency */,
-			);
-			name = PPServerTests;
-			productName = PPServerTests;
-			productReference = E1FD03971305479C0085B2AA /* PPServerTests.octest */;
-			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -826,12 +814,19 @@
 			projectRoot = "";
 			targets = (
 				E1FD03751305479B0085B2AA /* PPServer */,
-				E1FD03961305479C0085B2AA /* PPServerTests */,
+				E19A87281308553E00BECD44 /* PPServerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E19A87241308553E00BECD44 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1FD03741305479B0085B2AA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -853,18 +848,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E1FD03941305479C0085B2AA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E1FD03A01305479C0085B2AA /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		E1FD03951305479C0085B2AA /* ShellScript */ = {
+		E19A87271308553E00BECD44 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -880,6 +867,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E19A87251308553E00BECD44 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19A8754130855C700BECD44 /* DDLog.m in Sources */,
+				E19A874F130855B100BECD44 /* PPPlaylistTrack.m in Sources */,
+				E19A874A130855A400BECD44 /* PPSpotifyTrack.m in Sources */,
+				E19A87471308559500BECD44 /* PPPlaylistUser.m in Sources */,
+				E19A87421308558800BECD44 /* PPPlaylist.m in Sources */,
+				E19A873D1308557D00BECD44 /* PPSpotifyTweetParser.m in Sources */,
+				E19A87301308555000BECD44 /* PPSpotifyTweetParserTests.m in Sources */,
+				E19A87311308555000BECD44 /* PPPlaylistTests.m in Sources */,
+				E19A87321308555000BECD44 /* PPPlaylistTrackTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E1FD03721305479B0085B2AA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -961,31 +964,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E1FD03921305479C0085B2AA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E18DEAE3130814F400CA4226 /* DDLog.m in Sources */,
-				E18DEAE2130811C600CA4226 /* PPPlaylistUser.m in Sources */,
-				E18DEADE13080D7800CA4226 /* PPPlaylistTrack.m in Sources */,
-				E18DEADD13080D6F00CA4226 /* PPSpotifyTrack.m in Sources */,
-				E124C8E713059F340097A72F /* PPSpotifyTweetParser.m in Sources */,
-				E124C8EB13059F690097A72F /* PPSpotifyTweetParserTests.m in Sources */,
-				E18DEADC130800B500CA4226 /* PPPlaylist.m in Sources */,
-				E1D029B41306FDF600874960 /* PPPlaylistTests.m in Sources */,
-				E18DEAE11308102F00CA4226 /* PPPlaylistTrackTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E1FD039A1305479C0085B2AA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E1FD03751305479B0085B2AA /* PPServer */;
-			targetProxy = E1FD03991305479C0085B2AA /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E1FD03831305479B0085B2AA /* InfoPlist.strings */ = {
@@ -1023,6 +1002,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E19A872B1308553F00BECD44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "PPServerTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = PPServerTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		E19A872C1308553F00BECD44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "PPServerTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = PPServerTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		E1FD03A61305479C0085B2AA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1092,55 +1125,18 @@
 			};
 			name = Release;
 		};
-		E1FD03AC1305479C0085B2AA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PPServer.app/Contents/MacOS/PPServer";
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PPServerTests/PPServerTests-Prefix.pch";
-				INFOPLIST_FILE = "PPServerTests/PPServerTests-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				OTHER_LDFLAGS = (
-					"-framework",
-					SenTestingKit,
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		E1FD03AD1305479C0085B2AA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PPServer.app/Contents/MacOS/PPServer";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PPServerTests/PPServerTests-Prefix.pch";
-				INFOPLIST_FILE = "PPServerTests/PPServerTests-Info.plist";
-				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				OTHER_LDFLAGS = (
-					"-framework",
-					SenTestingKit,
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E19A872D1308553F00BECD44 /* Build configuration list for PBXNativeTarget "PPServerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E19A872B1308553F00BECD44 /* Debug */,
+				E19A872C1308553F00BECD44 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E1FD03701305479B0085B2AA /* Build configuration list for PBXProject "PPServer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1155,15 +1151,6 @@
 			buildConfigurations = (
 				E1FD03A91305479C0085B2AA /* Debug */,
 				E1FD03AA1305479C0085B2AA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E1FD03AB1305479C0085B2AA /* Build configuration list for PBXNativeTarget "PPServerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E1FD03AC1305479C0085B2AA /* Debug */,
-				E1FD03AD1305479C0085B2AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

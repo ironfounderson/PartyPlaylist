@@ -59,7 +59,7 @@ static int ddLogLevel = LOG_LEVEL_INFO;
     NSString *path = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
     NSURL *url = [NSURL fileURLWithPath:path];
     [[self.webView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
-
+    
     [self addObserverSelector:@selector(handlePlaylistItemAdded:) 
                          name:PPPlaylistItemAddedNotification];
     [self addObserverSelector:@selector(handlePlaylistItemUpdated:) 

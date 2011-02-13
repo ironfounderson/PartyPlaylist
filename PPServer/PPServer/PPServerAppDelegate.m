@@ -18,6 +18,7 @@
 #import "PPSpotifySessionImpl.h"
 
 #import "PPSpotifyTrack.h"
+#import "PPPlaylistUser.h"
 
 static int ddLogLevel = LOG_LEVEL_INFO;
 
@@ -30,6 +31,7 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 @synthesize playingController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    return;
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
     // These are the only instances of spotifycontroller, userlist and playlist that should be created.
@@ -54,6 +56,20 @@ static int ddLogLevel = LOG_LEVEL_INFO;
     [spotifyController_ startSession];
     [httpServerController_ startServer];
 }
+
+- (PPPlaylistUser *)sampleUserWithId:(NSString *)userId {
+    PPPlaylistUser *user = [[PPPlaylistUser alloc] init];
+    user.userId = userId;
+    return [user autorelease];
+}
+
+- (void)test_addTrackFromLink {
+    NSString *link = @"link it baby";
+    [playlist_ addTrackFromLink:link byUser:[self sampleUserWithId:@"userid"]];
+}
+
+
+
 
 - (void)dealloc {
     [userlist_ release];

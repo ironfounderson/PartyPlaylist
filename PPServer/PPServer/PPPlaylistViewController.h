@@ -16,6 +16,7 @@
 @private
     dispatch_queue_t webUpdateQueue_;
     NSMutableArray *notifications_;
+    NSMutableArray *trackRequests_;
 }
 
 @property (assign) IBOutlet WebView *webView;

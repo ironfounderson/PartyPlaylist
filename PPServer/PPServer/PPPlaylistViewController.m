@@ -12,12 +12,14 @@
 #import "PPSpotifyTrack.h"
 #import "PPPlaylistTrack.h"
 #import "PPPlaylistUser.h"
+#import "PPTrackRequest.h"
 #import "DDLog.h"
 
 static int ddLogLevel = LOG_LEVEL_INFO;
 
 @interface PPPlaylistViewController()
 @property (copy) NSArray *tracks;
+- (void)showTrackRequest:(PPTrackRequest *)trackRequest;
 @end
 
 @implementation PPPlaylistViewController
@@ -42,6 +44,7 @@ static int ddLogLevel = LOG_LEVEL_INFO;
                                                       object:nil];
     }
     [notifications_ release];
+    [trackRequests_ release];
     dispatch_release(webUpdateQueue_);
     [tracks_ release];
     [super dealloc];
@@ -56,6 +59,7 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 
 }
 - (void)awakeFromNib {
+    trackRequests_ = [[NSMutableArray alloc] init];
     webUpdateQueue_ = dispatch_queue_create("com.roberthoglund.ppserver.webupdatequeue", NULL);
     NSString *path = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
     NSURL *url = [NSURL fileURLWithPath:path];
@@ -110,7 +114,23 @@ static int ddLogLevel = LOG_LEVEL_INFO;
     [self updateWebView:jquery];
 }
 
+- (void)updateTrackRequests {
+    NSMutableIndexSet *discardedItems = [NSMutableIndexSet indexSet];
+    [trackRequests_ enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        PPTrackRequest *trackRequest = obj;
+        if (trackRequest.isLoaded) {
+            [self showTrackRequest:trackRequest];
+            [discardedItems addIndex:idx];                
+        }
+    }];
+    [trackRequests_ removeObjectsAtIndexes:discardedItems];
+}
+
 - (void)handleTrackLoaded:(NSNotification *)notification {
+    if (trackRequests_.count > 0) {
+        [self updateTrackRequests];
+    }
+    
     PPPlaylistTrack *plTrack = [notification object];
     NSString *text = [self playlistHTMLFromTrack:plTrack];
     NSString *jquery = [NSString stringWithFormat:@"updateTweet('%@', '%@');", 
@@ -134,16 +154,22 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 }
 
 - (void)handleTrackRequested:(NSNotification *)notification {
-    NSDictionary *userInfo = [notification userInfo];
-    PPPlaylistTrack *track = [userInfo objectForKey:@"track"];
-    PPPlaylistUser *user = [userInfo objectForKey:@"user"];
-    if (track.spotifyTrack.isLoaded) {
-        DDLogInfo(@"%@ requested %@ by %@", 
-                  user.screenName, track.spotifyTrack.title, track.spotifyTrack.artistName);
+    PPTrackRequest *trackRequest = [notification object];
+    if (trackRequest.isLoaded) {
+        [self showTrackRequest:trackRequest];
     }
     else {
-        DDLogInfo(@"%@ requested %@ which is not yet loaded", user.screenName, track.link);         
+        [trackRequests_ addObject:trackRequest];
+        DDLogInfo(@"%@ requested %@ which is not yet loaded", 
+                  trackRequest.user.screenName,
+                  trackRequest.track.link);         
     }
+}
+
+- (void)showTrackRequest:(PPTrackRequest *)trackRequest {
+    PPSpotifyTrack *spTrack = trackRequest.track.spotifyTrack;
+    DDLogInfo(@"%@ requested %@ by %@", 
+              trackRequest.user.screenName, spTrack.title, spTrack.artistName);
 }
 
 #pragma mark -

@@ -9,6 +9,7 @@
 #import "PPPlaylist.h"
 #import "PPSpotifyController.h"
 #import "PPSpotifyTrack.h"
+#import "PPTrackRequest.h"
 #import "DDLog.h"
 
 static int ddLogLevel = LOG_LEVEL_INFO;
@@ -72,10 +73,9 @@ NSString * const PPPlaylistTrackRequestedNotification = @"PPPlaylistTrackRequest
     }
     
     if ([plTrack addUser:user]) {
-        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                                  plTrack, @"track", user, @"user", nil];
+        PPTrackRequest *trackRequest = [PPTrackRequest requestWithTrack:plTrack user:user];
         [nc postNotificationName:PPPlaylistTrackRequestedNotification 
-                          object:self userInfo:userInfo];
+                          object:trackRequest];
     }
     return plTrack;
 }

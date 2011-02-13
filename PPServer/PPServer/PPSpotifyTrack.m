@@ -14,14 +14,14 @@
 @synthesize link = link_;
 @synthesize artistName = artistName_;
 @synthesize title = title_;
-@synthesize trackIsLoaded;
+@synthesize loaded;
 @synthesize invalidLink;
 
 - (id)init {
     self = [super init];
     if (self) {
         invalidLink = NO;
-        trackIsLoaded = NO;
+        loaded = NO;
     }
     
     return self;

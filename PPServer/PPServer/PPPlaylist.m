@@ -75,7 +75,7 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
     __block NSMutableArray *items = [NSMutableArray array];
     dispatch_sync(playlistQueue_, ^{
         for (PPPlaylistTrack *track in tracks_) {
-            if (track.spotifyTrack.trackIsLoaded) {
+            if (track.spotifyTrack.isLoaded) {
                 [items addObject:track];
             }
         }

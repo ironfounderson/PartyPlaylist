@@ -73,7 +73,7 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 
 - (NSString *)playlistHTMLFromTrack:(PPPlaylistTrack *)track {
     PPSpotifyTrack *spTrack = track.spotifyTrack;
-    if (!spTrack.trackIsLoaded) {
+    if (!spTrack.isLoaded) {
         return @"Track waiting to be loaded";
     }
     

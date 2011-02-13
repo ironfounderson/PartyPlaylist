@@ -15,7 +15,7 @@
 @private
 }
 
-@property BOOL trackIsLoaded;
+@property (getter=isLoaded) BOOL loaded;
 @property BOOL invalidLink;
 @property (copy) NSString *link;
 @property (copy) NSString *artistName;

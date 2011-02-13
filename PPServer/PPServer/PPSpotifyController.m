@@ -118,7 +118,7 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
             // By adding the sp_track we can update PPSpotifyTrack with the loaded meta data 
             // once libspotify returns it.
             //
-            spTrack.trackIsLoaded = NO;
+            spTrack.loaded = NO;
             [updateArray_ addObject:[PPTrackWrapper wrapperWithSpotifyTrack:spTrack track:track]];
         }
         sp_link_release(link);
@@ -179,7 +179,7 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
 - (void)updateSpotifyTrack:(PPSpotifyTrack *)spTrack fromTrack:(sp_track *)track {
     spTrack.title = [NSString stringWithUTF8String:sp_track_name(track)];
     DDLogInfo(@"Track: %@ is now loaded", spTrack.title);
-    spTrack.trackIsLoaded = YES;
+    spTrack.loaded = YES;
 }
 
 #pragma mark - Spotify Session

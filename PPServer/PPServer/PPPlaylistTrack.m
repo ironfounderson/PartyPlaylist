@@ -50,7 +50,7 @@ NSString * const PPPlaylistTrackTitleIdentifier = @"title";
 }
 
 - (void)subscribeToSpotifyTrack {
-    [spotifyTrack_ addObserver:self forKeyPath:@"trackIsLoaded"
+    [spotifyTrack_ addObserver:self forKeyPath:@"loaded"
                        options:(NSKeyValueObservingOptionNew |
                                 NSKeyValueObservingOptionOld)
                        context:NULL];
@@ -60,8 +60,8 @@ NSString * const PPPlaylistTrackTitleIdentifier = @"title";
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
-    if ([keyPath isEqual:@"trackIsLoaded"]) {
-        if (self.spotifyTrack.trackIsLoaded) {
+    if ([keyPath isEqual:@"loaded"]) {
+        if (self.spotifyTrack.isLoaded) {
             [self.delegate playlistTrackIsLoaded:self];
         }
     }

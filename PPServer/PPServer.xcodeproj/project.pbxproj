@@ -52,6 +52,7 @@
 		E1D029B81306FED000874960 /* PPUserlist.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D029B71306FECF00874960 /* PPUserlist.m */; };
 		E1E230E213087B62006DD0E9 /* PPTrackRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E230E113087B60006DD0E9 /* PPTrackRequest.m */; };
 		E1E230E513088508006DD0E9 /* PPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E230E413088508006DD0E9 /* PPWebViewController.m */; };
+		E1E230E61308884C006DD0E9 /* PPTrackRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E230E113087B60006DD0E9 /* PPTrackRequest.m */; };
 		E1E75808130556F70048344E /* PPTwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75807130556F70048344E /* PPTwitterClient.m */; };
 		E1E75818130562DF0048344E /* appkey.c in Sources */ = {isa = PBXBuildFile; fileRef = E1E75812130562DF0048344E /* appkey.c */; };
 		E1E75819130562DF0048344E /* audio.c in Sources */ = {isa = PBXBuildFile; fileRef = E1E75813130562DF0048344E /* audio.c */; };
@@ -583,7 +584,6 @@
 		E1FD039B1305479C0085B2AA /* PPServerTests */ = {
 			isa = PBXGroup;
 			children = (
-				E19A872A1308553E00BECD44 /* PPServerTests-Info.plist */,
 				E1E7582F1305711B0048344E /* Models */,
 				E1FD039C1305479C0085B2AA /* Supporting Files */,
 			);
@@ -593,6 +593,7 @@
 		E1FD039C1305479C0085B2AA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E19A872A1308553E00BECD44 /* PPServerTests-Info.plist */,
 				E1FD039D1305479C0085B2AA /* PPServerTests-Info.plist */,
 				E1FD039E1305479C0085B2AA /* InfoPlist.strings */,
 				E1FD03A11305479C0085B2AA /* PPServerTests-Prefix.pch */,
@@ -883,6 +884,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1E230E61308884C006DD0E9 /* PPTrackRequest.m in Sources */,
 				E19A8754130855C700BECD44 /* DDLog.m in Sources */,
 				E19A874F130855B100BECD44 /* PPPlaylistTrack.m in Sources */,
 				E19A874A130855A400BECD44 /* PPSpotifyTrack.m in Sources */,

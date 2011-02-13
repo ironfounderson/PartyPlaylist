@@ -9,7 +9,7 @@ function addTweet(link, text) {
 function addRequest(link, text) {
     newItem = $('<li id="' + link + '">' + text + '</li>').hide();
     
-    $("#requestlist").prepend(newItem);
+    $("#incoming-list").prepend(newItem);
     
     newItem.fadeIn();
 }

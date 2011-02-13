@@ -51,6 +51,7 @@
 		E19A8754130855C700BECD44 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAB61307E59200CA4226 /* DDLog.m */; };
 		E1D029B81306FED000874960 /* PPUserlist.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D029B71306FECF00874960 /* PPUserlist.m */; };
 		E1E230E213087B62006DD0E9 /* PPTrackRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E230E113087B60006DD0E9 /* PPTrackRequest.m */; };
+		E1E230E513088508006DD0E9 /* PPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E230E413088508006DD0E9 /* PPWebViewController.m */; };
 		E1E75808130556F70048344E /* PPTwitterClient.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75807130556F70048344E /* PPTwitterClient.m */; };
 		E1E75818130562DF0048344E /* appkey.c in Sources */ = {isa = PBXBuildFile; fileRef = E1E75812130562DF0048344E /* appkey.c */; };
 		E1E75819130562DF0048344E /* audio.c in Sources */ = {isa = PBXBuildFile; fileRef = E1E75813130562DF0048344E /* audio.c */; };
@@ -195,6 +196,8 @@
 		E1E230DF130860C5006DD0E9 /* PPTrackScheduler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTrackScheduler.h; sourceTree = "<group>"; };
 		E1E230E013087B5E006DD0E9 /* PPTrackRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTrackRequest.h; sourceTree = "<group>"; };
 		E1E230E113087B60006DD0E9 /* PPTrackRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTrackRequest.m; sourceTree = "<group>"; };
+		E1E230E313088508006DD0E9 /* PPWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPWebViewController.h; sourceTree = "<group>"; };
+		E1E230E413088508006DD0E9 /* PPWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPWebViewController.m; sourceTree = "<group>"; };
 		E1E75806130556F70048344E /* PPTwitterClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTwitterClient.h; sourceTree = "<group>"; };
 		E1E75807130556F70048344E /* PPTwitterClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTwitterClient.m; sourceTree = "<group>"; };
 		E1E75812130562DF0048344E /* appkey.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = appkey.c; sourceTree = "<group>"; };
@@ -757,6 +760,8 @@
 				E124C8ED1305CA160097A72F /* PPPlayingViewController.m */,
 				E18DEAD81307E6B200CA4226 /* PPHTTPServerController.h */,
 				E18DEAD91307E6B200CA4226 /* PPHTTPServerController.m */,
+				E1E230E313088508006DD0E9 /* PPWebViewController.h */,
+				E1E230E413088508006DD0E9 /* PPWebViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -969,6 +974,7 @@
 				E18DEAD41307E60100CA4226 /* PPHTTPConnection.m in Sources */,
 				E18DEADA1307E6B200CA4226 /* PPHTTPServerController.m in Sources */,
 				E1E230E213087B62006DD0E9 /* PPTrackRequest.m in Sources */,
+				E1E230E513088508006DD0E9 /* PPWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

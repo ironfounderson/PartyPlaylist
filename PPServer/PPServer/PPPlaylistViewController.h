@@ -11,6 +11,7 @@
 
 @class PPPlaylist;
 @class PPSpotifyController;
+@class PPWebViewController;
 
 @interface PPPlaylistViewController : NSViewController {
 @private
@@ -22,5 +23,6 @@
 @property (assign) IBOutlet WebView *webView;
 @property (retain) PPPlaylist *playlist;
 @property (assign) PPSpotifyController *spotifyController;
+@property (assign) IBOutlet PPWebViewController *webViewController;
 
 @end

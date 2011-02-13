@@ -13,13 +13,13 @@
 #import "PPPlaylistTrack.h"
 #import "PPPlaylistUser.h"
 #import "PPTrackRequest.h"
+#import "PPWebViewController.h"
 #import "DDLog.h"
 
 static int ddLogLevel = LOG_LEVEL_INFO;
 
 @interface PPPlaylistViewController()
 @property (copy) NSArray *tracks;
-- (void)showTrackRequest:(PPTrackRequest *)trackRequest;
 @end
 
 @implementation PPPlaylistViewController
@@ -28,6 +28,7 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 @synthesize playlist;
 @synthesize tracks = tracks_;
 @synthesize spotifyController;
+@synthesize webViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -65,8 +66,6 @@ static int ddLogLevel = LOG_LEVEL_INFO;
     NSURL *url = [NSURL fileURLWithPath:path];
     [[self.webView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
     
-    [self addObserverSelector:@selector(handleTrackAdded:) 
-                         name:PPPlaylistTrackAddedNotification];
     [self addObserverSelector:@selector(handleTrackLoaded:) 
                          name:PPPlaylistTrackLoadedNotification];
     [self addObserverSelector:@selector(handleTrackEndedPlaying:) 
@@ -77,49 +76,13 @@ static int ddLogLevel = LOG_LEVEL_INFO;
                          name:PPPlaylistTrackRequestedNotification];
 }
 
-- (NSString *)playlistHTMLFromTrack:(PPPlaylistTrack *)track {
-    PPSpotifyTrack *spTrack = track.spotifyTrack;
-    if (!spTrack.isLoaded) {
-        return @"Track waiting to be loaded";
-    }
-    
-    /*
-    NSString *text = [NSString stringWithFormat:@"<b>%@</b> %@ -- %d", 
-                      [spTrack.title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], 
-                      [spTrack.title stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], 
-                      track.wishCount];
-     */
-    NSString *text = [NSString stringWithFormat:@"<b>%@</b> %@ -- %d", 
-                      [spTrack.title stringByReplacingOccurrencesOfString:@"'" withString:@""],
-                      [spTrack.title stringByReplacingOccurrencesOfString:@"'" withString:@""],
-                      track.wishCount];
-
-    return text;
-}
-
-- (NSString *)htmlLink:(NSString *)link {
-    return [[link componentsSeparatedByString:@":"] objectAtIndex:2];
-}
-
-- (void)updateWebView:(NSString *)function {
-    dispatch_async(dispatch_get_main_queue(), ^ {
-        [[self.webView windowScriptObject] evaluateWebScript:function];
-    });
-}
-- (void)handleTrackAdded:(NSNotification *)notification {
-    PPPlaylistTrack *plTrack = [notification object];
-    NSString *text = [self playlistHTMLFromTrack:plTrack];
-    NSString *jquery = [NSString stringWithFormat:@"addTweet('%@', '%@');", 
-                        [self htmlLink:plTrack.link], text];
-    [self updateWebView:jquery];
-}
 
 - (void)updateTrackRequests {
     NSMutableIndexSet *discardedItems = [NSMutableIndexSet indexSet];
     [trackRequests_ enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         PPTrackRequest *trackRequest = obj;
         if (trackRequest.isLoaded) {
-            [self showTrackRequest:trackRequest];
+            [self.webViewController showTrackRequest:trackRequest];
             [discardedItems addIndex:idx];                
         }
     }];
@@ -130,12 +93,6 @@ static int ddLogLevel = LOG_LEVEL_INFO;
     if (trackRequests_.count > 0) {
         [self updateTrackRequests];
     }
-    
-    PPPlaylistTrack *plTrack = [notification object];
-    NSString *text = [self playlistHTMLFromTrack:plTrack];
-    NSString *jquery = [NSString stringWithFormat:@"updateTweet('%@', '%@');", 
-                        [self htmlLink:plTrack.link], text];
-    [self updateWebView:jquery];
 }
 
 - (void)handleTrackEndedPlaying:(NSNotification *)notification {
@@ -156,24 +113,11 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 - (void)handleTrackRequested:(NSNotification *)notification {
     PPTrackRequest *trackRequest = [notification object];
     if (trackRequest.isLoaded) {
-        [self showTrackRequest:trackRequest];
+        [self.webViewController showTrackRequest:trackRequest];
     }
     else {
         [trackRequests_ addObject:trackRequest];
-        DDLogInfo(@"%@ requested %@ which is not yet loaded", 
-                  trackRequest.user.screenName,
-                  trackRequest.track.link);         
     }
-}
-
-- (void)showTrackRequest:(PPTrackRequest *)trackRequest {
-    PPSpotifyTrack *spTrack = trackRequest.track.spotifyTrack;
-    NSString *message = [NSString stringWithFormat:@"%@ requested %@ by %@", 
-                         trackRequest.user.screenName, 
-                         [spTrack.title stringByReplacingOccurrencesOfString:@"'" withString:@""], 
-                         spTrack.artistName];
-    NSString *method = [NSString stringWithFormat:@"addRequest('', '%@');", message];
-    [self updateWebView:method];
 }
 
 #pragma mark -

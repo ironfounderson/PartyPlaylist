@@ -135,8 +135,10 @@ static int ddLogLevel = LOG_LEVEL_WARN;
             playlistUser = [self.userlist createTwitterUser:userDict];
         }
         
+        // How can I make sure this is not hanging up the program ??
         [self.playlist addTrackFromLink:parseResult.link byUser:playlistUser];
     }
+    DDLogWarn(@"***** UPDATE OF TWEETS IS DONE *****");
 }
 
 - (void)receivedObject:(NSDictionary *)dictionary forRequest:(NSString *)connectionIdentifier {

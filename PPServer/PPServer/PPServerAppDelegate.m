@@ -29,6 +29,7 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 @synthesize password;
 @synthesize playlistController;
 @synthesize playingController;
+@synthesize webViewController;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [DDLog addLogger:[DDTTYLogger sharedInstance]];

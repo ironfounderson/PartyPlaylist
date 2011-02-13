@@ -45,6 +45,4 @@ extern NSString * const PPPlaylistTrackLoadedNotification;
 - (void)addTrack:(PPPlaylistTrack *)track byUser:(PPPlaylistUser *)user;
 
 - (NSArray *)upcomingItems;
-
-
 @end

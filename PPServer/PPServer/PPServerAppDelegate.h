@@ -33,5 +33,6 @@
 
 - (IBAction)loginToSpotify:(id)sender;
 - (IBAction)testResolveTrack:(id)sender;
+- (IBAction)next:(id)sender;
 
 @end

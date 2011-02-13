@@ -56,20 +56,6 @@ static int ddLogLevel = LOG_LEVEL_INFO;
     [httpServerController_ startServer];
 }
 
-- (PPPlaylistUser *)sampleUserWithId:(NSString *)userId {
-    PPPlaylistUser *user = [[PPPlaylistUser alloc] init];
-    user.userId = userId;
-    return [user autorelease];
-}
-
-- (void)test_addTrackFromLink {
-    NSString *link = @"link it baby";
-    [playlist_ addTrackFromLink:link byUser:[self sampleUserWithId:@"userid"]];
-}
-
-
-
-
 - (void)dealloc {
     [userlist_ release];
     [playlist_ release];
@@ -84,9 +70,13 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 }
 
 - (IBAction)testResolveTrack:(id)sender {
-    PPSpotifyTrack *spTrack = [[[PPSpotifyTrack alloc] init] autorelease];
-    spTrack.link = @"spotify:track:6AqNpQbWeNdjcpFP4WTvWR";
-    [spotifyController_ playTrack:spTrack];
+    [playlist_ step];
+    [playlist_ step];
+}
+
+- (IBAction)next:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:PPSpotifyTrackEndedPlayingNotification
+                                                        object:self];
 }
 
 #pragma mark - Dynamic Logging

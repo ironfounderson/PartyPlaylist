@@ -11,6 +11,7 @@
 #import "PPSpotifyController.h"
 #import "PPSpotifyTrack.h"
 #import "PPPlaylistTrack.h"
+#import "PPPlaylistUser.h"
 #import "DDLog.h"
 
 static int ddLogLevel = LOG_LEVEL_INFO;
@@ -60,15 +61,16 @@ static int ddLogLevel = LOG_LEVEL_INFO;
     NSURL *url = [NSURL fileURLWithPath:path];
     [[self.webView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
     
-    [self addObserverSelector:@selector(handlePlaylistItemAdded:) 
-                         name:PPPlaylistItemAddedNotification];
-    [self addObserverSelector:@selector(handlePlaylistItemUpdated:) 
-                         name:PPPlaylistItemUpdatedNotification];
+    [self addObserverSelector:@selector(handleTrackAdded:) 
+                         name:PPPlaylistTrackAddedNotification];
     [self addObserverSelector:@selector(handleTrackLoaded:) 
                          name:PPPlaylistTrackLoadedNotification];
     [self addObserverSelector:@selector(handleTrackEndedPlaying:) 
                          name:PPSpotifyTrackEndedPlayingNotification];
-
+    [self addObserverSelector:@selector(handleStep:) 
+                         name:PPPlaylistStepNotification];
+    [self addObserverSelector:@selector(handleTrackRequested:) 
+                         name:PPPlaylistTrackRequestedNotification];
 }
 
 - (NSString *)playlistHTMLFromTrack:(PPPlaylistTrack *)track {
@@ -100,18 +102,10 @@ static int ddLogLevel = LOG_LEVEL_INFO;
         [[self.webView windowScriptObject] evaluateWebScript:function];
     });
 }
-- (void)handlePlaylistItemAdded:(NSNotification *)notification {
+- (void)handleTrackAdded:(NSNotification *)notification {
     PPPlaylistTrack *plTrack = [notification object];
     NSString *text = [self playlistHTMLFromTrack:plTrack];
     NSString *jquery = [NSString stringWithFormat:@"addTweet('%@', '%@');", 
-                        [self htmlLink:plTrack.link], text];
-    [self updateWebView:jquery];
-}
-
-- (void)handlePlaylistItemUpdated:(NSNotification *)notification {
-    PPPlaylistTrack *plTrack = [notification object];
-    NSString *text = [self playlistHTMLFromTrack:plTrack];
-    NSString *jquery = [NSString stringWithFormat:@"updateTweet('%@', '%@');", 
                         [self htmlLink:plTrack.link], text];
     [self updateWebView:jquery];
 }
@@ -124,16 +118,32 @@ static int ddLogLevel = LOG_LEVEL_INFO;
     [self updateWebView:jquery];
 }
 
-- (void)handlePlaylistChange:(NSNotification *)notification {
-    PPPlaylist *pl= [notification object];
-    self.tracks = [pl availableTracks];
-    
-    NSString *jquery = @"addTweet();";
-    [[self.webView windowScriptObject] evaluateWebScript:jquery];
+- (void)handleTrackEndedPlaying:(NSNotification *)notification {
+    [self.playlist step];
 }
 
-- (void)handleTrackEndedPlaying:(NSNotification *)notification {
-    NSLog(@"should move to next track");
+- (void)handleStep:(NSNotification *)notification {
+    PPPlaylistTrack *track = self.playlist.currentTrack;
+    if (!track) {
+        DDLogInfo(@"Playlist has stepped but no track is available.");
+        return;
+    }
+    
+    DDLogInfo(@"Playlist has stepped. Should groove to %@", track.spotifyTrack.title);
+    // [self.spotifyController playTrack:track.spotifyTrack];
+}
+
+- (void)handleTrackRequested:(NSNotification *)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    PPPlaylistTrack *track = [userInfo objectForKey:@"track"];
+    PPPlaylistUser *user = [userInfo objectForKey:@"user"];
+    if (track.spotifyTrack.isLoaded) {
+        DDLogInfo(@"%@ requested %@ by %@", 
+                  user.screenName, track.spotifyTrack.title, track.spotifyTrack.artistName);
+    }
+    else {
+        DDLogInfo(@"%@ requested %@ which is not yet loaded", user.screenName, track.link);         
+    }
 }
 
 #pragma mark -

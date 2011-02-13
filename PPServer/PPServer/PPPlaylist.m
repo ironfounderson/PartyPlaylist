@@ -13,10 +13,11 @@
 
 static int ddLogLevel = LOG_LEVEL_INFO;
 
-NSString * const PPPlaylistItemAddedNotification = @"PPPlaylistItemAddedNotification";
-NSString * const PPPlaylistItemUpdatedNotification = @"PPPlaylistItemUpdatedNotification";
-NSString * const PPPlaylistChangeNotification = @"PPPlaylistChangeNotification";
+NSString * const PPPlaylistTrackAddedNotification = @"PPPlaylistTrackAddedNotification";
 NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNotification";
+NSString * const PPPlaylistStepNotification = @"PPPlaylistStepNotification";
+NSString * const PPPlaylistTrackRequestedNotification = @"PPPlaylistTrackRequestedNotification";
+
 
 @interface PPPlaylist()
 - (PPPlaylistTrack *)findTrackWithLink:(NSString *)link;
@@ -54,8 +55,10 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
 }
 
 - (PPPlaylistTrack *)addTrackFromLink:(NSString *)link byUser:(PPPlaylistUser *)user {
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     PPPlaylistTrack *plTrack = [self findTrackWithLink:link];
     if (!plTrack) {
+        DDLogInfo(@"Adding track %@ to playlist", link);
         PPSpotifyTrack *spTrack = [[[PPSpotifyTrack alloc] init] autorelease];
         spTrack.link = link;
         
@@ -64,13 +67,16 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
         
         [self.spotifyController updateSpotifyTrack:spTrack];
         [tracks_ addObject:plTrack];
-        [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistItemAddedNotification 
-                                                            object:plTrack];
+        [nc postNotificationName:PPPlaylistTrackAddedNotification 
+                          object:plTrack];
     }
     
-    [plTrack addUser:user];
-    [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistItemUpdatedNotification 
-                                                        object:plTrack];
+    if ([plTrack addUser:user]) {
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                  plTrack, @"track", user, @"user", nil];
+        [nc postNotificationName:PPPlaylistTrackRequestedNotification 
+                          object:self userInfo:userInfo];
+    }
     return plTrack;
 }
 
@@ -142,6 +148,8 @@ NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNoti
         [tracks_ removeObject:scheduledTrack];
     }
     [self setNextTrack:scheduledTrack];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistStepNotification 
+                                                        object:self];
 }
 
 - (PPPlaylistTrack *)findTrackWithLink:(NSString *)link {

@@ -13,6 +13,9 @@
 #import "PPSpotifyTweetParser.h"
 #import "PPSpotifyController.h"
 #import "PPUserlist.h"
+#import "DDLog.h"
+
+static int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation PPTwitterClient
 
@@ -68,7 +71,7 @@
     }
     
     
-    const int POLLTIME = 20;
+    const int POLLTIME = 60;
     pollTimer_ = [[NSTimer scheduledTimerWithTimeInterval:POLLTIME 
                                                    target:self 
                                                  selector:@selector(pollTwitter) 
@@ -119,7 +122,7 @@
         NSString *text = [reply objectForKey:@"text"];
         PPSpotifyTweetParserResult *parseResult = [tweetParser_ parseTweet:text error:nil];
         if (!parseResult) {
-            NSLog(@"tweet in format %@ not recognized", text);
+            DDLogWarn(@"tweet in format %@ not recognized", text);
             continue;
         }
         
@@ -137,58 +140,58 @@
 }
 
 - (void)receivedObject:(NSDictionary *)dictionary forRequest:(NSString *)connectionIdentifier {
-    NSLog(@"Got an object for %@: %@", connectionIdentifier, dictionary);
+    DDLogInfo(@"Got an object for %@: %@", connectionIdentifier, dictionary);
 }
 
 - (void)requestSucceeded:(NSString *)connectionIdentifier {
-    NSLog(@"Request succeeded for connectionIdentifier = %@", connectionIdentifier);
+    DDLogInfo(@"Request succeeded for connectionIdentifier = %@", connectionIdentifier);
 }
 
 - (void)requestFailed:(NSString *)connectionIdentifier withError:(NSError *)error {
-    NSLog(@"Request failed for connectionIdentifier = %@, error = %@ (%@)", 
+    DDLogInfo(@"Request failed for connectionIdentifier = %@, error = %@ (%@)", 
           connectionIdentifier, 
           [error localizedDescription], 
           [error userInfo]);
 }
 
 - (void)directMessagesReceived:(NSArray *)messages forRequest:(NSString *)connectionIdentifier {
-    NSLog(@"Got direct messages for %@:\r%@", connectionIdentifier, messages);
+    DDLogInfo(@"Got direct messages for %@:\r%@", connectionIdentifier, messages);
 }
 
 
 - (void)userInfoReceived:(NSArray *)userInfo forRequest:(NSString *)connectionIdentifier {
-    NSLog(@"Got user info for %@:\r%@", connectionIdentifier, userInfo);
+    DDLogInfo(@"Got user info for %@:\r%@", connectionIdentifier, userInfo);
 }
 
 
 - (void)miscInfoReceived:(NSArray *)miscInfo forRequest:(NSString *)connectionIdentifier {
-	NSLog(@"Got misc info for %@:\r%@", connectionIdentifier, miscInfo);
+	DDLogInfo(@"Got misc info for %@:\r%@", connectionIdentifier, miscInfo);
 }
 
 
 - (void)searchResultsReceived:(NSArray *)searchResults forRequest:(NSString *)connectionIdentifier {
-	NSLog(@"Got search results for %@:\r%@", connectionIdentifier, searchResults);
+	DDLogInfo(@"Got search results for %@:\r%@", connectionIdentifier, searchResults);
 }
 
 
 - (void)socialGraphInfoReceived:(NSArray *)socialGraphInfo forRequest:(NSString *)connectionIdentifier {
-	NSLog(@"Got social graph results for %@:\r%@", connectionIdentifier, socialGraphInfo);
+	DDLogInfo(@"Got social graph results for %@:\r%@", connectionIdentifier, socialGraphInfo);
 }
 
 - (void)userListsReceived:(NSArray *)userInfo forRequest:(NSString *)connectionIdentifier {
-    NSLog(@"Got user lists for %@:\r%@", connectionIdentifier, userInfo);
+    DDLogInfo(@"Got user lists for %@:\r%@", connectionIdentifier, userInfo);
 }
 
 - (void)imageReceived:(NSImage *)image forRequest:(NSString *)connectionIdentifier {
-    NSLog(@"Got an image for %@: %@", connectionIdentifier, image);
+    DDLogInfo(@"Got an image for %@: %@", connectionIdentifier, image);
 }
 
 - (void)connectionFinished:(NSString *)connectionIdentifier {
-    NSLog(@"Connection finished %@", connectionIdentifier);
+    DDLogInfo(@"Connection finished %@", connectionIdentifier);
 }
 
 - (void)accessTokenReceived:(OAToken *)aToken forRequest:(NSString *)connectionIdentifier {
-	NSLog(@"Access token received! %@",aToken);
+	DDLogInfo(@"Access token received! %@",aToken);
 }
 
 

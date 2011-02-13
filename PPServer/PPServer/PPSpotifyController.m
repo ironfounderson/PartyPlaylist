@@ -138,6 +138,7 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
         });
     }
     
+    /*
     if (self.playingLink) {
         // This is just so I can fake the ending of one song
         self.playingLink= nil;
@@ -146,7 +147,7 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
                                                             object:self];
         return;
     }
-    
+    */
     
     __block __typeof__(self) _self = self;
     dispatch_async(spotifyQueue_, ^{
@@ -172,10 +173,6 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
 
 }
 
-- (void)trackFromLink:(NSString *)text {
-    
-}
-
 - (void)updateSpotifyTrack:(PPSpotifyTrack *)spTrack fromTrack:(sp_track *)track {
     spTrack.title = [NSString stringWithUTF8String:sp_track_name(track)];
     DDLogInfo(@"Track: %@ is now loaded", spTrack.title);
@@ -191,7 +188,8 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
 
 - (void)session:(PPSpotifySessionObj *)session loginFailedWithError:(NSError *)error {
     [[NSNotificationCenter defaultCenter] postNotificationName:PPSpotifyLoggedOutNotification 
-                                                        object:self];}
+                                                        object:self];
+}
 
 - (void)playQueuedTrack {
     __block __typeof__(self) _self = self;
@@ -212,13 +210,14 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
 }
 
 - (void)updateTracks {
+     __block __typeof__(self) _self = self;
     dispatch_async(spotifyQueue_, ^{
         __block NSMutableIndexSet *discardedItems = [NSMutableIndexSet indexSet];
         [updateArray_ enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             PPTrackWrapper *wrapper = obj;
             if (sp_track_is_loaded(wrapper.track)) {
-                [self updateSpotifyTrack:wrapper.spotifyTrack
-                               fromTrack:wrapper.track];
+                [_self updateSpotifyTrack:wrapper.spotifyTrack
+                                fromTrack:wrapper.track];
                 [discardedItems addIndex:idx];
             }
         }];

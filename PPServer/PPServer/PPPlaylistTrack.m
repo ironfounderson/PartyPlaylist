@@ -71,15 +71,16 @@ NSString * const PPPlaylistTrackTitleIdentifier = @"title";
     return self.spotifyTrack.link;
 }
 
-- (void)addUser:(PPPlaylistUser *)user {
+- (BOOL)addUser:(PPPlaylistUser *)user {
     // A user may only cast one vote on each track.
     if ([self findUser:user]) {
-        return;
+        return NO;
     }
     
     PPPlaylistTrackUser *trackUser = [PPPlaylistTrackUser playlistTrackUserWithUser:user 
                                                                         requestTime:[NSDate date]];
     [users_ addObject:trackUser];
+    return YES;
 }
 
 - (NSUInteger)wishCount {

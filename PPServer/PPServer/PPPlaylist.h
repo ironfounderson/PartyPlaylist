@@ -10,10 +10,11 @@
 #import "PPPlaylistTrack.h"
 #import "PPTrackScheduler.h"
 
-extern NSString * const PPPlaylistItemAddedNotification;
-extern NSString * const PPPlaylistItemUpdatedNotification;
-extern NSString * const PPPlaylistChangeNotification;
+extern NSString * const PPPlaylistTrackAddedNotification;
+extern NSString * const PPPlaylistTrackRequestedNotification;
 extern NSString * const PPPlaylistTrackLoadedNotification;
+extern NSString * const PPPlaylistStepNotification;
+
 
 @class PPSpotifyTrack;
 @class PPPlaylistUser;

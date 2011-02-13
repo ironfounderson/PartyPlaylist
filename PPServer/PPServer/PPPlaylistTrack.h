@@ -37,7 +37,10 @@ extern NSString * const PPPlaylistTrackTitleIdentifier;
 @property (readonly) NSString *link;
 @property (readonly) NSUInteger wishCount;
 
-- (void)addUser:(PPPlaylistUser *)user;
+/**
+ Returns YES if the user was added to track or NO if the user has already requested this track
+ */
+- (BOOL)addUser:(PPPlaylistUser *)user;
 
 /**
  Convienience method for displaying data in an NSTableView

@@ -55,7 +55,7 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 - (void)showTrackRequest:(PPTrackRequest *)trackRequest {
     NSString *html = [self trackRequestHTML:trackRequest];
     
-    NSString *method = [NSString stringWithFormat:@"addRequest(%@);", html];
+    NSString *method = [NSString stringWithFormat:@"addTweet(%@);", html];
     [self updateWebView:method];
 }
 
@@ -80,5 +80,13 @@ static int ddLogLevel = LOG_LEVEL_INFO;
     [self showAlbumCoverForTrack:track usingMethod:@"setNextAlbumCover"];
 }
 
-
+- (void)showRequestingUsers:(NSArray *)users {
+    NSMutableArray *requests = [NSMutableArray arrayWithCapacity:users.count];
+    for (PPPlaylistUser *user in users) {
+        [requests addObject:[NSString stringWithFormat:@"{ProfilePicture: '%@'}", user.profileImageURL]];
+    }
+    NSString *parameter = [NSString stringWithFormat:@"[%@]", [requests componentsJoinedByString:@","]];
+    NSString *function = [NSString stringWithFormat:@"addRequests(%@)", parameter];
+    [self updateWebView:function];
+}
 @end

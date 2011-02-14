@@ -100,16 +100,22 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 }
 
 - (void)handleStep:(NSNotification *)notification {
+    // Calling these with null will result in the album cover being removed
     [self.webViewController showNextAlbumCoverForTrack:self.playlist.nextTrack];
     [self.webViewController showCurrentAlbumCoverForTrack:self.playlist.currentTrack];
     [self.webViewController showPreviousAlbumCoverForTrack:self.playlist.previousTrack];
+    
+    // If currentTrack is null the list of requesters will be removed
+    NSArray *requestingUsers = self.playlist.currentTrack.users;
+    [self.webViewController showRequestingUsers:requestingUsers];
+
     
     PPPlaylistTrack *track = self.playlist.currentTrack;
     if (!track) {
         DDLogInfo(@"Playlist has stepped but no track is available.");
         return;
     }
-    
+        
     DDLogInfo(@"Playlist has stepped. Should groove to %@", track.spotifyTrack.title);
     [self.spotifyController playTrack:track.spotifyTrack];
 }

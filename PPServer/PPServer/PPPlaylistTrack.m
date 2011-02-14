@@ -90,6 +90,14 @@ NSString * const PPPlaylistTrackTitleIdentifier = @"title";
     return YES;
 }
 
+- (NSArray *)users {
+    NSMutableArray *users = [NSMutableArray arrayWithCapacity:users_.count];
+    for (PPPlaylistTrackUser *pltUser in users_) {
+        [users addObject:pltUser.user];
+    }
+    return users;
+}
+
 - (NSUInteger)wishCount {
     return users_.count;
 }

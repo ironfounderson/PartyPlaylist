@@ -27,12 +27,13 @@
 #requesters {
   float: clear;
   width: 900px;
-  height:  50px;
+  height:  60px;
   background-color: #888;
 }
 
 #requesters ul {
   list-style: none;
+  margin: 0px;
 }
 
 #requesters ul li {

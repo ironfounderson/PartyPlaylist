@@ -26,5 +26,5 @@
 - (void)showPreviousAlbumCoverForTrack:(PPPlaylistTrack *)track;
 - (void)showCurrentAlbumCoverForTrack:(PPPlaylistTrack *)track;
 - (void)showNextAlbumCoverForTrack:(PPPlaylistTrack *)track;
-
+- (void)showRequestingUsers:(NSArray *)users;
 @end

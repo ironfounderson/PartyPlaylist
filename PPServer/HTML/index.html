@@ -11,7 +11,6 @@
   <!-- The part where the playing items are shown -->
   <div id="tracks">
     <div id="previous-track">
-      
     </div>
     
     <div id="current-track">
@@ -24,6 +23,8 @@
   
   <!-- The part where the people who have requested the current playing track are shown -->
   <div id="requesters">
+    <ul id="requesters-list">
+    </ul>
   </div>
   
   <!-- The part where incoming requests are shown -->
@@ -31,6 +32,36 @@
     <ul id="incoming-list">
     </ul>
   </div>
+  
+  
+  
+  
+  
+  
+  
+  <!-- Templates for updating the page -->
+  
+  <script id="tweetTemplate" type="text/x-jquery-tmpl">
+    <li class="request-item">
+      <div class="profile-picture">
+        <img src="${ProfilePicture}" />
+      </div>
+      <div class="profile-name">
+        ${ProfileName} requested
+      </div>
+      <div class="track-request">
+        ${TrackRequestText}
+      </div>
+    </li>
+  </script>
+  
+  
+  <script id="requestTemplate" type="text/x-jquery-tmpl">
+    <li class="requester">
+      <img src="${ProfilePicture}" />
+    </li>
+  </script>
+  
   
 </body>
 </html>

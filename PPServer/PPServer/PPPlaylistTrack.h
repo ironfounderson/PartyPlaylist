@@ -45,10 +45,14 @@ extern NSString * const PPPlaylistTrackTitleIdentifier;
 - (BOOL)addUser:(PPPlaylistUser *)user;
 
 /**
+ List of users that have requested this track.
+ */
+- (NSArray *)users;
+
+/**
  Convienience method for displaying data in an NSTableView
  */
 - (id)valueForIdentifier:(NSString *)identifier;
-
 
 @end
 

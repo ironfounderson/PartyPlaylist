@@ -13,6 +13,7 @@
 		E16337BA1307D8DA0051471A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16337B91307D8DA0051471A /* WebKit.framework */; };
 		E16369271309137100D71EE1 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = E16369261309137100D71EE1 /* NSFileManager+DirectoryLocations.m */; };
 		E163692A1309178200D71EE1 /* PPSpotifyAlbumImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E16369291309178100D71EE1 /* PPSpotifyAlbumImage.m */; };
+		E163692C1309434900D71EE1 /* jquery.tmpl.js in Resources */ = {isa = PBXBuildFile; fileRef = E163692B1309433400D71EE1 /* jquery.tmpl.js */; };
 		E18DEA851307E08500CA4226 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = E18DEA841307E08500CA4226 /* index.html */; };
 		E18DEABB1307E59200CA4226 /* DDData.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEA901307E59200CA4226 /* DDData.m */; };
 		E18DEABC1307E59200CA4226 /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEA921307E59200CA4226 /* DDNumber.m */; };
@@ -142,6 +143,7 @@
 		E16369261309137100D71EE1 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+DirectoryLocations.m"; path = "../../../../../SnowRob/Downloads/NSFileManager_DirectoryLocations/NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
 		E16369281309178100D71EE1 /* PPSpotifyAlbumImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifyAlbumImage.h; sourceTree = "<group>"; };
 		E16369291309178100D71EE1 /* PPSpotifyAlbumImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyAlbumImage.m; sourceTree = "<group>"; };
+		E163692B1309433400D71EE1 /* jquery.tmpl.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.tmpl.js; sourceTree = "<group>"; };
 		E18DEA841307E08500CA4226 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		E18DEA8F1307E59200CA4226 /* DDData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDData.h; sourceTree = "<group>"; };
 		E18DEA901307E59200CA4226 /* DDData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDData.m; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 		E18DEA831307DFC300CA4226 /* HTML */ = {
 			isa = PBXGroup;
 			children = (
+				E163692B1309433400D71EE1 /* jquery.tmpl.js */,
 				E18DEAE413081A4E00CA4226 /* jquery.js */,
 				E18DEAE513081A4E00CA4226 /* style.css */,
 				E18DEAE613081A4E00CA4226 /* tweetwishtemplate.html */,
@@ -859,6 +862,7 @@
 				E1FD038B1305479B0085B2AA /* Credits.rtf in Resources */,
 				E1FD03911305479C0085B2AA /* MainMenu.xib in Resources */,
 				E18DEAED13081DA500CA4226 /* wishlist.js in Resources */,
+				E163692C1309434900D71EE1 /* jquery.tmpl.js in Resources */,
 				E1FD04A813054A630085B2AA /* OATestServer.rb in Resources */,
 				E1FD04AB13054A630085B2AA /* README in Resources */,
 				E124C8F31305CB510097A72F /* PPTrackView.xib in Resources */,

@@ -3,12 +3,11 @@
 <head>
   <link rel="stylesheet" href="style.css" />
   <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="jquery.tmpl.js"></script>
   <script type="text/javascript" src="wishlist.js"></script>
 </head>
 <body>
-<input id="message_button" type="button" value="Show Message" onClick="setAlbumCover('previous-track', '/Users/robert/Library/Application Support/PPServer/images/spotifyalbum1uyf3l2d4XYwiEqAb7t7fX.jpg')" />
-
-<input id="message_button" type="button" value="Show Message" onClick="setAlbumCover('previous-track', '/Users/robert/Library/Application Support/PPServer/images/spotifyalbum47t9l0EjAGeXbKPC6GJWjC.jpg')" />
+<input id="message_button" type="button" value="Show Message" onClick="addRequest({ProfilePicture: 'http://a3.twimg.com/sticky/default_profile_images/default_profile_6_normal.png', ProfileName: 'roho9035', TrackRequestText: 'Who Says by John Mayer'});" />
   <!-- The part where the playing items are shown -->
   <div id="tracks">
     <div id="previous-track">

@@ -14,6 +14,7 @@
 @synthesize name = name_;
 @synthesize screenName = screenName_;
 @synthesize userId = userId_;
+@synthesize profileImageURL = profileImageURL_;
 
 - (id)init {
     self = [super init];
@@ -28,6 +29,7 @@
     [name_ release];
     [screenName_ release];
     [userId_ release];
+    [profileImageURL_ release];
     [super dealloc];
 }
 

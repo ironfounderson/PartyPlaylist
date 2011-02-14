@@ -47,3 +47,15 @@
 #incoming ul {
   list-style: none;
 }
+
+.request-item {
+  float: clear;
+  height: 60px;
+}
+
+.profile-picture {
+  float: left;
+}
+.profile-name {
+  float: clear;
+}

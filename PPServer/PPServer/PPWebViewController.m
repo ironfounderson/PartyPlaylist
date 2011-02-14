@@ -44,7 +44,8 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 
 - (NSString *)trackRequestHTML:(PPTrackRequest *)trackRequest {
     PPSpotifyTrack *spTrack = trackRequest.track.spotifyTrack;
-    NSString *message = [NSString stringWithFormat:@"%@ requested %@ by %@", 
+    NSString *message = [NSString stringWithFormat:@"{ProfilePicture: '%@', ProfileName: '%@', TrackRequestText: '%@ by %@'}",
+                         trackRequest.user.profileImageURL,
                          trackRequest.user.screenName, 
                          [spTrack.title stringByReplacingOccurrencesOfString:@"'" withString:@""], 
                          spTrack.artistName];
@@ -54,7 +55,7 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 - (void)showTrackRequest:(PPTrackRequest *)trackRequest {
     NSString *html = [self trackRequestHTML:trackRequest];
     
-    NSString *method = [NSString stringWithFormat:@"addRequest('', '%@');", html];
+    NSString *method = [NSString stringWithFormat:@"addRequest(%@);", html];
     [self updateWebView:method];
 }
 

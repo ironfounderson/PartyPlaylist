@@ -82,7 +82,8 @@
     user = [[PPPlaylistUser alloc] init];
     user.name = [userDict objectForKey:@"name"];
     user.screenName = [userDict objectForKey:@"screen_name"];
-    user.userId = userId;     // TODO: Queue avatar image for downloading
+    user.userId = userId;
+    user.profileImageURL = [userDict objectForKey:@"profile_image_url"];
     
     NSLog(@"Adding user: %@", user.screenName);
     [users_ addObject:user];

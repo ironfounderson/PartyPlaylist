@@ -12,6 +12,9 @@
 #import "PPTrackRequest.h"
 #import "PPPlaylistTrack.h"
 #import "PPPlaylistUser.h"
+#import "DDLog.h"
+
+static int ddLogLevel = LOG_LEVEL_INFO;
 
 @implementation PPWebViewController
 
@@ -31,6 +34,7 @@
 
 - (void)updateWebView:(NSString *)function {
     dispatch_async(dispatch_get_main_queue(), ^ {
+        DDLogInfo(@"Calling: %@", function);
         [[self.webView windowScriptObject] evaluateWebScript:function];
     });
 }
@@ -58,6 +62,22 @@
 
 #pragma mark - Update playing status
 
+- (void)showAlbumCoverForTrack:(PPPlaylistTrack *)track usingMethod:(NSString *)method {
+    PPSpotifyTrack *spTrack = track.spotifyTrack;
+    NSString *function = [NSString stringWithFormat:@"%@('%@')", method, spTrack.albumCoverPath];
+    [self updateWebView:function];        
+}
+
+- (void)showPreviousAlbumCoverForTrack:(PPPlaylistTrack *)track {
+    [self showAlbumCoverForTrack:track usingMethod:@"setPreviousAlbumCover"];
+}
+
+- (void)showCurrentAlbumCoverForTrack:(PPPlaylistTrack *)track {
+    [self showAlbumCoverForTrack:track usingMethod:@"setCurrentAlbumCover"];}
+
+- (void)showNextAlbumCoverForTrack:(PPPlaylistTrack *)track {
+    [self showAlbumCoverForTrack:track usingMethod:@"setNextAlbumCover"];
+}
 
 
 @end

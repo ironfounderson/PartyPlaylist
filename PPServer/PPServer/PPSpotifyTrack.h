@@ -20,5 +20,8 @@
 @property (copy) NSString *link;
 @property (copy) NSString *artistName;
 @property (copy) NSString *title;
+@property (copy) NSString *albumLink;
+@property (copy) NSString *albumName;
+@property (copy) NSString *albumCoverPath;
 
 @end

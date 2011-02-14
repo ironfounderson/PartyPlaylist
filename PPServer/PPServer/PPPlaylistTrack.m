@@ -54,6 +54,10 @@ NSString * const PPPlaylistTrackTitleIdentifier = @"title";
                        options:(NSKeyValueObservingOptionNew |
                                 NSKeyValueObservingOptionOld)
                        context:NULL];
+    [spotifyTrack_ addObserver:self forKeyPath:@"albumCoverPath"
+                       options:(NSKeyValueObservingOptionNew |
+                                NSKeyValueObservingOptionOld)
+                       context:NULL];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -64,6 +68,9 @@ NSString * const PPPlaylistTrackTitleIdentifier = @"title";
         if (self.spotifyTrack.isLoaded) {
             [self.delegate playlistTrackIsLoaded:self];
         }
+    }
+    else if ([keyPath isEqual:@"albumCoverPath"]) {
+        [self.delegate playlistTrackHasAlbumCover:self];
     }
 }
 

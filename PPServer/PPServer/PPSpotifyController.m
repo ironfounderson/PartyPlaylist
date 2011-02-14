@@ -9,6 +9,7 @@
 #import "PPSpotifyController.h"
 #import "PPSpotifyTrack.h"
 #import "PPSpotifySessionImpl.h"
+#import "PPSpotifyAlbumImage.h"
 #import "DDLog.h"
 
 static int ddLogLevel = LOG_LEVEL_INFO;
@@ -16,6 +17,8 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 NSString * const PPSpotifyLoggedInNotification = @"PPSpotifyLoggedInNotification";
 NSString * const PPSpotifyLoggedOutNotification = @"PPSpotifyLoggedOutNotification";
 NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedPlayingNotification";
+
+
 
 /**
  Internal wrapper class to contain a PPSpotifyTrack and a sp_track
@@ -36,23 +39,25 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
 @property BOOL isPlaying;
 @property (readonly) sp_session *session;
 @property (retain) PPTrackWrapper *queuedTrack;
-
+@property (readonly) PPSpotifyAlbumImage *albumImages;
 - (void)updateSpotifyTrack:(PPSpotifyTrack *)spTrack fromTrack:(sp_track *)track;
 @end
 
 @implementation PPSpotifyController
 
 @synthesize playingLink = playingLink_;
-// What is the Emacs or vim command for changing ispLaying to isPlaying ??
 @synthesize isPlaying;
 @synthesize spotifySession = spotifySession_;
 @synthesize  queuedTrack = queuedTrack_;
+@synthesize albumImages = albumImages_;
+
 - (id)init {
     self = [super init];
     if (self) {
         spotifyQueue_ = dispatch_queue_create("com.roberthoglund.partyplaylist", NULL);
         updateArray_ = [[NSMutableArray alloc] init];
         initialized_ = NO;
+        albumImages_ = [[PPSpotifyAlbumImage alloc] init];
     }
     
     return self;
@@ -64,11 +69,12 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
     [updateArray_ release];
     [playingLink_ release];
     [queuedTrack_ release];
+    [albumImages_ release];
     [super dealloc];
 }
 
 - (sp_session *)session {
-    return ((PPSpotifySessionImpl *)self.spotifySession).session;
+    return (sp_session *) self.spotifySession.session;
 }
 
 - (void)startSession {
@@ -121,6 +127,7 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
             spTrack.loaded = NO;
             [updateArray_ addObject:[PPTrackWrapper wrapperWithSpotifyTrack:spTrack track:track]];
         }
+        
         sp_link_release(link);
     });
 
@@ -183,6 +190,15 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
         DDLogWarn(@"Could not find artist for track %@ (%@)", spTrack.title, spTrack.link);
         spTrack.artistName = @"UNKNOWN";
     }
+    
+    sp_album *album = sp_track_album(track);
+    sp_link *albumLink = sp_link_create_from_album(album);
+    char linkBuffer[255];
+    sp_link_as_string(albumLink, linkBuffer, 255);
+    spTrack.albumLink = [NSString stringWithUTF8String:linkBuffer];
+    spTrack.albumName = [NSString stringWithUTF8String:sp_album_name(album)];
+    [[PPSpotifyAlbumImage sharedInstance] loadImageForTrack:spTrack album:album session:self.session];
+
     spTrack.loaded = YES;
 }
 

@@ -25,6 +25,7 @@ NSError *makeError(sp_error code) {
 @interface PPSpotifySessionImpl()
 - (void)processEvents;
 @property (readonly) audio_fifo_t *audiofifo;
+@property (readonly) sp_session *spotifySession;
 @end
 
 #pragma mark -
@@ -178,7 +179,11 @@ static void userinfo_updated(sp_session *session) {
     return self;
 }
 
-- (sp_session *)session {
+- (id)session {
+    return (id)session_;
+}
+
+- (sp_session *)spotifySession {
     return session_;
 }
 

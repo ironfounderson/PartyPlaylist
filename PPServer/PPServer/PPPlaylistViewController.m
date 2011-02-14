@@ -100,6 +100,10 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 }
 
 - (void)handleStep:(NSNotification *)notification {
+    [self.webViewController showNextAlbumCoverForTrack:self.playlist.nextTrack];
+    [self.webViewController showCurrentAlbumCoverForTrack:self.playlist.currentTrack];
+    [self.webViewController showPreviousAlbumCoverForTrack:self.playlist.previousTrack];
+    
     PPPlaylistTrack *track = self.playlist.currentTrack;
     if (!track) {
         DDLogInfo(@"Playlist has stepped but no track is available.");
@@ -107,7 +111,7 @@ static int ddLogLevel = LOG_LEVEL_INFO;
     }
     
     DDLogInfo(@"Playlist has stepped. Should groove to %@", track.spotifyTrack.title);
-    // [self.spotifyController playTrack:track.spotifyTrack];
+    [self.spotifyController playTrack:track.spotifyTrack];
 }
 
 - (void)handleTrackRequested:(NSNotification *)notification {

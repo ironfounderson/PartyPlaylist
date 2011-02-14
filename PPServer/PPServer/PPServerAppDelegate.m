@@ -16,6 +16,7 @@
 #import "DDTTYLogger.h"
 #import "DDLog.h"
 #import "PPSpotifySessionImpl.h"
+#import "NSFileManager+DirectoryLocations.h"
 
 #import "PPSpotifyTrack.h"
 #import "PPPlaylistUser.h"
@@ -55,6 +56,8 @@ static int ddLogLevel = LOG_LEVEL_INFO;
     spotifyController_.spotifySession = [[[PPSpotifySessionImpl alloc] init] autorelease];
     [spotifyController_ startSession];
     [httpServerController_ startServer];
+
+    DDLogInfo(@"Data folder is %@", [[NSFileManager defaultManager] applicationSupportDirectory]);
 }
 
 - (void)dealloc {

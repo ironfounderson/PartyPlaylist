@@ -18,6 +18,8 @@ extern NSString * const PPPlaylistTrackTitleIdentifier;
 
 @protocol PPPlaylistTrackDelegate <NSObject>
 - (void)playlistTrackIsLoaded:(PPPlaylistTrack *)track;
+- (void)playlistTrackHasAlbumCover:(PPPlaylistTrack *)track;
+
 @end
 
 @interface PPPlaylistTrack : NSObject {

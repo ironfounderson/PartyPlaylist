@@ -32,8 +32,8 @@
 
 
 @property (assign) NSObject<PPSpotifySessionDelegate> *delegate;
+@property (readonly) id session;
 - (BOOL)createSession:(NSError **)error;
 - (BOOL)loginUser:(NSString*)user password:(NSString*)passwd error:(NSError**)err;
 - (void)logout;
-
 @end

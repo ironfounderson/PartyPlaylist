@@ -14,6 +14,9 @@
 @synthesize link = link_;
 @synthesize artistName = artistName_;
 @synthesize title = title_;
+@synthesize albumLink = albumLink_;
+@synthesize albumName = albumName_;
+@synthesize albumCoverPath = albumCoverPath_;
 @synthesize loaded;
 @synthesize invalidLink;
 
@@ -31,6 +34,9 @@
     [link_ release];
     [artistName_ release];
     [title_ release];
+    [albumLink_ release];
+    [albumName_ release];
+    [albumCoverPath_ release];
     [super dealloc];
 }
 

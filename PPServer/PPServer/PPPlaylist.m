@@ -16,6 +16,7 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 
 NSString * const PPPlaylistTrackAddedNotification = @"PPPlaylistTrackAddedNotification";
 NSString * const PPPlaylistTrackLoadedNotification = @"PPPlaylistTrackLoadedNotification";
+NSString * const PPPlaylistAlbumCoverLoadedNotification = @"PPPlaylistTrackAlbumCoverLoadedNotification";
 NSString * const PPPlaylistStepNotification = @"PPPlaylistStepNotification";
 NSString * const PPPlaylistTrackRequestedNotification = @"PPPlaylistTrackRequestedNotification";
 
@@ -80,9 +81,15 @@ NSString * const PPPlaylistTrackRequestedNotification = @"PPPlaylistTrackRequest
     return plTrack;
 }
 
+#pragma mark - PPPlaylistTrack Delegate
+
 - (void)playlistTrackIsLoaded:(PPPlaylistTrack *)track {
     [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistTrackLoadedNotification 
                                                         object:track];
+}
+
+- (void)playlistTrackHasAlbumCover:(PPPlaylistTrack *)track {
+    
 }
 
 - (NSArray *)availableTracks {

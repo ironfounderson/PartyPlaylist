@@ -28,10 +28,22 @@
   float: clear;
   width: 900px;
   height:  50px;
-  background-color: #333;
+  background-color: #888;
+}
+
+#requesters ul {
+  list-style: none;
+}
+
+#requesters ul li {
+  display: inline;
 }
 
 #incoming {
   width: 900px;
   background-color: #CCC;
+}
+
+#incoming ul {
+  list-style: none;
 }

@@ -21,6 +21,5 @@
     audio_fifo_t audiofifo;
 }
 
-@property (readonly) sp_session *session;
 
 @end

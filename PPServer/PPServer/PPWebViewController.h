@@ -10,6 +10,7 @@
 
 @class WebView;
 @class PPTrackRequest;
+@class PPPlaylistTrack;
 
 /**
  Responsible for updating the web view in response to changes to the play list and requests and what not
@@ -22,5 +23,8 @@
 @property (assign) IBOutlet WebView *webView;
 
 - (void)showTrackRequest:(PPTrackRequest *)trackRequest;
+- (void)showPreviousAlbumCoverForTrack:(PPPlaylistTrack *)track;
+- (void)showCurrentAlbumCoverForTrack:(PPPlaylistTrack *)track;
+- (void)showNextAlbumCoverForTrack:(PPPlaylistTrack *)track;
 
 @end

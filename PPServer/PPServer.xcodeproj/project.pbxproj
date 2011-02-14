@@ -11,6 +11,8 @@
 		E124C8EF1305CA160097A72F /* PPPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8ED1305CA160097A72F /* PPPlayingViewController.m */; };
 		E124C8F31305CB510097A72F /* PPTrackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E124C8F21305CB510097A72F /* PPTrackView.xib */; };
 		E16337BA1307D8DA0051471A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16337B91307D8DA0051471A /* WebKit.framework */; };
+		E16369271309137100D71EE1 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = E16369261309137100D71EE1 /* NSFileManager+DirectoryLocations.m */; };
+		E163692A1309178200D71EE1 /* PPSpotifyAlbumImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E16369291309178100D71EE1 /* PPSpotifyAlbumImage.m */; };
 		E18DEA851307E08500CA4226 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = E18DEA841307E08500CA4226 /* index.html */; };
 		E18DEABB1307E59200CA4226 /* DDData.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEA901307E59200CA4226 /* DDData.m */; };
 		E18DEABC1307E59200CA4226 /* DDNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEA921307E59200CA4226 /* DDNumber.m */; };
@@ -136,6 +138,10 @@
 		E124C8ED1305CA160097A72F /* PPPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlayingViewController.m; sourceTree = "<group>"; };
 		E124C8F21305CB510097A72F /* PPTrackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPTrackView.xib; sourceTree = "<group>"; };
 		E16337B91307D8DA0051471A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		E16369251309137100D71EE1 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+DirectoryLocations.h"; path = "../../../../../SnowRob/Downloads/NSFileManager_DirectoryLocations/NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
+		E16369261309137100D71EE1 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+DirectoryLocations.m"; path = "../../../../../SnowRob/Downloads/NSFileManager_DirectoryLocations/NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
+		E16369281309178100D71EE1 /* PPSpotifyAlbumImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifyAlbumImage.h; sourceTree = "<group>"; };
+		E16369291309178100D71EE1 /* PPSpotifyAlbumImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyAlbumImage.m; sourceTree = "<group>"; };
 		E18DEA841307E08500CA4226 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		E18DEA8F1307E59200CA4226 /* DDData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDData.h; sourceTree = "<group>"; };
 		E18DEA901307E59200CA4226 /* DDData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDData.m; sourceTree = "<group>"; };
@@ -495,6 +501,8 @@
 				E1E7582313056A590048344E /* PPSpotifyController.m */,
 				E1E75838130576010048344E /* PPSpotifyTrack.h */,
 				E1E75839130576010048344E /* PPSpotifyTrack.m */,
+				E16369281309178100D71EE1 /* PPSpotifyAlbumImage.h */,
+				E16369291309178100D71EE1 /* PPSpotifyAlbumImage.m */,
 			);
 			name = Spotify;
 			sourceTree = "<group>";
@@ -604,6 +612,8 @@
 		E1FD03AE1305483E0085B2AA /* ExternalCode */ = {
 			isa = PBXGroup;
 			children = (
+				E16369251309137100D71EE1 /* NSFileManager+DirectoryLocations.h */,
+				E16369261309137100D71EE1 /* NSFileManager+DirectoryLocations.m */,
 				E18DEA8E1307E59200CA4226 /* cocoahttpserver */,
 				E1E75811130562DF0048344E /* libspotify */,
 				E1FD046F13054A630085B2AA /* oauthconsumer */,
@@ -977,6 +987,8 @@
 				E18DEADA1307E6B200CA4226 /* PPHTTPServerController.m in Sources */,
 				E1E230E213087B62006DD0E9 /* PPTrackRequest.m in Sources */,
 				E1E230E513088508006DD0E9 /* PPWebViewController.m in Sources */,
+				E16369271309137100D71EE1 /* NSFileManager+DirectoryLocations.m in Sources */,
+				E163692A1309178200D71EE1 /* PPSpotifyAlbumImage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

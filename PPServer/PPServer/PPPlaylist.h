@@ -14,7 +14,7 @@ extern NSString * const PPPlaylistTrackAddedNotification;
 extern NSString * const PPPlaylistTrackRequestedNotification;
 extern NSString * const PPPlaylistTrackLoadedNotification;
 extern NSString * const PPPlaylistStepNotification;
-
+extern NSString * const PPPlaylistAlbumCoverLoadedNotification;
 
 @class PPSpotifyTrack;
 @class PPPlaylistUser;

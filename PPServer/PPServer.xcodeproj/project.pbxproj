@@ -12,8 +12,8 @@
 		E124C8F31305CB510097A72F /* PPTrackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E124C8F21305CB510097A72F /* PPTrackView.xib */; };
 		E125517D130A78DB002E4027 /* less.js in Resources */ = {isa = PBXBuildFile; fileRef = E1255179130A78C0002E4027 /* less.js */; };
 		E125517E130A78DE002E4027 /* style.less.css in Resources */ = {isa = PBXBuildFile; fileRef = E125517A130A78C0002E4027 /* style.less.css */; };
+		E1255181130A8EC0002E4027 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = E1255180130A8EC0002E4027 /* NSFileManager+DirectoryLocations.m */; };
 		E16337BA1307D8DA0051471A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16337B91307D8DA0051471A /* WebKit.framework */; };
-		E16369271309137100D71EE1 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = E16369261309137100D71EE1 /* NSFileManager+DirectoryLocations.m */; };
 		E163692A1309178200D71EE1 /* PPSpotifyAlbumImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E16369291309178100D71EE1 /* PPSpotifyAlbumImage.m */; };
 		E163692C1309434900D71EE1 /* jquery.tmpl.js in Resources */ = {isa = PBXBuildFile; fileRef = E163692B1309433400D71EE1 /* jquery.tmpl.js */; };
 		E18DEA851307E08500CA4226 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = E18DEA841307E08500CA4226 /* index.html */; };
@@ -141,9 +141,9 @@
 		E124C8F21305CB510097A72F /* PPTrackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPTrackView.xib; sourceTree = "<group>"; };
 		E1255179130A78C0002E4027 /* less.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = less.js; sourceTree = "<group>"; };
 		E125517A130A78C0002E4027 /* style.less.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.less.css; sourceTree = "<group>"; };
+		E125517F130A8EC0002E4027 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
+		E1255180130A8EC0002E4027 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
 		E16337B91307D8DA0051471A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		E16369251309137100D71EE1 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+DirectoryLocations.h"; path = "../../../../../SnowRob/Downloads/NSFileManager_DirectoryLocations/NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
-		E16369261309137100D71EE1 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+DirectoryLocations.m"; path = "../../../../../SnowRob/Downloads/NSFileManager_DirectoryLocations/NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
 		E16369281309178100D71EE1 /* PPSpotifyAlbumImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifyAlbumImage.h; sourceTree = "<group>"; };
 		E16369291309178100D71EE1 /* PPSpotifyAlbumImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyAlbumImage.m; sourceTree = "<group>"; };
 		E163692B1309433400D71EE1 /* jquery.tmpl.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jquery.tmpl.js; sourceTree = "<group>"; };
@@ -618,8 +618,8 @@
 		E1FD03AE1305483E0085B2AA /* ExternalCode */ = {
 			isa = PBXGroup;
 			children = (
-				E16369251309137100D71EE1 /* NSFileManager+DirectoryLocations.h */,
-				E16369261309137100D71EE1 /* NSFileManager+DirectoryLocations.m */,
+				E125517F130A8EC0002E4027 /* NSFileManager+DirectoryLocations.h */,
+				E1255180130A8EC0002E4027 /* NSFileManager+DirectoryLocations.m */,
 				E18DEA8E1307E59200CA4226 /* cocoahttpserver */,
 				E1E75811130562DF0048344E /* libspotify */,
 				E1FD046F13054A630085B2AA /* oauthconsumer */,
@@ -995,8 +995,8 @@
 				E18DEADA1307E6B200CA4226 /* PPHTTPServerController.m in Sources */,
 				E1E230E213087B62006DD0E9 /* PPTrackRequest.m in Sources */,
 				E1E230E513088508006DD0E9 /* PPWebViewController.m in Sources */,
-				E16369271309137100D71EE1 /* NSFileManager+DirectoryLocations.m in Sources */,
 				E163692A1309178200D71EE1 /* PPSpotifyAlbumImage.m in Sources */,
+				E1255181130A8EC0002E4027 /* NSFileManager+DirectoryLocations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

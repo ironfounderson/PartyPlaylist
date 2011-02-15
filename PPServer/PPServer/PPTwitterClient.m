@@ -28,7 +28,7 @@ static int ddLogLevel = LOG_LEVEL_WARN;
     self = [super init];
     if (self) {
         highestSeenTweetId_ = 0;
-        username_ = [[NSString stringWithString:@"janesplaylist"] retain];
+        username_ = [[NSString stringWithString:PPTwitterUsername] retain];
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(handleSpotifyLoggedIn:) 
@@ -95,7 +95,7 @@ static int ddLogLevel = LOG_LEVEL_WARN;
         twitterEngine_ = [[MGTwitterEngine alloc] initWithDelegate:self];
         [twitterEngine_ setUsesSecureConnection:NO];
         [twitterEngine_ setConsumerKey:PPTwitterConsumerKey secret:PPTwitterConsumerSecret];
-        [twitterEngine_ setUsername:self.username];
+        [twitterEngine_ setUsername:PPTwitterUsername];
         
         OAToken *token = [[[OAToken alloc] initWithKey:PPTwitterAccessToken 
                                                 secret:PPTwitterAccessTokenSecret] autorelease];

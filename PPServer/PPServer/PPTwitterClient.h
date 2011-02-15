@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MGTwitterEngine.h"
 
+extern NSString * const PPTwitterUsername;
 extern NSString * const PPTwitterConsumerKey;
 extern NSString * const PPTwitterConsumerSecret;
 extern NSString * const PPTwitterAccessToken;

@@ -135,6 +135,7 @@ NSString * const PPPlaylistTrackRequestedNotification = @"PPPlaylistTrackRequest
 }
 
 - (void)step {
+    
     // First we move the tracks we have
     if (self.previousTrack) {
         [playedTracks_ addObject:self.previousTrack];
@@ -148,11 +149,22 @@ NSString * const PPPlaylistTrackRequestedNotification = @"PPPlaylistTrackRequest
         [self setCurrentTrack:self.nextTrack];
         [self setNextTrack:nil];
     }
-    
+
+    // Simple fix to wrap around the playlist
+    if ([[self availableTracks] count] == 0) {
+        for (PPPlaylistTrack *track in playedTracks_) {
+            if (![self findTrackWithLink:track.link]) {
+                [tracks_ addObject:track];
+            }
+        }
+        [playedTracks_ removeAllObjects];
+    }
+
     // Then we schedule the next
     PPPlaylistTrack *scheduledTrack = [self nextScheduledTrack];
     if ([tracks_ containsObject:scheduledTrack]) {
         [tracks_ removeObject:scheduledTrack];
+        [playedTracks_ addObject:scheduledTrack];
     }
     [self setNextTrack:scheduledTrack];
     [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistStepNotification 

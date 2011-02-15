@@ -1,6 +1,13 @@
+body {
+  background: #373737;
+  margin: 0px;
+  font-family: Helvetica;
+}
+
 #tracks {
   overflow: hidden;
   width: 1000px;
+  margin: 0px;
 }
 
 #previous-track {

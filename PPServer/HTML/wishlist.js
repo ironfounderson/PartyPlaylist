@@ -1,17 +1,36 @@
-function setPreviousAlbumCover(imageurl) {
-  setAlbumCover('previous-track', imageurl);
+function setPreviousAlbumInfo(imageurl) {
+  var info = {'AlbumCoverPicture': imageurl, 'PlayingInfoClass': 'previous-playing-info' };
+  var html = $('#nextPreviousTrackTemplate').tmpl(info);
+  setAlbumCover('#previous-track', html);
 }
 
-function setCurrentAlbumCover(imageurl) {
-  setAlbumCover('current-track', imageurl);
+function clearPreviousAlbumInfo() {
+  $('#previous-track').empty();
 }
 
-function setNextAlbumCover(imageurl) {
-  setAlbumCover('next-track', imageurl);
+function setNextAlbumInfo(imageurl) {
+ var info = {'AlbumCoverPicture': imageurl, 'PlayingInfoClass': 'next-playing-info' };
+ var html = $('#nextPreviousTrackTemplate').tmpl(info);
+ setAlbumCover('#next-track', html);
 }
 
-function setAlbumCover(track, imageurl) {
-  $('#'+track).css('background-image', "url('" + imageurl + "')");
+function clearNextAlbumInfo() {
+  $('#next-track').empty();
+}
+
+function setCurrentAlbumInfo(imageurl) {
+  var info = {'AlbumCoverPicture': imageurl};
+  var html = $('#currentTrackTemplate').tmpl(info);
+  setAlbumCover('#current-track', html);
+}
+
+function clearCurrentAlbumInfo() {
+  $('#current-track').empty();
+}
+
+function setAlbumCover(track, albumInfo) {
+  $(track).empty();
+  $(track).append(albumInfo);
 }
 
 function addTweet(trackRequest) {

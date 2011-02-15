@@ -16,6 +16,7 @@
 
 static int ddLogLevel = LOG_LEVEL_INFO;
 
+
 @implementation PPWebViewController
 
 @synthesize webView;
@@ -64,20 +65,26 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 #pragma mark - Update playing status
 
 - (void)showAlbumCoverForTrack:(PPPlaylistTrack *)track usingMethod:(NSString *)method {
-    PPSpotifyTrack *spTrack = track.spotifyTrack;
-    NSString *function = [NSString stringWithFormat:@"%@('%@')", method, spTrack.albumCoverPath];
+    NSString *function;
+    if (track) {
+        PPSpotifyTrack *spTrack = track.spotifyTrack;
+        function = [NSString stringWithFormat:@"set%@('%@')", method, spTrack.albumCoverPath];
+    }
+    else {
+        function = [NSString stringWithFormat:@"clear%@()", method];        
+    }
     [self updateWebView:function];        
 }
 
 - (void)showPreviousAlbumCoverForTrack:(PPPlaylistTrack *)track {
-    [self showAlbumCoverForTrack:track usingMethod:@"setPreviousAlbumCover"];
+    [self showAlbumCoverForTrack:track usingMethod:@"PreviousAlbumInfo"];
 }
 
 - (void)showCurrentAlbumCoverForTrack:(PPPlaylistTrack *)track {
-    [self showAlbumCoverForTrack:track usingMethod:@"setCurrentAlbumCover"];}
+    [self showAlbumCoverForTrack:track usingMethod:@"CurrentAlbumInfo"];}
 
 - (void)showNextAlbumCoverForTrack:(PPPlaylistTrack *)track {
-    [self showAlbumCoverForTrack:track usingMethod:@"setNextAlbumCover"];
+    [self showAlbumCoverForTrack:track usingMethod:@"NextAlbumInfo"];
 }
 
 - (void)showRequestingUsers:(NSArray *)users {

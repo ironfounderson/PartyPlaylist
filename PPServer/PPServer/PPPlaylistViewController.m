@@ -60,6 +60,9 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 
 }
 - (void)awakeFromNib {
+    [self.webView setUIDelegate:self];
+    [self.webView setFrameLoadDelegate:self];
+    
     trackRequests_ = [[NSMutableArray alloc] init];
     webUpdateQueue_ = dispatch_queue_create("com.roberthoglund.ppserver.webupdatequeue", NULL);
     NSString *path = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
@@ -139,6 +142,11 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 }
 
 
+- (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element 
+    defaultMenuItems:(NSArray *)defaultMenuItems {
+    return nil; // disable contextual menu for the webView
+}
+
 + (BOOL)isSelectorExcludedFromWebScript:(SEL)aSelector {
     NSLog(@"Selector %s - %@", __FUNCTION__, NSStringFromSelector(aSelector));
     return NO;
@@ -150,7 +158,9 @@ static int ddLogLevel = LOG_LEVEL_INFO;
 }
 
 - (void)showMessage:(NSString *)message {
-    NSRunAlertPanel(@"From WEBVIEW", message, nil, nil, nil);
+    DOMDocument *myDOMDocument = [[self.webView mainFrame] DOMDocument];
+    NSLog(@"%@", [[myDOMDocument body] outerHTML]);
+    
 }
 
 #pragma mark - Dynamic Logging

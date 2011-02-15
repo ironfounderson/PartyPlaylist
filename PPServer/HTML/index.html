@@ -1,15 +1,24 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet/less" type="text/css" href="style.less.css">
+  <script src="less.js" type="text/javascript"></script>
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="jquery.tmpl.js"></script>
   <script type="text/javascript" src="wishlist.js"></script>
 </head>
 <body>
-<input id="message_button" type="button" value="Show Message" onClick="addRequest({ProfilePicture: 'http://a3.twimg.com/sticky/default_profile_images/default_profile_6_normal.png', ProfileName: 'roho9035', TrackRequestText: 'Who Says by John Mayer'});" />
-  <!-- The part where the playing items are shown -->
+
+  <!-- <input type="button" onClick="setCurrentAlbumCover('/Users/robert/Library/Application Support/PPServer/images/spotifyalbum1mygkYAA7JFmU3cgOYasBi.jpg')"/> -->
+  <!-- The part where the people who have requested the current playing track are shown -->
+  <div id="request-box">
+    <ul id="requesters-list">
+    </ul>
+  </div>
+
+
   <div id="tracks">
+  
     <div id="previous-track">
     </div>
     
@@ -20,48 +29,40 @@
     </div>
     
   </div>
-  
-  <!-- The part where the people who have requested the current playing track are shown -->
-  <div id="requesters">
-    <ul id="requesters-list">
-    </ul>
-  </div>
-  
+      
   <!-- The part where incoming requests are shown -->
   <div id="incoming">
     <ul id="incoming-list">
     </ul>
   </div>
-  
-  
-  
-  
-  
-  
-  
+    
   <!-- Templates for updating the page -->
   
   <script id="tweetTemplate" type="text/x-jquery-tmpl">
     <li class="request-item">
-      <div class="profile-picture">
-        <img src="${ProfilePicture}" />
-      </div>
-      <div class="profile-name">
-        ${ProfileName} requested
-      </div>
-      <div class="track-request">
-        ${TrackRequestText}
-      </div>
+      <div class="profile-picture">         
+        <img src="${ProfilePicture}" class="profile-image">       
+      </div>       
+      <div class="profile-name">${ProfileName} requested</div>       
+      <div class="track-request">${TrackRequestText}</div>     
     </li>
   </script>
   
   
   <script id="requestTemplate" type="text/x-jquery-tmpl">
-    <li class="requester">
-      <img src="${ProfilePicture}" />
-    </li>
+      <li class="requester"><img src="${ProfilePicture}" class="profile-image"></li>
+  </script>
+
+  <script id="nextPreviousTrackTemplate" type="text/x-jquery-tmpl">
+      <img src="url(${AlbumCoverPicture})" class="np-album-cover reflect-below"/>
+      <div class="${PlayingInfoClass}"></div>
   </script>
   
-  
+  <script id="currentTrackTemplate" type="text/x-jquery-tmpl">
+      <img src="url(${AlbumCoverPicture})" class="current-album-cover"/>
+      <div class="current-playing-info"></div>
+      <div class="request-box-arrow"></div>    
+  </script>
+
 </body>
 </html>

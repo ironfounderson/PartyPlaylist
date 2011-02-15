@@ -1,0 +1,180 @@
+@bgcolor: #373737;
+
+body {
+  background: @bgcolor;
+  margin: 0px;
+  font-family: Helvetica;
+}
+
+// Album Cover Display
+
+@album-cover-width: 300px;
+@album-cover-height: 300px;
+@playing-width: @album-cover-width * 3 + 100;
+
+.album-cover {
+  position: relative;
+  display: block;
+  margin: auto;
+}
+
+.current-album-cover {
+  .album-cover;
+  top: 0px;
+  width: 300px;
+  height: 300px;
+}
+
+.np-album-cover {
+  .album-cover;
+  top: 50px;
+  width: 200px;
+  height: 200px;
+}
+
+
+.reflect-below {
+  -webkit-box-reflect:below 2px		    
+    -webkit-gradient(linear, left top, left bottom, 
+    from(transparent),
+    color-stop(0.8, transparent), 
+    to(white));
+}
+
+@playing-info-height: 75px;
+@playing-info-bgcolor: #000;
+.playing-info {
+  width: @album-cover-width;
+  height: @playing-info-height;
+  opacity: 0.8;
+  position: relative;
+}
+
+.current-playing-info {
+  .playing-info;
+  top: @playing-info-height *-1;
+  background: @playing-info-bgcolor;
+}
+
+.next-playing-info {
+  .playing-info;
+  top: 25px;
+  background: -webkit-gradient(linear, left top, right top, from(@playing-info-bgcolor), to(transparent));
+}
+
+.previous-playing-info {
+  .playing-info;
+  top: 25px;
+  background: -webkit-gradient(linear, right top, left top, from(@playing-info-bgcolor), to(transparent));
+}
+
+@playing-info-opacity: 0.85;
+
+.current-playing-info {
+  background: #000;
+  height: @playing-info-height;
+  width: 300px;
+  opacity: @playing-info-opacity;
+  position: relative;
+  top: @playing-info-height *-1;
+}
+
+#tracks {
+  overflow: hidden;
+  width: @playing-width;
+  margin: 0px;
+}
+
+.track-base {
+  float: left;
+  width: @album-cover-width;
+  height: @album-cover-height;
+}
+
+#previous-track {
+  background-color: #929292;
+  .track-base;
+}
+
+#current-track {
+ .track-base;
+}
+
+#next-track {
+  background-color: #929292;
+  .track-base;
+}
+
+@request-bgcolor: #313131;
+#request-box {
+  float: clear;
+  width: 900px;
+  height:  88px;
+  background-color: @request-bgcolor;
+}
+
+#request-box ul {
+  list-style: none;
+  margin: 0px;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+#request-box ul li {
+  display: inline;
+}
+
+#request-box li {
+  padding-left: 0px;
+  padding-right: 20px;
+}
+
+.request-box-arrow {
+  border-color: @request-bgcolor transparent transparent transparent;
+  border-style: solid;
+  border-width: 25px;
+  height:0;
+  width:0;
+  margin: auto;
+  position:  relative;
+  top: (@album-cover-height + @playing-info-height) * -1;
+}
+
+#incoming {
+  width: 900px;
+  background-color: #CCC;
+}
+
+#incoming ul {
+  list-style: none;
+  margin: 0px;
+  padding: 10px;
+}
+
+.request-item {
+  float: clear;
+  height: 60px;
+}
+
+.profile-picture {
+  float: left;
+  padding-right: 10px;
+}
+
+.profile-name {
+  float: clear;
+  font-size: 12px;
+  height: 18px;
+}
+
+.track-request {
+  font-size: 16px;
+  height: 30px;
+}
+
+.profile-image {
+  -webkit-border-radius: 5px;
+  width: 48px;
+  height: 48px;
+}
+

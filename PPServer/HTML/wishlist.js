@@ -34,6 +34,9 @@ function setAlbumCover(track, albumInfo) {
 }
 
 function addTweet(trackRequest) {
+  $('#incoming-list').each(function () {
+     $("li:gt(4)", this).remove();
+  });
   $( "#tweetTemplate").tmpl(trackRequest )
       .prependTo( "#incoming-list" );
 }

@@ -10,7 +10,7 @@ body {
 
 @album-cover-width: 300px;
 @album-cover-height: 300px;
-@playing-width: @album-cover-width * 3 + 100;
+@playing-width: @album-cover-width * 3;
 
 .album-cover {
   position: relative;

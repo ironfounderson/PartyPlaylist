@@ -60,8 +60,6 @@ static int ddLogLevel = LOG_LEVEL_INFO;
     [self updateWebView:method];
 }
 
-
-
 #pragma mark - Update playing status
 
 - (void)showAlbumCoverForTrack:(PPPlaylistTrack *)track usingMethod:(NSString *)method {

@@ -42,7 +42,6 @@
 		E18DEAD41307E60100CA4226 /* PPHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAD31307E60100CA4226 /* PPHTTPConnection.m */; };
 		E18DEADA1307E6B200CA4226 /* PPHTTPServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAD91307E6B200CA4226 /* PPHTTPServerController.m */; };
 		E18DEAE813081A4E00CA4226 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = E18DEAE513081A4E00CA4226 /* style.css */; };
-		E18DEAE913081A4E00CA4226 /* tweetwishtemplate.html in Resources */ = {isa = PBXBuildFile; fileRef = E18DEAE613081A4E00CA4226 /* tweetwishtemplate.html */; };
 		E18DEAEA13081A7500CA4226 /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = E18DEAE413081A4E00CA4226 /* jquery.js */; };
 		E18DEAED13081DA500CA4226 /* wishlist.js in Resources */ = {isa = PBXBuildFile; fileRef = E18DEAEB13081D9900CA4226 /* wishlist.js */; };
 		E19A87301308555000BECD44 /* PPSpotifyTweetParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8EA13059F690097A72F /* PPSpotifyTweetParserTests.m */; };
@@ -199,7 +198,6 @@
 		E18DEAE01308102E00CA4226 /* PPPlaylistTrackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlaylistTrackTests.m; sourceTree = "<group>"; };
 		E18DEAE413081A4E00CA4226 /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
 		E18DEAE513081A4E00CA4226 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
-		E18DEAE613081A4E00CA4226 /* tweetwishtemplate.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tweetwishtemplate.html; sourceTree = "<group>"; };
 		E18DEAEB13081D9900CA4226 /* wishlist.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = wishlist.js; sourceTree = "<group>"; };
 		E19A87291308553E00BECD44 /* PPServerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PPServerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E19A872A1308553E00BECD44 /* PPServerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PPServerTests-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -378,7 +376,6 @@
 				E163692B1309433400D71EE1 /* jquery.tmpl.js */,
 				E18DEAE413081A4E00CA4226 /* jquery.js */,
 				E18DEAE513081A4E00CA4226 /* style.css */,
-				E18DEAE613081A4E00CA4226 /* tweetwishtemplate.html */,
 				E18DEA841307E08500CA4226 /* index.html */,
 				E18DEAEB13081D9900CA4226 /* wishlist.js */,
 			);
@@ -879,7 +876,6 @@
 				E18DEAC71307E59200CA4226 /* LICENSE.txt in Resources */,
 				E18DEAC81307E59200CA4226 /* About.txt in Resources */,
 				E18DEACA1307E59200CA4226 /* About.txt in Resources */,
-				E18DEAE913081A4E00CA4226 /* tweetwishtemplate.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

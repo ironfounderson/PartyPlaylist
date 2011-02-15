@@ -14,7 +14,7 @@
 #import "PPPlaylistUser.h"
 #import "DDLog.h"
 
-static int ddLogLevel = LOG_LEVEL_INFO;
+static int ddLogLevel = LOG_LEVEL_WARN;
 
 
 @implementation PPWebViewController

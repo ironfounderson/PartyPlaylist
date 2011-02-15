@@ -92,11 +92,17 @@ NSString * const PPPlaylistTrackRequestedNotification = @"PPPlaylistTrackRequest
     
 }
 
+- (void)playlistTrackIsInvalid:(PPPlaylistTrack *)track {
+    if (track == self.currentTrack) {
+        [self step];
+    }
+}
+
 - (NSArray *)availableTracks {
     __block NSMutableArray *items = [NSMutableArray array];
     dispatch_sync(playlistQueue_, ^{
         for (PPPlaylistTrack *track in tracks_) {
-            if (track.spotifyTrack.isLoaded) {
+            if (track.spotifyTrack.isLoaded && !track.spotifyTrack.invalidTrack) {
                 [items addObject:track];
             }
         }
@@ -151,7 +157,7 @@ NSString * const PPPlaylistTrackRequestedNotification = @"PPPlaylistTrackRequest
     }
 
     // Simple fix to wrap around the playlist
-    if ([[self availableTracks] count] == 0) {
+    if ([[self availableTracks] count] == 0) {        
         for (PPPlaylistTrack *track in playedTracks_) {
             if (![self findTrackWithLink:track.link]) {
                 [tracks_ addObject:track];
@@ -161,11 +167,13 @@ NSString * const PPPlaylistTrackRequestedNotification = @"PPPlaylistTrackRequest
     }
 
     // Then we schedule the next
-    PPPlaylistTrack *scheduledTrack = [self nextScheduledTrack];
-    if ([tracks_ containsObject:scheduledTrack]) {
-        [tracks_ removeObject:scheduledTrack];
-        [playedTracks_ addObject:scheduledTrack];
-    }
+    __block PPPlaylistTrack *scheduledTrack = [self nextScheduledTrack];
+    dispatch_sync(playlistQueue_, ^{
+        if ([tracks_ containsObject:scheduledTrack]) {
+            [tracks_ removeObject:scheduledTrack];
+            [playedTracks_ addObject:scheduledTrack];
+        }
+    });
     [self setNextTrack:scheduledTrack];
     [[NSNotificationCenter defaultCenter] postNotificationName:PPPlaylistStepNotification 
                                                         object:self];

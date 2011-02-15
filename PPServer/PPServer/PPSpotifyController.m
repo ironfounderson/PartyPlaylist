@@ -108,7 +108,7 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
     dispatch_async(spotifyQueue_, ^{
         sp_link *link = sp_link_create_from_string([spTrack.link UTF8String]);
         if (link == NULL || sp_link_type(link) != SP_LINKTYPE_TRACK) {
-            spTrack.invalidLink = YES;
+            spTrack.invalidTrack = YES;
             DDLogWarn(@"'%@' not a valid track link", spTrack.link);
             if (link) {
                 sp_link_release(link);
@@ -168,6 +168,7 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
             return;
         }
         if (loadError != SP_ERROR_OK) {
+            spTrack.invalidTrack = YES;
             DDLogError(@"Track could not be loaded with error code = %d", loadError);
             return;
         }
@@ -220,6 +221,7 @@ NSString * const PPSpotifyTrackEndedPlayingNotification = @"PPSpotifyTrackEndedP
         if (sp_track_is_loaded(_self.queuedTrack.track)) {
             sp_error loadError = sp_session_player_load(self.session, _self.queuedTrack.track);
             if (loadError != SP_ERROR_OK) {
+                _self.queuedTrack.spotifyTrack.invalidTrack = YES;
                 DDLogError(@"Track could not be loaded with error code = %d", loadError);
                 return;
             }

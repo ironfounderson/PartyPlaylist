@@ -17,9 +17,11 @@ NSString * const PPPlaylistTrackArtistNameIdentifier = @"artistName";
 NSString * const PPPlaylistTrackWishCountIdentifier = @"wishCount";
 NSString * const PPPlaylistTrackTitleIdentifier = @"title";
 
+typedef void(^voidBlock)();
 
 @interface PPPlaylistTrack()
 - (void)subscribeToSpotifyTrack;
+- (void)unsubscribeFromSpotifyTrack;
 - (PPPlaylistUser *)findUser:(PPPlaylistUser *)user;
 @end
 
@@ -44,20 +46,30 @@ NSString * const PPPlaylistTrackTitleIdentifier = @"title";
 }
 
 - (void)dealloc {
+    [self unsubscribeFromSpotifyTrack];
+    [observedKeyPaths_ release];
     [spotifyTrack_ release];
     [users_ release];
     [super dealloc];
 }
 
 - (void)subscribeToSpotifyTrack {
-    [spotifyTrack_ addObserver:self forKeyPath:@"loaded"
-                       options:(NSKeyValueObservingOptionNew |
-                                NSKeyValueObservingOptionOld)
-                       context:NULL];
-    [spotifyTrack_ addObserver:self forKeyPath:@"albumCoverPath"
-                       options:(NSKeyValueObservingOptionNew |
-                                NSKeyValueObservingOptionOld)
-                       context:NULL];
+    observedKeyPaths_ = [NSArray arrayWithObjects:@"loaded", @"albumCoverPath", @"invalidTrack", nil];
+    [observedKeyPaths_ retain];
+    for (NSString *keyPath in observedKeyPaths_) {
+        [spotifyTrack_ addObserver:self forKeyPath:keyPath
+                           options:(NSKeyValueObservingOptionNew |
+                                    NSKeyValueObservingOptionOld)
+                           context:nil];        
+   
+    }
+
+}
+
+- (void)unsubscribeFromSpotifyTrack {
+    for (NSString *keyPath in observedKeyPaths_) {
+        [spotifyTrack_ removeObserver:self forKeyPath:keyPath];
+    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -71,6 +83,11 @@ NSString * const PPPlaylistTrackTitleIdentifier = @"title";
     }
     else if ([keyPath isEqual:@"albumCoverPath"]) {
         [self.delegate playlistTrackHasAlbumCover:self];
+    }
+    else if ([keyPath isEqualToString:@"invalidTrack"]) {
+        if (self.spotifyTrack.invalidTrack) {
+            [self.delegate playlistTrackIsInvalid:self];        
+        }
     }
 }
 

@@ -19,7 +19,7 @@ extern NSString * const PPPlaylistTrackTitleIdentifier;
 @protocol PPPlaylistTrackDelegate <NSObject>
 - (void)playlistTrackIsLoaded:(PPPlaylistTrack *)track;
 - (void)playlistTrackHasAlbumCover:(PPPlaylistTrack *)track;
-
+- (void)playlistTrackIsInvalid:(PPPlaylistTrack *)track;
 @end
 
 @interface PPPlaylistTrack : NSObject {
@@ -28,6 +28,7 @@ extern NSString * const PPPlaylistTrackTitleIdentifier;
      List of of all users that requested this track
      */
     NSMutableArray *users_;
+    NSArray *observedKeyPaths_;
 }
 
 + (id)playlistTrackWithSpotifyTrack:(PPSpotifyTrack *)spTrack;

@@ -18,12 +18,12 @@
 @synthesize albumName = albumName_;
 @synthesize albumCoverPath = albumCoverPath_;
 @synthesize loaded;
-@synthesize invalidLink;
+@synthesize invalidTrack;
 
 - (id)init {
     self = [super init];
     if (self) {
-        invalidLink = NO;
+        invalidTrack = NO;
         loaded = NO;
     }
     

@@ -10,7 +10,7 @@
 #import "HTTPServer.h"
 #import "DDLog.h"
 #import "PPHTTPConnection.h"
-
+#import "PPTwitterClient.h"
 static int ddLogLevel = LOG_LEVEL_INFO;
 
 NSString * const PPBonjourType = @"_spp._tcp";
@@ -48,6 +48,7 @@ NSString * const PPBonjourType = @"_spp._tcp";
     
     [httpServer_ setConnectionClass:[PPHTTPConnection class]];    
     [httpServer_ setType:PPBonjourType];
+    [httpServer_ setName:PPTwitterUsername];
     
     NSError *error;
 	BOOL success = [httpServer_ start:&error];

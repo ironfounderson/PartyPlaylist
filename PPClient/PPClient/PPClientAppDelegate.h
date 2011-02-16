@@ -11,9 +11,10 @@
 @class PPWishlistModel;
 @class PPSearchController;
 @class PPWishlistController;
+@class PPAppController;
 
 @interface PPClientAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
-
+    BOOL freshStart_;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -25,5 +26,7 @@
 @property (nonatomic, retain) IBOutlet PPSearchController *searchController;
 
 @property (nonatomic, retain) IBOutlet PPWishlistController *wishlistController;
+
+@property (nonatomic, retain) IBOutlet PPAppController *appController;
 
 @end

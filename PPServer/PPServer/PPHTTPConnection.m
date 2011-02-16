@@ -14,6 +14,7 @@ const int httpLogLevel = HTTP_LOG_LEVEL_VERBOSE;
 
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method 
                                               URI:(NSString *)path {
+    HTTPLogInfo(@"I got a %@ request %@", method, path);
     return [super httpResponseForMethod:method URI:path];
 }
 

@@ -10,6 +10,7 @@
 
 
 @implementation PPPlayingController
+@synthesize noServerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -20,8 +21,7 @@
     return self;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [super dealloc];
 }
 
@@ -35,23 +35,39 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)viewDidUnload
-{
+- (void)viewDidUnload {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.noServerView = nil;
 }
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+ 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.noServerView.frame = self.view.frame;
+    [self.view addSubview:self.noServerView];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+}
+
+- (UIView *)noServerView {
+    if (!noServerView)  {
+        [[NSBundle mainBundle] loadNibNamed:@"PPPlayingNoServerView" owner:self options:nil];
+    }
+    return noServerView;
+}
 @end

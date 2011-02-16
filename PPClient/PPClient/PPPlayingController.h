@@ -10,7 +10,10 @@
 
 
 @interface PPPlayingController : UIViewController {
-    
+    NSNetServiceBrowser *netServiceBrowser_;
 }
+
+@property (nonatomic, retain) IBOutlet UIView *noServerView;
+
 
 @end

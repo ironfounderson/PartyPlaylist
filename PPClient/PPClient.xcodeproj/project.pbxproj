@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E11CADEE130C173400BDEC69 /* PPPlayingNoServerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11CADED130C173400BDEC69 /* PPPlayingNoServerView.xib */; };
 		E1A631C51304548400EFF8E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C41304548400EFF8E5 /* UIKit.framework */; };
 		E1A631C71304548400EFF8E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C61304548400EFF8E5 /* Foundation.framework */; };
 		E1A631C91304548400EFF8E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C81304548400EFF8E5 /* CoreGraphics.framework */; };
@@ -62,6 +63,8 @@
 		E1BED6F013046E3F00064E6A /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6E013046E3F00064E6A /* CJSONSerializer.m */; };
 		E1BED6F113046E3F00064E6A /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6E013046E3F00064E6A /* CJSONSerializer.m */; };
 		E1BED6F21304712900064E6A /* PPTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6C813046CC100064E6A /* PPTrack.m */; };
+		E1E03FFF130BA31A001C1806 /* PPBonjourBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E03FFE130BA31A001C1806 /* PPBonjourBrowser.m */; };
+		E1E04003130BAD11001C1806 /* PPAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E04002130BAD11001C1806 /* PPAppController.m */; };
 		E1FD036913051C290085B2AA /* PPWishlistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD036813051C290085B2AA /* PPWishlistModel.m */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +79,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E11CADED130C173400BDEC69 /* PPPlayingNoServerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPPlayingNoServerView.xib; sourceTree = "<group>"; };
 		E1A631C01304548400EFF8E5 /* PPClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A631C41304548400EFF8E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E1A631C61304548400EFF8E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,7 +98,7 @@
 		E1BED667130458C900064E6A /* PPPlayingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPlayingController.h; sourceTree = "<group>"; };
 		E1BED668130458C900064E6A /* PPPlayingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlayingController.m; sourceTree = "<group>"; };
 		E1BED669130458C900064E6A /* PPPlayingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPPlayingController.xib; sourceTree = "<group>"; };
-		E1BED66C130458DD00064E6A /* PPWishlistController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PPWishlistController.h; sourceTree = "<group>"; };
+		E1BED66C130458DD00064E6A /* PPWishlistController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPWishlistController.h; sourceTree = "<group>"; };
 		E1BED66D130458DD00064E6A /* PPWishlistController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPWishlistController.m; sourceTree = "<group>"; };
 		E1BED66E130458DD00064E6A /* PPWishController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPWishController.xib; sourceTree = "<group>"; };
 		E1BED671130458F100064E6A /* PPSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSearchController.h; sourceTree = "<group>"; };
@@ -153,6 +157,10 @@
 		E1BED6DF13046E3F00064E6A /* CJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializer.h; sourceTree = "<group>"; };
 		E1BED6E013046E3F00064E6A /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
 		E1BED6E113046E3F00064E6A /* JSONRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRepresentation.h; sourceTree = "<group>"; };
+		E1E03FFD130BA31A001C1806 /* PPBonjourBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPBonjourBrowser.h; sourceTree = "<group>"; };
+		E1E03FFE130BA31A001C1806 /* PPBonjourBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPBonjourBrowser.m; sourceTree = "<group>"; };
+		E1E04001130BAD11001C1806 /* PPAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPAppController.h; sourceTree = "<group>"; };
+		E1E04002130BAD11001C1806 /* PPAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPAppController.m; sourceTree = "<group>"; };
 		E1FD036713051C290085B2AA /* PPWishlistModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPWishlistModel.h; sourceTree = "<group>"; };
 		E1FD036813051C290085B2AA /* PPWishlistModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPWishlistModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -275,6 +283,7 @@
 				E1BED66E130458DD00064E6A /* PPWishController.xib */,
 				E1BED673130458F100064E6A /* PPSearchController.xib */,
 				E1BED6781304590700064E6A /* PPSettingsController.xib */,
+				E11CADED130C173400BDEC69 /* PPPlayingNoServerView.xib */,
 			);
 			name = xibs;
 			sourceTree = "<group>";
@@ -290,6 +299,8 @@
 				E1BED672130458F100064E6A /* PPSearchController.m */,
 				E1BED6761304590700064E6A /* PPSettingsController.h */,
 				E1BED6771304590700064E6A /* PPSettingsController.m */,
+				E1E04001130BAD11001C1806 /* PPAppController.h */,
+				E1E04002130BAD11001C1806 /* PPAppController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -308,6 +319,8 @@
 				E1BED6851304628000064E6A /* PPSearchModel.m */,
 				E1FD036713051C290085B2AA /* PPWishlistModel.h */,
 				E1FD036813051C290085B2AA /* PPWishlistModel.m */,
+				E1E03FFD130BA31A001C1806 /* PPBonjourBrowser.h */,
+				E1E03FFE130BA31A001C1806 /* PPBonjourBrowser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -492,6 +505,7 @@
 				E1BED670130458DD00064E6A /* PPWishController.xib in Resources */,
 				E1BED675130458F100064E6A /* PPSearchController.xib in Resources */,
 				E1BED67A1304590800064E6A /* PPSettingsController.xib in Resources */,
+				E11CADEE130C173400BDEC69 /* PPPlayingNoServerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +566,8 @@
 				E1BED6EE13046E3F00064E6A /* CJSONScanner.m in Sources */,
 				E1BED6F013046E3F00064E6A /* CJSONSerializer.m in Sources */,
 				E1FD036913051C290085B2AA /* PPWishlistModel.m in Sources */,
+				E1E03FFF130BA31A001C1806 /* PPBonjourBrowser.m in Sources */,
+				E1E04003130BAD11001C1806 /* PPAppController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

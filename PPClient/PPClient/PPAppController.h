@@ -9,15 +9,16 @@
 #import <Foundation/Foundation.h>
 
 @class PPBonjourBrowser;
+@class PPPlayingController;
 
 /**
  The main controller
  */
 @interface PPAppController : NSObject {
-    
 }
 
 @property (nonatomic, retain) PPBonjourBrowser *bonjourBrowser;
+@property (nonatomic, retain) IBOutlet PPPlayingController *playingController;
 
 - (void)startController:(BOOL)isFreshStart;
 - (void)stopController;

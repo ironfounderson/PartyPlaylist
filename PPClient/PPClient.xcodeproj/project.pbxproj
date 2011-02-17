@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E11CADEE130C173400BDEC69 /* PPPlayingNoServerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11CADED130C173400BDEC69 /* PPPlayingNoServerView.xib */; };
+		E11CADF3130C19A600BDEC69 /* PPChoosePlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = E11CADF1130C19A400BDEC69 /* PPChoosePlaylistController.m */; };
+		E11CADF4130C19A600BDEC69 /* PPChoosePlaylistController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11CADF2130C19A500BDEC69 /* PPChoosePlaylistController.xib */; };
+		E11CADF7130C1B4900BDEC69 /* UIViewController+PPModal.m in Sources */ = {isa = PBXBuildFile; fileRef = E11CADF6130C1B4700BDEC69 /* UIViewController+PPModal.m */; };
+		E1314D0A130CEDC500758F2A /* TableViewControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = E1314D09130CEDC500758F2A /* TableViewControllerBase.m */; };
 		E1A631C51304548400EFF8E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C41304548400EFF8E5 /* UIKit.framework */; };
 		E1A631C71304548400EFF8E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C61304548400EFF8E5 /* Foundation.framework */; };
 		E1A631C91304548400EFF8E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C81304548400EFF8E5 /* CoreGraphics.framework */; };
@@ -19,6 +22,8 @@
 		E1A631EC1304548400EFF8E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C61304548400EFF8E5 /* Foundation.framework */; };
 		E1A631ED1304548400EFF8E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C81304548400EFF8E5 /* CoreGraphics.framework */; };
 		E1A631F51304548500EFF8E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1A631F31304548500EFF8E5 /* InfoPlist.strings */; };
+		E1BB7150130D27F800F13FDB /* PPPlaylistRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BB714F130D27F800F13FDB /* PPPlaylistRequest.m */; };
+		E1BBB51B130D481000524485 /* PPConnectingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1BBB51A130D481000524485 /* PPConnectingView.xib */; };
 		E1BED66A130458C900064E6A /* PPPlayingController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED668130458C900064E6A /* PPPlayingController.m */; };
 		E1BED66B130458C900064E6A /* PPPlayingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1BED669130458C900064E6A /* PPPlayingController.xib */; };
 		E1BED66F130458DD00064E6A /* PPWishlistController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED66D130458DD00064E6A /* PPWishlistController.m */; };
@@ -79,7 +84,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E11CADED130C173400BDEC69 /* PPPlayingNoServerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPPlayingNoServerView.xib; sourceTree = "<group>"; };
+		E11CADF0130C19A300BDEC69 /* PPChoosePlaylistController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPChoosePlaylistController.h; sourceTree = "<group>"; };
+		E11CADF1130C19A400BDEC69 /* PPChoosePlaylistController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPChoosePlaylistController.m; sourceTree = "<group>"; };
+		E11CADF2130C19A500BDEC69 /* PPChoosePlaylistController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPChoosePlaylistController.xib; sourceTree = "<group>"; };
+		E11CADF5130C1B4700BDEC69 /* UIViewController+PPModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PPModal.h"; sourceTree = "<group>"; };
+		E11CADF6130C1B4700BDEC69 /* UIViewController+PPModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PPModal.m"; sourceTree = "<group>"; };
+		E1314D08130CEDC500758F2A /* TableViewControllerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewControllerBase.h; sourceTree = "<group>"; };
+		E1314D09130CEDC500758F2A /* TableViewControllerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewControllerBase.m; sourceTree = "<group>"; };
 		E1A631C01304548400EFF8E5 /* PPClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A631C41304548400EFF8E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E1A631C61304548400EFF8E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -95,6 +106,9 @@
 		E1A631F21304548500EFF8E5 /* PPClientTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PPClientTests-Info.plist"; sourceTree = "<group>"; };
 		E1A631F41304548500EFF8E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E1A631F61304548500EFF8E5 /* PPClientTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PPClientTests-Prefix.pch"; sourceTree = "<group>"; };
+		E1BB714E130D27F800F13FDB /* PPPlaylistRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PPPlaylistRequest.h; sourceTree = "<group>"; };
+		E1BB714F130D27F800F13FDB /* PPPlaylistRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlaylistRequest.m; sourceTree = "<group>"; };
+		E1BBB51A130D481000524485 /* PPConnectingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPConnectingView.xib; sourceTree = "<group>"; };
 		E1BED667130458C900064E6A /* PPPlayingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPlayingController.h; sourceTree = "<group>"; };
 		E1BED668130458C900064E6A /* PPPlayingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlayingController.m; sourceTree = "<group>"; };
 		E1BED669130458C900064E6A /* PPPlayingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPPlayingController.xib; sourceTree = "<group>"; };
@@ -278,12 +292,13 @@
 		E1BED6631304582700064E6A /* xibs */ = {
 			isa = PBXGroup;
 			children = (
-				E1A631D61304548400EFF8E5 /* MainWindow.xib */,
 				E1BED669130458C900064E6A /* PPPlayingController.xib */,
+				E1A631D61304548400EFF8E5 /* MainWindow.xib */,
+				E11CADF2130C19A500BDEC69 /* PPChoosePlaylistController.xib */,
 				E1BED66E130458DD00064E6A /* PPWishController.xib */,
 				E1BED673130458F100064E6A /* PPSearchController.xib */,
 				E1BED6781304590700064E6A /* PPSettingsController.xib */,
-				E11CADED130C173400BDEC69 /* PPPlayingNoServerView.xib */,
+				E1BBB51A130D481000524485 /* PPConnectingView.xib */,
 			);
 			name = xibs;
 			sourceTree = "<group>";
@@ -301,6 +316,12 @@
 				E1BED6771304590700064E6A /* PPSettingsController.m */,
 				E1E04001130BAD11001C1806 /* PPAppController.h */,
 				E1E04002130BAD11001C1806 /* PPAppController.m */,
+				E11CADF0130C19A300BDEC69 /* PPChoosePlaylistController.h */,
+				E11CADF1130C19A400BDEC69 /* PPChoosePlaylistController.m */,
+				E1314D08130CEDC500758F2A /* TableViewControllerBase.h */,
+				E1314D09130CEDC500758F2A /* TableViewControllerBase.m */,
+				E11CADF5130C1B4700BDEC69 /* UIViewController+PPModal.h */,
+				E11CADF6130C1B4700BDEC69 /* UIViewController+PPModal.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -321,6 +342,8 @@
 				E1FD036813051C290085B2AA /* PPWishlistModel.m */,
 				E1E03FFD130BA31A001C1806 /* PPBonjourBrowser.h */,
 				E1E03FFE130BA31A001C1806 /* PPBonjourBrowser.m */,
+				E1BB714E130D27F800F13FDB /* PPPlaylistRequest.h */,
+				E1BB714F130D27F800F13FDB /* PPPlaylistRequest.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -505,7 +528,8 @@
 				E1BED670130458DD00064E6A /* PPWishController.xib in Resources */,
 				E1BED675130458F100064E6A /* PPSearchController.xib in Resources */,
 				E1BED67A1304590800064E6A /* PPSettingsController.xib in Resources */,
-				E11CADEE130C173400BDEC69 /* PPPlayingNoServerView.xib in Resources */,
+				E11CADF4130C19A600BDEC69 /* PPChoosePlaylistController.xib in Resources */,
+				E1BBB51B130D481000524485 /* PPConnectingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +592,10 @@
 				E1FD036913051C290085B2AA /* PPWishlistModel.m in Sources */,
 				E1E03FFF130BA31A001C1806 /* PPBonjourBrowser.m in Sources */,
 				E1E04003130BAD11001C1806 /* PPAppController.m in Sources */,
+				E11CADF3130C19A600BDEC69 /* PPChoosePlaylistController.m in Sources */,
+				E11CADF7130C1B4900BDEC69 /* UIViewController+PPModal.m in Sources */,
+				E1314D0A130CEDC500758F2A /* TableViewControllerBase.m in Sources */,
+				E1BB7150130D27F800F13FDB /* PPPlaylistRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

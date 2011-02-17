@@ -49,7 +49,11 @@ NSString * const PPBonjourType = @"_spp._tcp";
     [httpServer_ setConnectionClass:[PPHTTPConnection class]];    
     [httpServer_ setType:PPBonjourType];
     [httpServer_ setName:PPTwitterUsername];
-    
+    [httpServer_ setTXTRecordDictionary:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      @"UNIQUE-SERVER-NAME", @"UUID", 
+      PPTwitterUsername, @"TWITTERUSER", nil]];
+                                             
     NSError *error;
 	BOOL success = [httpServer_ start:&error];
     if (!success) {

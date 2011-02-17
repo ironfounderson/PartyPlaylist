@@ -8,12 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const PPBonjourBrowserServicesUpdatedNotification;
+extern NSString * const PPBonjourBrowserPlaylistAvailableNotification;
 
-@interface PPBonjourBrowser : NSObject {
+/**
+ Keeps track of the available playlist servers. 
+ */
+@interface PPBonjourBrowser : NSObject <NSNetServiceBrowserDelegate> {
 @private
 }
 
+@property (nonatomic, assign) NSString *playlistName;
+@property (nonatomic, assign) NSString *playlistAddress;
+@property (readonly) BOOL isPlaylistAvailable;
+
 - (void)start;
 - (void)stop;
-
+- (NSArray *)availableServices;
+- (void)setServiceAsSelectedPlaylist:(NSNetService *)service;
 @end

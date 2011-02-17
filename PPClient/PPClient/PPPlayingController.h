@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PPPlaylistRequest.h"
 
+@class PPBonjourBrowser;
 
-@interface PPPlayingController : UIViewController {
-    NSNetServiceBrowser *netServiceBrowser_;
+@interface PPPlayingController : UIViewController <PPPlaylistRequestDelegate> {
 }
 
-@property (nonatomic, retain) IBOutlet UIView *noServerView;
+@property (nonatomic, retain) IBOutlet UILabel *connectingMessage;
+@property (nonatomic, retain) IBOutlet UIView *connectingView;
+@property (nonatomic, assign) PPBonjourBrowser *bonjourBrowser;
 
+- (IBAction)handleChoosePlaylist:(id)sender;
 
 @end

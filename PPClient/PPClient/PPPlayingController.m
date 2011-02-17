@@ -7,13 +7,23 @@
 //
 
 #import "PPPlayingController.h"
+#import "PPChoosePlaylistController.h"
+#import "UIViewController+PPModal.h"
+#import "PPBonjourBrowser.h"
 
+@interface PPPlayingController()
+@property (getter=isConnected) BOOL connected;
+@property (nonatomic, readonly) PPPlaylistRequest *playlistRequest;
+@end
 
 @implementation PPPlayingController
-@synthesize noServerView;
+@synthesize connectingMessage;
+@synthesize connectingView = connectingView_;
+@synthesize bonjourBrowser;
+@synthesize connected;
+@synthesize playlistRequest = playlistRequest_;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -22,38 +32,75 @@
 }
 
 - (void)dealloc {
+    [connectingView_ release];
+    [playlistRequest_ release];
     [super dealloc];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.connected = NO;
 }
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-    self.noServerView = nil;
+    self.connectingView = nil;
 }
- 
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)showNoServerView {
+    self.connectingView.frame = self.view.frame;
+    self.connectingMessage.text = NSLocalizedString(@"No playlist selected", 
+                                                    @"No playlist selected");
+    [self.view addSubview:self.connectingView];
+    
+}
+
+- (void)showConnectingView {
+    self.connectingView.frame = self.view.frame;
+    self.connectingMessage.text = 
+    [NSString stringWithFormat: NSLocalizedString(@"Connecting to '%@'", 
+                                                  @"Connecting to playlist"), 
+     self.bonjourBrowser.playlistName];
+    [self.view addSubview:self.connectingView];
+}
+
+- (void)showPlayingView {
+    if (self.connectingView.superview) {
+        [self.connectingView removeFromSuperview];
+    }
+}
+
+- (void)playlistAvailabilityChange:(NSNotification *)notification {
+    if (self.bonjourBrowser.isPlaylistAvailable) {
+        [self showPlayingView];
+    }
+    else {
+        if (self.bonjourBrowser.playlistAddress) {
+            [self showConnectingView];        
+        }
+        else {
+            [self showNoServerView];
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.noServerView.frame = self.view.frame;
-    [self.view addSubview:self.noServerView];
+    [self playlistAvailabilityChange:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(playlistAvailabilityChange:) 
+                                                 name:PPBonjourBrowserPlaylistAvailableNotification 
+                                               object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -62,12 +109,38 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self 
+                                                    name:PPBonjourBrowserPlaylistAvailableNotification 
+                                                  object:nil];
 }
 
-- (UIView *)noServerView {
-    if (!noServerView)  {
-        [[NSBundle mainBundle] loadNibNamed:@"PPPlayingNoServerView" owner:self options:nil];
+- (UIView *)connectingView {
+    if (!connectingView_)  {
+        [[NSBundle mainBundle] loadNibNamed:@"PPConnectingView" owner:self options:nil];
     }
-    return noServerView;
+    return connectingView_;
 }
+
+- (PPPlaylistRequest *)playlistRequest {
+    if (!playlistRequest_) {
+        playlistRequest_ = [[PPPlaylistRequest alloc] init];
+        playlistRequest_.delegate = self;
+    }
+    return playlistRequest_;
+}
+
+- (IBAction)handleChoosePlaylist:(id)sender {
+    PPChoosePlaylistController *playlistController = [[PPChoosePlaylistController alloc] init];
+    __block __typeof__(self) blockSelf = self;
+    [playlistController setSelectServiceBlock:^(NSNetService *service) {
+        if (service) {
+            [blockSelf.bonjourBrowser setServiceAsSelectedPlaylist:service];
+        }
+        [blockSelf dismissModalViewControllerAnimated:YES];
+    }];
+    playlistController.bonjourBrowser = self.bonjourBrowser;
+    [self presentModalViewController:playlistController animated:YES];
+    [playlistController release];
+}
+
 @end

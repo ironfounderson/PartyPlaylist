@@ -10,6 +10,7 @@
 #import "PPTrackParser.h"
 #import "PPTrack.h"
 #import "PPWishlistModel.h"
+#import "PPTrackRequestController.h"
 
 @interface PPSearchController()
 @property (nonatomic, retain) NSArray *tracks;
@@ -143,7 +144,20 @@
 - (void)tableView:(UITableView *)tableView 
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     PPTrack *track = [self.tracks objectAtIndex:indexPath.row];
-    [self.wishlist toggleFavoriteTrack:track];
+    
+    PPTrackRequestController *requestController = [[PPTrackRequestController alloc] init];
+    requestController.track = track;
+    __block __typeof__(self) blockSelf = self;
+    [requestController setRequestBlock:^(NSString *stringURL) {
+        [blockSelf dismissModalViewControllerAnimated:YES];
+        if (stringURL) {
+            NSURL *url = [NSURL URLWithString:stringURL];
+            [[UIApplication sharedApplication] openURL:url];        
+        }
+    }];
+    [self presentModalViewController:requestController animated:YES];
+    [requestController release];
+    //[self.wishlist toggleFavoriteTrack:track];
 }
 
 - (PPSearchModel *)searchModel {

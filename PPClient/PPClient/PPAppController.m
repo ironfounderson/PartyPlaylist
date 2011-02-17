@@ -14,16 +14,22 @@
 
 @synthesize bonjourBrowser = bonjourBrowser_;
 @synthesize playingController = playingController_;
+@synthesize tabBarController = tabBarController_;
 
 - (void)dealloc {
     [bonjourBrowser_ release];
     [playingController_ release];
+    [tabBarController_ release];
     [super dealloc];
 }
 
 - (void)startController:(BOOL)isFreshStart {
     self.playingController.bonjourBrowser = self.bonjourBrowser;
     [self.bonjourBrowser start];
+    // We need to update the playing UI when the program resumes. 
+    if (!isFreshStart && self.tabBarController.selectedViewController == self.playingController) {
+        [self.playingController refreshView];
+    }
 }
 
 - (void)stopController {

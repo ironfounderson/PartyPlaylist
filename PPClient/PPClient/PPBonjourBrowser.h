@@ -20,6 +20,7 @@ extern NSString * const PPBonjourBrowserPlaylistAvailableNotification;
 
 @property (nonatomic, assign) NSString *playlistName;
 @property (nonatomic, assign) NSString *playlistAddress;
+@property (nonatomic, assign) NSString *playlistTwitterName;
 @property (readonly) BOOL isPlaylistAvailable;
 
 - (void)start;

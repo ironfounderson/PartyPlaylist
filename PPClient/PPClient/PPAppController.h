@@ -19,7 +19,7 @@
 
 @property (nonatomic, retain) PPBonjourBrowser *bonjourBrowser;
 @property (nonatomic, retain) IBOutlet PPPlayingController *playingController;
-
+@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 - (void)startController:(BOOL)isFreshStart;
 - (void)stopController;
 

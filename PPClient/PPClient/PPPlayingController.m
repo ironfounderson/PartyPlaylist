@@ -81,6 +81,10 @@
 }
 
 - (void)playlistAvailabilityChange:(NSNotification *)notification {
+    [self refreshView];
+}
+
+- (void)refreshView {
     if (self.bonjourBrowser.isPlaylistAvailable) {
         [self showPlayingView];
     }
@@ -96,7 +100,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self playlistAvailabilityChange:nil];
+    [self refreshView];
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(playlistAvailabilityChange:) 
                                                  name:PPBonjourBrowserPlaylistAvailableNotification 

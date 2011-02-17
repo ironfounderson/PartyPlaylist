@@ -55,6 +55,7 @@ NSString * const PPBonjourBrowserPlaylistAvailableNotification = @"PPBonjourBrow
 	// [self stopCurrentResolve];
 	[self.netServiceBrowser stop];
 	[self.services removeAllObjects];
+    playlistAvailable_ = NO;
     
 	NSNetServiceBrowser *aNetServiceBrowser = [[NSNetServiceBrowser alloc] init];
 	if(!aNetServiceBrowser) {
@@ -113,27 +114,35 @@ NSString * const PPBonjourBrowserPlaylistAvailableNotification = @"PPBonjourBrow
         }
     }
     
-    if (available != self.isPlaylistAvailable) {
-        playlistAvailable_ = available;
-        [[NSNotificationCenter defaultCenter] 
-         postNotificationName:PPBonjourBrowserPlaylistAvailableNotification object:self];
-    }
+    // TODO: Need to think on how to better handle this notification so it properly handles the case when the
+    // app goes into background and back
+    playlistAvailable_ = available;
+    [[NSNotificationCenter defaultCenter] 
+     postNotificationName:PPBonjourBrowserPlaylistAvailableNotification object:self];
 }
 
 - (NSString *)playlistName {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"SERVERNAME"];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"PLAYLIST_NAME"];
 }
 
 - (void)setPlaylistName:(NSString *)newServerName {
-    [[NSUserDefaults standardUserDefaults] setObject:newServerName forKey:@"SERVERNAME"];
+    [[NSUserDefaults standardUserDefaults] setObject:newServerName forKey:@"PLAYLIST_NAME"];
 }
 
 - (NSString *)playlistAddress {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:@"SERVERADDRESS"];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"PLAYLIST_ADDRESS"];
 }
 
 - (void)setPlaylistAddress:(NSString *)newServerAddress {
-    [[NSUserDefaults standardUserDefaults] setObject:newServerAddress forKey:@"SERVERADDRESS"];
+    [[NSUserDefaults standardUserDefaults] setObject:newServerAddress forKey:@"PLAYLIST_ADDRESS"];
+}
+
+- (NSString *)playlistTwitterName {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:@"PLAYLIST_TWITTERNAME"];
+}
+
+- (void)setPlaylistTwitterName:(NSString *)newServerAddress {
+    [[NSUserDefaults standardUserDefaults] setObject:newServerAddress forKey:@"PLAYLIST_TWITTERNAME"];
 }
 
 @end

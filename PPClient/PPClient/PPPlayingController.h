@@ -18,6 +18,8 @@
 @property (nonatomic, retain) IBOutlet UIView *connectingView;
 @property (nonatomic, assign) PPBonjourBrowser *bonjourBrowser;
 
+- (void)refreshView;
+
 - (IBAction)handleChoosePlaylist:(id)sender;
 
 @end

@@ -18,6 +18,10 @@ This application also uses a Twitter account to listen to song requests. At this
     NSString * const PPTwitterAccessToken = ...;
     NSString * const PPTwitterAccessTokenSecret = ...;
 
+## iPhone client ##
+
+There is an iPhone client included that can be used to request songs. It uses the Spotify Metadata API to find tracks and then uses either the offifical Twitter client or Twitterrific to send the tweet request. The client also have a very early favorites list. If the playlist server program is running on the same wifi as the client, the client can display the next, current and previous track. Be aware that this iPhone project is very rough.
+
 ## On the shoulder of giants ##
 
 The following third party libraries are used:

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class PPTrack;
+@class PPSpotifyTrack;
 @class PPWishlistModel;
 
 typedef void(^PPTrackRequestResponse)(NSString *url);
@@ -23,7 +23,7 @@ typedef void(^PPTrackRequestResponse)(NSString *url);
 @property (nonatomic, retain) IBOutlet UILabel *albumLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *favoriteImage;
 
-@property (nonatomic, retain) PPTrack *track;
+@property (nonatomic, retain) PPSpotifyTrack *spotifyTrack;
 @property (nonatomic, copy) PPTrackRequestResponse requestBlock;
 @property (nonatomic, assign) PPWishlistModel *wishlist;
 

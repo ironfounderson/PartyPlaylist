@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class PPTrack;
+@class PPSpotifyTrack;
 @class PPCoreDataStack;
 @class NSManagedObjectContext;
 @class NSFetchRequest;
@@ -22,9 +22,9 @@ extern NSString * const PPWishlistTrackKeyName;
 
 @property (nonatomic, retain) PPCoreDataStack *coreDataStack;
 @property (nonatomic, readonly) NSManagedObjectContext *moc;
-- (BOOL)isFavoriteTrack:(PPTrack *)track;
+- (BOOL)isFavoriteTrack:(PPSpotifyTrack *)track;
 
-- (void)toggleFavoriteTrack:(PPTrack *)track;
+- (void)toggleFavoriteTrack:(PPSpotifyTrack *)track;
 - (NSFetchRequest *)favoritesFetchRequest;
 
 @end

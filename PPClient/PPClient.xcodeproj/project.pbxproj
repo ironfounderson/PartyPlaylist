@@ -31,6 +31,8 @@
 		E1A631EC1304548400EFF8E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C61304548400EFF8E5 /* Foundation.framework */; };
 		E1A631ED1304548400EFF8E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C81304548400EFF8E5 /* CoreGraphics.framework */; };
 		E1A631F51304548500EFF8E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1A631F31304548500EFF8E5 /* InfoPlist.strings */; };
+		E1AA4215130E5DCF00254C46 /* PPSpotifyTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AA4214130E5DCF00254C46 /* PPSpotifyTrack.m */; };
+		E1AA4216130E5FF600254C46 /* PPSpotifyTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AA4214130E5DCF00254C46 /* PPSpotifyTrack.m */; };
 		E1BB7150130D27F800F13FDB /* PPPlaylistRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BB714F130D27F800F13FDB /* PPPlaylistRequest.m */; };
 		E1BBB51B130D481000524485 /* PPConnectingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1BBB51A130D481000524485 /* PPConnectingView.xib */; };
 		E1BED66A130458C900064E6A /* PPPlayingController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED668130458C900064E6A /* PPPlayingController.m */; };
@@ -58,7 +60,6 @@
 		E1BED6C213046C5C00064E6A /* track_backstreet.json in Resources */ = {isa = PBXBuildFile; fileRef = E1BED6C113046C5C00064E6A /* track_backstreet.json */; };
 		E1BED6C513046CB500064E6A /* PPTrackParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6C413046CB400064E6A /* PPTrackParser.m */; };
 		E1BED6C613046CB500064E6A /* PPTrackParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6C413046CB400064E6A /* PPTrackParser.m */; };
-		E1BED6C913046CC100064E6A /* PPTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6C813046CC100064E6A /* PPTrack.m */; };
 		E1BED6CD13046CFB00064E6A /* PPTrackParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6CC13046CFB00064E6A /* PPTrackParserTests.m */; };
 		E1BED6E213046E3F00064E6A /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6D013046E3F00064E6A /* CDataScanner.m */; };
 		E1BED6E313046E3F00064E6A /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6D013046E3F00064E6A /* CDataScanner.m */; };
@@ -76,7 +77,6 @@
 		E1BED6EF13046E3F00064E6A /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6DE13046E3F00064E6A /* CJSONScanner.m */; };
 		E1BED6F013046E3F00064E6A /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6E013046E3F00064E6A /* CJSONSerializer.m */; };
 		E1BED6F113046E3F00064E6A /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6E013046E3F00064E6A /* CJSONSerializer.m */; };
-		E1BED6F21304712900064E6A /* PPTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6C813046CC100064E6A /* PPTrack.m */; };
 		E1E03FFF130BA31A001C1806 /* PPBonjourBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E03FFE130BA31A001C1806 /* PPBonjourBrowser.m */; };
 		E1E04003130BAD11001C1806 /* PPAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E04002130BAD11001C1806 /* PPAppController.m */; };
 		E1FD036913051C290085B2AA /* PPWishlistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD036813051C290085B2AA /* PPWishlistModel.m */; };
@@ -128,6 +128,8 @@
 		E1A631F21304548500EFF8E5 /* PPClientTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PPClientTests-Info.plist"; sourceTree = "<group>"; };
 		E1A631F41304548500EFF8E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E1A631F61304548500EFF8E5 /* PPClientTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PPClientTests-Prefix.pch"; sourceTree = "<group>"; };
+		E1AA4213130E5DCF00254C46 /* PPSpotifyTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifyTrack.h; sourceTree = "<group>"; };
+		E1AA4214130E5DCF00254C46 /* PPSpotifyTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyTrack.m; sourceTree = "<group>"; };
 		E1BB714E130D27F800F13FDB /* PPPlaylistRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPlaylistRequest.h; sourceTree = "<group>"; };
 		E1BB714F130D27F800F13FDB /* PPPlaylistRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlaylistRequest.m; sourceTree = "<group>"; };
 		E1BBB51A130D481000524485 /* PPConnectingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPConnectingView.xib; sourceTree = "<group>"; };
@@ -173,8 +175,6 @@
 		E1BED6C113046C5C00064E6A /* track_backstreet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = track_backstreet.json; sourceTree = "<group>"; };
 		E1BED6C313046CB400064E6A /* PPTrackParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTrackParser.h; sourceTree = "<group>"; };
 		E1BED6C413046CB400064E6A /* PPTrackParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTrackParser.m; sourceTree = "<group>"; };
-		E1BED6C713046CC100064E6A /* PPTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTrack.h; sourceTree = "<group>"; };
-		E1BED6C813046CC100064E6A /* PPTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTrack.m; sourceTree = "<group>"; };
 		E1BED6CC13046CFB00064E6A /* PPTrackParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTrackParserTests.m; sourceTree = "<group>"; };
 		E1BED6CF13046E3F00064E6A /* CDataScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner.h; sourceTree = "<group>"; };
 		E1BED6D013046E3F00064E6A /* CDataScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner.m; sourceTree = "<group>"; };
@@ -403,12 +403,12 @@
 		E1BED67F13045D5100064E6A /* SharedCode */ = {
 			isa = PBXGroup;
 			children = (
+				E1AA4213130E5DCF00254C46 /* PPSpotifyTrack.h */,
+				E1AA4214130E5DCF00254C46 /* PPSpotifyTrack.m */,
 				E1BED68013045D6F00064E6A /* PPSearchURL.h */,
 				E1BED68113045D6F00064E6A /* PPSearchURL.m */,
 				E1BED6C313046CB400064E6A /* PPTrackParser.h */,
 				E1BED6C413046CB400064E6A /* PPTrackParser.m */,
-				E1BED6C713046CC100064E6A /* PPTrack.h */,
-				E1BED6C813046CC100064E6A /* PPTrack.m */,
 			);
 			name = SharedCode;
 			path = ../SharedCode;
@@ -635,7 +635,6 @@
 				E1BED6BE130466AD00064E6A /* ASIInputStream.m in Sources */,
 				E1BED6BF130466AD00064E6A /* Reachability.m in Sources */,
 				E1BED6C513046CB500064E6A /* PPTrackParser.m in Sources */,
-				E1BED6C913046CC100064E6A /* PPTrack.m in Sources */,
 				E1BED6E213046E3F00064E6A /* CDataScanner.m in Sources */,
 				E1BED6E413046E3F00064E6A /* CDataScanner_Extensions.m in Sources */,
 				E1BED6E613046E3F00064E6A /* NSCharacterSet_Extensions.m in Sources */,
@@ -656,6 +655,7 @@
 				E1292602130DBA27007A1F3B /* PPCoreDataStack.m in Sources */,
 				E1292606130DBB8D007A1F3B /* _Track.m in Sources */,
 				E1292609130DBB97007A1F3B /* Track.m in Sources */,
+				E1AA4215130E5DCF00254C46 /* PPSpotifyTrack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -663,7 +663,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1BED6F21304712900064E6A /* PPTrack.m in Sources */,
+				E1AA4216130E5FF600254C46 /* PPSpotifyTrack.m in Sources */,
 				E1BED67E13045CFB00064E6A /* PPSearchURLTests.m in Sources */,
 				E1BED68313045D6F00064E6A /* PPSearchURL.m in Sources */,
 				E1BED6C613046CB500064E6A /* PPTrackParser.m in Sources */,

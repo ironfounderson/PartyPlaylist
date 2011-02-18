@@ -50,9 +50,10 @@
 		E19A873D1308557D00BECD44 /* PPSpotifyTweetParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8E513059F330097A72F /* PPSpotifyTweetParser.m */; };
 		E19A87421308558800BECD44 /* PPPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75828130570E50048344E /* PPPlaylist.m */; };
 		E19A87471308559500BECD44 /* PPPlaylistUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E7583C130576400048344E /* PPPlaylistUser.m */; };
-		E19A874A130855A400BECD44 /* PPSpotifyTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75839130576010048344E /* PPSpotifyTrack.m */; };
 		E19A874F130855B100BECD44 /* PPPlaylistTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E7582C130570F70048344E /* PPPlaylistTrack.m */; };
 		E19A8754130855C700BECD44 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAB61307E59200CA4226 /* DDLog.m */; };
+		E1AA420C130E5CC600254C46 /* PPSearchURL.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AA4207130E5CC600254C46 /* PPSearchURL.m */; };
+		E1AA4211130E5D6C00254C46 /* PPSpotifyTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AA4210130E5D6C00254C46 /* PPSpotifyTrack.m */; };
 		E1D029B81306FED000874960 /* PPUserlist.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D029B71306FECF00874960 /* PPUserlist.m */; };
 		E1E230E213087B62006DD0E9 /* PPTrackRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E230E113087B60006DD0E9 /* PPTrackRequest.m */; };
 		E1E230E513088508006DD0E9 /* PPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E230E413088508006DD0E9 /* PPWebViewController.m */; };
@@ -69,7 +70,6 @@
 		E1E75829130570E50048344E /* PPPlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75828130570E50048344E /* PPPlaylist.m */; };
 		E1E7582D130570F70048344E /* PPPlaylistTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E7582C130570F70048344E /* PPPlaylistTrack.m */; };
 		E1E75836130573960048344E /* PPPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75834130573960048344E /* PPPlaylistViewController.m */; };
-		E1E7583A130576030048344E /* PPSpotifyTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E75839130576010048344E /* PPSpotifyTrack.m */; };
 		E1E7583D130576430048344E /* PPPlaylistUser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E7583C130576400048344E /* PPPlaylistUser.m */; };
 		E1FD037B1305479B0085B2AA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1FD037A1305479B0085B2AA /* Cocoa.framework */; };
 		E1FD03851305479B0085B2AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1FD03831305479B0085B2AA /* InfoPlist.strings */; };
@@ -201,6 +201,10 @@
 		E18DEAEB13081D9900CA4226 /* wishlist.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = wishlist.js; sourceTree = "<group>"; };
 		E19A87291308553E00BECD44 /* PPServerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PPServerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E19A872A1308553E00BECD44 /* PPServerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PPServerTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		E1AA4206130E5CC600254C46 /* PPSearchURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSearchURL.h; sourceTree = "<group>"; };
+		E1AA4207130E5CC600254C46 /* PPSearchURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSearchURL.m; sourceTree = "<group>"; };
+		E1AA420F130E5D6C00254C46 /* PPSpotifyTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifyTrack.h; sourceTree = "<group>"; };
+		E1AA4210130E5D6C00254C46 /* PPSpotifyTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyTrack.m; sourceTree = "<group>"; };
 		E1D029B31306FDF600874960 /* PPPlaylistTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlaylistTests.m; sourceTree = "<group>"; };
 		E1D029B61306FECF00874960 /* PPUserlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPUserlist.h; sourceTree = "<group>"; };
 		E1D029B71306FECF00874960 /* PPUserlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUserlist.m; sourceTree = "<group>"; };
@@ -228,8 +232,6 @@
 		E1E7582C130570F70048344E /* PPPlaylistTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlaylistTrack.m; sourceTree = "<group>"; };
 		E1E75833130573960048344E /* PPPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPlaylistViewController.h; sourceTree = "<group>"; };
 		E1E75834130573960048344E /* PPPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlaylistViewController.m; sourceTree = "<group>"; };
-		E1E75838130576010048344E /* PPSpotifyTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifyTrack.h; sourceTree = "<group>"; };
-		E1E75839130576010048344E /* PPSpotifyTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyTrack.m; sourceTree = "<group>"; };
 		E1E7583B1305763F0048344E /* PPPlaylistUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPlaylistUser.h; sourceTree = "<group>"; };
 		E1E7583C130576400048344E /* PPPlaylistUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlaylistUser.m; sourceTree = "<group>"; };
 		E1FD03761305479B0085B2AA /* PPServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -454,6 +456,18 @@
 			path = CocoaLumberjack;
 			sourceTree = "<group>";
 		};
+		E1AA4205130E5CC600254C46 /* SharedCode */ = {
+			isa = PBXGroup;
+			children = (
+				E1AA420F130E5D6C00254C46 /* PPSpotifyTrack.h */,
+				E1AA4210130E5D6C00254C46 /* PPSpotifyTrack.m */,
+				E1AA4206130E5CC600254C46 /* PPSearchURL.h */,
+				E1AA4207130E5CC600254C46 /* PPSearchURL.m */,
+			);
+			name = SharedCode;
+			path = ../SharedCode;
+			sourceTree = "<group>";
+		};
 		E1E75803130556A40048344E /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,8 +519,6 @@
 				E1E758201305661F0048344E /* PPSpotifySessionImpl.m */,
 				E1E7582213056A590048344E /* PPSpotifyController.h */,
 				E1E7582313056A590048344E /* PPSpotifyController.m */,
-				E1E75838130576010048344E /* PPSpotifyTrack.h */,
-				E1E75839130576010048344E /* PPSpotifyTrack.m */,
 				E16369281309178100D71EE1 /* PPSpotifyAlbumImage.h */,
 				E16369291309178100D71EE1 /* PPSpotifyAlbumImage.m */,
 			);
@@ -527,6 +539,7 @@
 			isa = PBXGroup;
 			children = (
 				E1FD03AE1305483E0085B2AA /* ExternalCode */,
+				E1AA4205130E5CC600254C46 /* SharedCode */,
 				E1FD03801305479B0085B2AA /* PPServer */,
 				E1FD039B1305479C0085B2AA /* PPServerTests */,
 				E1FD03791305479B0085B2AA /* Frameworks */,
@@ -905,7 +918,6 @@
 				E1E230E61308884C006DD0E9 /* PPTrackRequest.m in Sources */,
 				E19A8754130855C700BECD44 /* DDLog.m in Sources */,
 				E19A874F130855B100BECD44 /* PPPlaylistTrack.m in Sources */,
-				E19A874A130855A400BECD44 /* PPSpotifyTrack.m in Sources */,
 				E19A87471308559500BECD44 /* PPPlaylistUser.m in Sources */,
 				E19A87421308558800BECD44 /* PPPlaylist.m in Sources */,
 				E19A873D1308557D00BECD44 /* PPSpotifyTweetParser.m in Sources */,
@@ -968,7 +980,6 @@
 				E1E75829130570E50048344E /* PPPlaylist.m in Sources */,
 				E1E7582D130570F70048344E /* PPPlaylistTrack.m in Sources */,
 				E1E75836130573960048344E /* PPPlaylistViewController.m in Sources */,
-				E1E7583A130576030048344E /* PPSpotifyTrack.m in Sources */,
 				E1E7583D130576430048344E /* PPPlaylistUser.m in Sources */,
 				E124C8E613059F340097A72F /* PPSpotifyTweetParser.m in Sources */,
 				E124C8EF1305CA160097A72F /* PPPlayingViewController.m in Sources */,
@@ -997,6 +1008,8 @@
 				E1E230E513088508006DD0E9 /* PPWebViewController.m in Sources */,
 				E163692A1309178200D71EE1 /* PPSpotifyAlbumImage.m in Sources */,
 				E1255181130A8EC0002E4027 /* NSFileManager+DirectoryLocations.m in Sources */,
+				E1AA420C130E5CC600254C46 /* PPSearchURL.m in Sources */,
+				E1AA4211130E5D6C00254C46 /* PPSpotifyTrack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

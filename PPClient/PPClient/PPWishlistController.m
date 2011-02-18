@@ -97,10 +97,10 @@
 - (void)tableView:(UITableView *)tableView 
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     Track *track = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    PPTrack *ppTrack = [track ppTrack];
+    PPSpotifyTrack *spotifyTrack = [track spotifyTrack];
     
     PPTrackRequestController *requestController = [[PPTrackRequestController alloc] init];
-    requestController.track = ppTrack;
+    requestController.spotifyTrack = spotifyTrack;
     requestController.wishlist = self.wishlist;
     __block __typeof__(self) blockSelf = self;
     [requestController setRequestBlock:^(NSString *stringURL) {

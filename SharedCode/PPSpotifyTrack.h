@@ -15,6 +15,8 @@
 @private
 }
 
+- (id)initWithDictionary:(NSDictionary *)dict;
+
 @property (getter=isLoaded) BOOL loaded;
 @property BOOL invalidTrack;
 @property (copy) NSString *link;

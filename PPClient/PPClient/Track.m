@@ -1,12 +1,12 @@
 #import "Track.h"
-#import "PPTrack.h"
+#import "PPSpotifyTrack.h"
 
 @implementation Track
 
 // Custom logic goes here.
 
-- (PPTrack *)ppTrack {
-    PPTrack *track = [[PPTrack alloc] init];
+- (PPSpotifyTrack *)spotifyTrack {
+    PPSpotifyTrack *track = [[PPSpotifyTrack alloc] init];
     track.title = self.title;
     track.albumName = self.albumName;
     track.link = self.link;

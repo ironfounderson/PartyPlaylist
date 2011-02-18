@@ -7,7 +7,7 @@
 //
 
 #import "PPWishlistModel.h"
-#import "PPTrack.h"
+#import "PPSpotifyTrack.h"
 #import "PPCoreDataStack.h"
 #import "Track.h"
 
@@ -16,7 +16,7 @@ NSString * const PPWishlistTrackRemovedNotification = @"PPWishlistTrackRemovedNo
 NSString * const PPWishlistTrackKeyName = @"track";
 
 @interface PPWishlistModel() 
-- (Track *)findTrack:(PPTrack *)track;
+- (Track *)findTrack:(PPSpotifyTrack *)spotifyTrack;
 @end
 
 @implementation PPWishlistModel
@@ -32,27 +32,27 @@ NSString * const PPWishlistTrackKeyName = @"track";
     return self.coreDataStack.managedObjectContext;
 }
 
-- (BOOL)isFavoriteTrack:(PPTrack *)track {
-    Track *cdTrack = [self findTrack:track];
-    return cdTrack ? cdTrack.favoriteValue : NO;
+- (BOOL)isFavoriteTrack:(PPSpotifyTrack *)spotifyTrack {
+    Track *track = [self findTrack:spotifyTrack];
+    return track ? track.favoriteValue : NO;
 }
 
-- (void)toggleFavoriteTrack:(PPTrack *)track {
-    Track *cdTrack = [self findTrack:track];
+- (void)toggleFavoriteTrack:(PPSpotifyTrack *)spotifyTrack {
+    Track *cdTrack = [self findTrack:spotifyTrack];
     if (cdTrack) {
         cdTrack.favoriteValue = !cdTrack.favoriteValue;
     }
     else {
         cdTrack = [Track insertInManagedObjectContext:self.coreDataStack.managedObjectContext];
         cdTrack.favoriteValue = YES;
-        cdTrack.link = track.link;
-        cdTrack.title = track.title;
-        cdTrack.albumName = track.albumName;
-        cdTrack.artistName = track.artistName;
+        cdTrack.link = spotifyTrack.link;
+        cdTrack.title = spotifyTrack.title;
+        cdTrack.albumName = spotifyTrack.albumName;
+        cdTrack.artistName = spotifyTrack.artistName;
     }
     [self.coreDataStack saveContext];
     
-    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:track 
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:spotifyTrack 
                                                          forKey:PPWishlistTrackKeyName];
     NSString *notificationName;
     if (cdTrack.favoriteValue) {
@@ -82,11 +82,11 @@ NSString * const PPWishlistTrackKeyName = @"track";
     return [fetchRequest autorelease];
 }
 
-- (Track *)findTrack:(PPTrack *)track {
+- (Track *)findTrack:(PPSpotifyTrack *)spotifyTrack {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:[Track entityInManagedObjectContext:self.coreDataStack.managedObjectContext]];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"link == %@", track.link];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"link == %@", spotifyTrack.link];
     [fetchRequest setPredicate:predicate];
     
     NSArray *results = [self.coreDataStack.managedObjectContext executeFetchRequest:fetchRequest error:nil];

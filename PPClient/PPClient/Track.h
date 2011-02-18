@@ -1,10 +1,10 @@
 #import "_Track.h"
 
-@class PPTrack;
+@class PPSpotifyTrack;
 
 @interface Track : _Track {}
 // Custom logic goes here.
 
-- (PPTrack *)ppTrack;
+- (PPSpotifyTrack *)spotifyTrack;
 
 @end

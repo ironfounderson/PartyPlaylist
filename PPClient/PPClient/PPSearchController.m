@@ -8,14 +8,14 @@
 
 #import "PPSearchController.h"
 #import "PPTrackParser.h"
-#import "PPTrack.h"
+#import "PPSpotifyTrack.h"
 #import "PPWishlistModel.h"
 #import "PPTrackRequestController.h"
 
 @interface PPSearchController()
 @property (nonatomic, retain) NSArray *tracks;
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
-- (NSIndexPath *)indexPathForTrack:(PPTrack *)track;
+- (NSIndexPath *)indexPathForTrack:(PPSpotifyTrack *)track;
 @end
 
 @implementation PPSearchController
@@ -72,7 +72,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (UITableViewCellAccessoryType)acceortyTypeForTrack:(PPTrack *)track {
+- (UITableViewCellAccessoryType)acceortyTypeForTrack:(PPSpotifyTrack *)track {
     if ([self.wishlist isFavoriteTrack:track]) {
         return UITableViewCellAccessoryCheckmark;
     }
@@ -82,7 +82,7 @@
 }
 
 - (void)handleWishlistUpdate:(NSNotification *)notif {
-    PPTrack *track = [notif.userInfo objectForKey:PPWishlistTrackKeyName];
+    PPSpotifyTrack *track = [notif.userInfo objectForKey:PPWishlistTrackKeyName];
     NSIndexPath *indexPath = [self indexPathForTrack:track];
     if (!indexPath) {
         return;
@@ -93,9 +93,9 @@
                           withRowAnimation:UITableViewRowAnimationFade];
 }
 
-- (NSIndexPath *)indexPathForTrack:(PPTrack *)track {
+- (NSIndexPath *)indexPathForTrack:(PPSpotifyTrack *)track {
     NSUInteger index = [self.tracks indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
-        PPTrack *item = (PPTrack *)obj;
+        PPSpotifyTrack *item = (PPSpotifyTrack *)obj;
         if ([track.link isEqualToString:item.link]) {
             *stop = YES;
             return YES;
@@ -107,7 +107,7 @@
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    PPTrack *track = [self.tracks objectAtIndex:indexPath.row];
+    PPSpotifyTrack *track = [self.tracks objectAtIndex:indexPath.row];
     cell.accessoryType = [self acceortyTypeForTrack:track];
     cell.textLabel.text = track.title;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", track.artistName, track.albumName];
@@ -143,10 +143,10 @@
 
 - (void)tableView:(UITableView *)tableView 
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    PPTrack *track = [self.tracks objectAtIndex:indexPath.row];
+    PPSpotifyTrack *track = [self.tracks objectAtIndex:indexPath.row];
     
     PPTrackRequestController *requestController = [[PPTrackRequestController alloc] init];
-    requestController.track = track;
+    requestController.spotifyTrack = track;
     requestController.wishlist = self.wishlist;
     __block __typeof__(self) blockSelf = self;
     [requestController setRequestBlock:^(NSString *stringURL) {

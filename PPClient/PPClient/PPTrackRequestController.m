@@ -7,7 +7,7 @@
 //
 
 #import "PPTrackRequestController.h"
-#import "PPTrack.h"
+#import "PPSpotifyTrack.h"
 #import "PPWishlistModel.h"
 
 @interface PPTrackRequestController()
@@ -20,12 +20,12 @@
 @synthesize albumLabel;
 @synthesize favoriteImage;
 
-@synthesize track = track_;
+@synthesize spotifyTrack = spotifyTrack_;
 @synthesize requestBlock;
 @synthesize wishlist;
 
 - (void)dealloc {
-    [track_ release];
+    [spotifyTrack_ release];
     [artistLabel release];
     [trackLabel release];
     [albumLabel release];
@@ -63,14 +63,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.artistLabel.text = self.track.artistName;
-    self.trackLabel.text = self.track.title;
-    self.albumLabel.text = self.track.albumName;
+    self.artistLabel.text = self.spotifyTrack.artistName;
+    self.trackLabel.text = self.spotifyTrack.title;
+    self.albumLabel.text = self.spotifyTrack.albumName;
     [self updateFavoriteImage];
 }
 
 - (NSString *)message {
-    return [[NSString stringWithFormat:@"@janesplaylist add %@", self.track.link]
+    return [[NSString stringWithFormat:@"@janesplaylist add %@", self.spotifyTrack.link]
             stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
@@ -95,12 +95,12 @@
 }
 - (void)toggleFavoriteTrack {
     NSLog(@"should toggle");
-    [self.wishlist toggleFavoriteTrack:self.track];
+    [self.wishlist toggleFavoriteTrack:self.spotifyTrack];
     [self updateFavoriteImage];
 }
 
 - (void)updateFavoriteImage {
-    if ([self.wishlist isFavoriteTrack:self.track]) {
+    if ([self.wishlist isFavoriteTrack:self.spotifyTrack]) {
         self.favoriteImage.image = [UIImage imageNamed:@"star-selected.png"];
     }
     else {

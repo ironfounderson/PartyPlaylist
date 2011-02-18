@@ -20,6 +20,24 @@
 @synthesize loaded;
 @synthesize invalidTrack;
 
+- (id)initWithDictionary:(NSDictionary *)dict {
+    self = [self init];
+    if (self) {
+        title_ = [[dict objectForKey:@"name"] copy];
+        link_ = [[dict objectForKey:@"href"] copy];
+        
+        NSDictionary *albumDict = [dict objectForKey:@"album"];
+        albumName_ = [[albumDict objectForKey:@"name"] copy];
+        
+        NSArray *artists = [dict objectForKey:@"artists"];
+        if (artists.count > 0) {
+            NSDictionary *firstArtist = [artists objectAtIndex:0];
+            artistName_ = [[firstArtist objectForKey:@"name"] copy];
+        }
+    }
+    return self;
+}
+
 - (id)init {
     self = [super init];
     if (self) {

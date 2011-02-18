@@ -43,6 +43,7 @@
 
 - (void)stopController {
     [self.bonjourBrowser stop];
+    [self.playingController stop];
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController 

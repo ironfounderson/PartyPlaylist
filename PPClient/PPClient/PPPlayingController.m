@@ -10,10 +10,21 @@
 #import "PPChoosePlaylistController.h"
 #import "UIViewController+PPModal.h"
 #import "PPBonjourBrowser.h"
+#import "PPSpotifyTrack.h"
+#import "ASIHTTPRequest.h"
+#import "CJSONDeserializer.h"
+
+#define PREVIOUS_SECTION 0
+#define CURRENT_SECTION 1
+#define NEXT_SECTION 2
 
 @interface PPPlayingController()
 @property (getter=isConnected) BOOL connected;
 @property (nonatomic, readonly) PPPlaylistRequest *playlistRequest;
+@property (retain) PPSpotifyTrack *previousTrack;
+@property (retain) PPSpotifyTrack *currentTrack;
+@property (retain) PPSpotifyTrack *nextTrack;
+- (void)requestCurrentPlayingTracks;
 @end
 
 @implementation PPPlayingController
@@ -22,18 +33,18 @@
 @synthesize bonjourBrowser;
 @synthesize connected;
 @synthesize playlistRequest = playlistRequest_;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize previousTrack = previousTrack_;
+@synthesize currentTrack = currentTrack_;
+@synthesize nextTrack = nextTrack_;
+@synthesize tableView = tableView_;
 
 - (void)dealloc {
     [connectingView_ release];
     [playlistRequest_ release];
+    [previousTrack_ release];
+    [currentTrack_ release];
+    [nextTrack_ release];
+    [tableView_ release];
     [super dealloc];
 }
 
@@ -78,6 +89,8 @@
     if (self.connectingView.superview) {
         [self.connectingView removeFromSuperview];
     }
+    isActive_ = YES;
+    [self requestCurrentPlayingTracks];
 }
 
 - (void)playlistAvailabilityChange:(NSNotification *)notification {
@@ -98,6 +111,10 @@
     }
 }
 
+- (void)stop {
+    isActive_ = NO;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self refreshView];
@@ -113,6 +130,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    isActive_ = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self 
                                                     name:PPBonjourBrowserPlaylistAvailableNotification 
                                                   object:nil];
@@ -146,5 +164,130 @@
     [self presentModalViewController:playlistController animated:YES];
     [playlistController release];
 }
+
+#pragma mark - Table View
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    PPSpotifyTrack *track = nil;
+    switch (indexPath.section) {
+        case PREVIOUS_SECTION:
+            track = self.previousTrack;
+            break;
+        case CURRENT_SECTION:
+            track = self.currentTrack;
+            break;
+        case NEXT_SECTION:
+            track = self.nextTrack;
+            break;
+    }
+    
+    cell.textLabel.text = track.title;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", track.artistName, track.albumName];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case PREVIOUS_SECTION:
+            return NSLocalizedString(@"Previous", @"");
+        case CURRENT_SECTION:
+            return NSLocalizedString(@"Current", @"");
+        case NEXT_SECTION:
+            return NSLocalizedString(@"Next", @"");
+
+    }
+    
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == CURRENT_SECTION) {
+        return 88.0;
+    }
+    return tableView.rowHeight;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView 
+ numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView 
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"TrackCell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
+                                       reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    [self configureCell:cell atIndexPath:indexPath];
+    return cell;
+}
+
+- (void)clearPlayingTracks {
+    self.currentTrack = nil;
+    self.previousTrack = nil;
+    self.nextTrack = nil;  
+}
+
+- (void)requestCurrentPlayingTracks {
+    NSLog(@"Requesting current playing tracks");
+    if (!self.bonjourBrowser.isPlaylistAvailable) {
+        return;
+    }
+    
+    NSString *hostAddress = self.bonjourBrowser.playlistAddress;
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/currentplaying", hostAddress];
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlString]];
+    __block __typeof__(self) blockSelf = self;
+    [request setCompletionBlock:^ {
+        [blockSelf clearPlayingTracks];
+        if (request.responseStatusCode == 200) {
+            NSDictionary *tracks = 
+            [[CJSONDeserializer deserializer] deserializeAsDictionary:request.responseData 
+                                                                error:nil];
+            NSDictionary *nextTrack = [tracks objectForKey:@"next"];
+            if (nextTrack) {
+                self.nextTrack = [[[PPSpotifyTrack alloc] initWithDictionary:nextTrack] autorelease];
+            }
+            NSDictionary *currentTrack = [tracks objectForKey:@"current"];
+            if (nextTrack) {
+                self.currentTrack = [[[PPSpotifyTrack alloc] initWithDictionary:currentTrack] autorelease];
+            }
+            NSDictionary *previousTrack = [tracks objectForKey:@"previous"];
+            if (nextTrack) {
+                self.previousTrack = [[[PPSpotifyTrack alloc] initWithDictionary:previousTrack] autorelease];
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [blockSelf.tableView reloadData];
+        });
+    }];
+    [request setFailedBlock:^ {
+        [blockSelf clearPlayingTracks];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [blockSelf.tableView reloadData];
+        });
+
+    }];
+    [request startAsynchronous];
+    
+    if (isActive_) {
+        // What should this rate be??
+        NSTimeInterval refreshRate = 30.0;
+        [NSTimer scheduledTimerWithTimeInterval:refreshRate 
+                                         target:self 
+                                       selector:@selector(requestCurrentPlayingTracks) 
+                                       userInfo:nil 
+                                        repeats:NO];
+    }
+}
+
 
 @end

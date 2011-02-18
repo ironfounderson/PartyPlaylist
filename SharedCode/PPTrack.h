@@ -14,15 +14,13 @@
 
 
 @interface PPTrack : NSObject {
-@private 
-    NSDictionary *trackDict_;
 }
 
 - (id)initWithDictionary:(NSDictionary *)dict;
 
-@property (nonatomic, readonly) NSString *title;
-@property (nonatomic, readonly) NSString *link;
-@property (nonatomic, readonly) NSString *albumName;
-@property (nonatomic, readonly) NSString *artistName;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *link;
+@property (nonatomic, copy) NSString *albumName;
+@property (nonatomic, copy) NSString *artistName;
 
 @end

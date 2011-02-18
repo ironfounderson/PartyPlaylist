@@ -11,34 +11,35 @@
 
 @implementation PPTrack
 
+@synthesize title = title_;
+@synthesize link = link_;
+@synthesize albumName = albumName_;
+@synthesize artistName = artistName_;
+
+
 - (id)initWithDictionary:(NSDictionary *)dict {
     self = [super init];
     if (self) {
-        trackDict_ = [dict retain];
+        title_ = [[dict objectForKey:@"name"] copy];
+        link_ = [[dict objectForKey:@"href"] copy];
+        
+        NSDictionary *albumDict = [dict objectForKey:@"album"];
+        albumName_ = [[albumDict objectForKey:@"name"] copy];
+
+        NSArray *artists = [dict objectForKey:@"artists"];
+        if (artists.count > 0) {
+            NSDictionary *firstArtist = [artists objectAtIndex:0];
+            artistName_ = [[firstArtist objectForKey:@"name"] copy];
+        }
     }
     return self;
 }
 
-- (NSString *)title {
-    return [trackDict_ objectForKey:@"name"];
+- (void)dealloc {
+    [title_ release];
+    [link_ release];
+    [albumName_ release];
+    [artistName_ release];
+    [super dealloc];
 }
-
-- (NSString *)link {
-    return [trackDict_ objectForKey:@"href"];
-}
-
-- (NSString *)albumName {
-    NSDictionary *albumDict = [trackDict_ objectForKey:@"album"];
-    return [albumDict objectForKey:@"name"];
-}
-
-- (NSString *)artistName {
-    NSArray *artists = [trackDict_ objectForKey:@"artists"];
-    if (artists.count == 0) {
-        return nil;
-    }
-    NSDictionary *firstArtist = [artists objectAtIndex:0];
-    return [firstArtist objectForKey:@"name"];
-}
-
 @end

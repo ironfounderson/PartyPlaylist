@@ -9,6 +9,7 @@
 #import "PPWishlistController.h"
 #import "PPWishlistModel.h"
 #import "Track.h"
+#import "PPTrackRequestController.h"
 
 @interface PPWishlistController()
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
@@ -91,6 +92,26 @@
     // Configure the cell.
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView 
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    Track *track = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    PPTrack *ppTrack = [track ppTrack];
+    
+    PPTrackRequestController *requestController = [[PPTrackRequestController alloc] init];
+    requestController.track = ppTrack;
+    requestController.wishlist = self.wishlist;
+    __block __typeof__(self) blockSelf = self;
+    [requestController setRequestBlock:^(NSString *stringURL) {
+        [blockSelf dismissModalViewControllerAnimated:YES];
+        if (stringURL) {
+            NSURL *url = [NSURL URLWithString:stringURL];
+            [[UIApplication sharedApplication] openURL:url];        
+        }
+    }];
+    [self presentModalViewController:requestController animated:YES];
+    [requestController release];
 }
 
 #pragma mark - Fetched results controller 

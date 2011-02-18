@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class PPWishlistModel;
 @class PPSearchController;
 @class PPWishlistController;
 @class PPAppController;
@@ -20,8 +19,6 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
-
-@property (nonatomic, retain) IBOutlet PPWishlistModel *wishlist;
 
 @property (nonatomic, retain) IBOutlet PPSearchController *searchController;
 

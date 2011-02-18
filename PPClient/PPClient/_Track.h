@@ -10,6 +10,7 @@
 
 
 
+
 @interface TrackID : NSManagedObjectID {}
 @end
 
@@ -30,6 +31,16 @@
 @property (nonatomic, retain) NSString *artistName;
 
 //- (BOOL)validateArtistName:(id*)value_ error:(NSError**)error_;
+
+
+
+@property (nonatomic, retain) NSNumber *favorite;
+
+@property BOOL favoriteValue;
+- (BOOL)favoriteValue;
+- (void)setFavoriteValue:(BOOL)value_;
+
+//- (BOOL)validateFavorite:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -61,6 +72,13 @@
 
 - (NSString*)primitiveArtistName;
 - (void)setPrimitiveArtistName:(NSString*)value;
+
+
+- (NSNumber*)primitiveFavorite;
+- (void)setPrimitiveFavorite:(NSNumber*)value;
+
+- (BOOL)primitiveFavoriteValue;
+- (void)setPrimitiveFavoriteValue:(BOOL)value_;
 
 
 - (NSString*)primitiveLink;

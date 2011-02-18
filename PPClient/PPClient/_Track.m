@@ -43,6 +43,32 @@
 
 
 
+@dynamic favorite;
+
+
+
+- (BOOL)favoriteValue {
+	NSNumber *result = [self favorite];
+	return [result boolValue];
+}
+
+- (void)setFavoriteValue:(BOOL)value_ {
+	[self setFavorite:[NSNumber numberWithBool:value_]];
+}
+
+- (BOOL)primitiveFavoriteValue {
+	NSNumber *result = [self primitiveFavorite];
+	return [result boolValue];
+}
+
+- (void)setPrimitiveFavoriteValue:(BOOL)value_ {
+	[self setPrimitiveFavorite:[NSNumber numberWithBool:value_]];
+}
+
+
+
+
+
 @dynamic link;
 
 

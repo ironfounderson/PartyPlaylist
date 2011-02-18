@@ -8,39 +8,57 @@
 
 #import "PPWishlistModel.h"
 #import "PPTrack.h"
+#import "PPCoreDataStack.h"
+#import "Track.h"
 
 NSString * const PPWishlistTrackAddedNotification = @"PPWishlistTrackAddedNotification";
 NSString * const PPWishlistTrackRemovedNotification = @"PPWishlistTrackRemovedNotification";
 NSString * const PPWishlistTrackKeyName = @"track";
 
-
-@interface PPWishlistModel()
-@property (nonatomic, readonly) NSMutableArray *favoriteTracks;
-- (NSUInteger)indexOfTrack:(PPTrack *)track;
+@interface PPWishlistModel() 
+- (Track *)findTrack:(PPTrack *)track;
 @end
 
 @implementation PPWishlistModel
 
+@synthesize coreDataStack = coreDataStack_;
+
 - (void)dealloc {
-    [favoriteTracks_ release];
+    [coreDataStack_ release];
     [super dealloc];
 }
 
+- (NSManagedObjectContext *)moc {
+    return self.coreDataStack.managedObjectContext;
+}
+
 - (BOOL)isFavoriteTrack:(PPTrack *)track {
-    return [self indexOfTrack:track] != NSNotFound;    
+    Track *cdTrack = [self findTrack:track];
+    return cdTrack ? cdTrack.favoriteValue : NO;
 }
 
 - (void)toggleFavoriteTrack:(PPTrack *)track {
-    NSUInteger index = [self indexOfTrack:track];    
+    Track *cdTrack = [self findTrack:track];
+    if (cdTrack) {
+        cdTrack.favoriteValue = !cdTrack.favoriteValue;
+    }
+    else {
+        cdTrack = [Track insertInManagedObjectContext:self.coreDataStack.managedObjectContext];
+        cdTrack.favoriteValue = YES;
+        cdTrack.link = track.link;
+        cdTrack.title = track.title;
+        cdTrack.albumName = track.albumName;
+        cdTrack.artistName = track.artistName;
+    }
+    [self.coreDataStack saveContext];
+    
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:track 
                                                          forKey:PPWishlistTrackKeyName];
     NSString *notificationName;
-    if (index == NSNotFound) {
-        [self.favoriteTracks addObject:track];
+    if (cdTrack.favoriteValue) {
         notificationName = PPWishlistTrackAddedNotification;
     }
     else {
-        [self.favoriteTracks removeObjectAtIndex:index];
         notificationName = PPWishlistTrackRemovedNotification;
     }
     
@@ -49,22 +67,31 @@ NSString * const PPWishlistTrackKeyName = @"track";
                                                       userInfo:userInfo];
 }
 
-- (NSMutableArray *)favoriteTracks {
-    if (!favoriteTracks_) {
-        favoriteTracks_ = [[NSMutableArray alloc] init];
-    }
-    return favoriteTracks_;
+- (NSFetchRequest *)favoritesFetchRequest {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[Track entityInManagedObjectContext:self.coreDataStack.managedObjectContext]];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"favorite == YES"];
+    [fetchRequest setPredicate:predicate];
+    
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:NO];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+
+    return [fetchRequest autorelease];
 }
 
-- (NSUInteger)indexOfTrack:(PPTrack *)track {
-    // In the wish list, two tracks are considered equal if they have the same link
-    return [self.favoriteTracks indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
-        PPTrack *item = (PPTrack *)obj;
-        if ([track.link isEqualToString:item.link]) {
-            *stop = YES;
-            return YES;
-        }
-        return NO;
-    }];
+- (Track *)findTrack:(PPTrack *)track {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[Track entityInManagedObjectContext:self.coreDataStack.managedObjectContext]];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"link == %@", track.link];
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray *results = [self.coreDataStack.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    [fetchRequest release];
+    return results.count > 0 ? [results objectAtIndex:0] : nil;
 }
+
 @end

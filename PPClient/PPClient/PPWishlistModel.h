@@ -9,17 +9,22 @@
 #import <Foundation/Foundation.h>
 
 @class PPTrack;
+@class PPCoreDataStack;
+@class NSManagedObjectContext;
+@class NSFetchRequest;
 
 extern NSString * const PPWishlistTrackAddedNotification;
 extern NSString * const PPWishlistTrackRemovedNotification;
 extern NSString * const PPWishlistTrackKeyName;
 
 @interface PPWishlistModel : NSObject {
-    NSMutableArray *favoriteTracks_;
 }
 
+@property (nonatomic, retain) PPCoreDataStack *coreDataStack;
+@property (nonatomic, readonly) NSManagedObjectContext *moc;
 - (BOOL)isFavoriteTrack:(PPTrack *)track;
 
 - (void)toggleFavoriteTrack:(PPTrack *)track;
+- (NSFetchRequest *)favoritesFetchRequest;
 
 @end

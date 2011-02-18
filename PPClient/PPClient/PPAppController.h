@@ -12,6 +12,8 @@
 @class PPPlayingController;
 @class PPWishlistController;
 @class PPCoreDataStack;
+@class PPWishlistModel;
+
 /**
  The main controller
  */
@@ -23,6 +25,8 @@
 @property (nonatomic, retain) PPBonjourBrowser *bonjourBrowser;
 @property (nonatomic, retain) IBOutlet PPPlayingController *playingController;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+@property (nonatomic, retain) IBOutlet PPWishlistModel *wishlist;
+
 - (void)startController:(BOOL)isFreshStart;
 - (void)stopController;
 

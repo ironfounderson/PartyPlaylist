@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <CoreData/CoreData.h>
 @class PPWishlistModel;
 
-@interface PPWishlistController : UIViewController {
-    
+@interface PPWishlistController : UIViewController <NSFetchedResultsControllerDelegate> {
 }
 
 @property (nonatomic, retain) IBOutlet PPWishlistModel *wishlist;
-
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @end

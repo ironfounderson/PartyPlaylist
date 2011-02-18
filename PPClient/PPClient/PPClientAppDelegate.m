@@ -16,7 +16,6 @@
 
 @synthesize window=window_;
 @synthesize tabBarController=tabBarController_;
-@synthesize wishlist = wishlist_;
 @synthesize searchController = searchController_;
 @synthesize wishlistController = wishlistController_;
 @synthesize appController = appController_;
@@ -70,7 +69,6 @@
     [tabBarController_ release];
     [wishlistController_ release];
     [searchController_ release];
-    [wishlist_ release];
     [appController_ release];
     [super dealloc];
 }

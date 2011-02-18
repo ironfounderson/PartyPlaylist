@@ -10,6 +10,7 @@
 #import "PPPlayingController.h"
 #import "PPBonjourBrowser.h"
 #import "PPCoreDataStack.h"
+#import "PPWishlistModel.h"
 
 @interface PPAppController()
 @property (readonly) PPCoreDataStack *coreDataStack;
@@ -20,15 +21,18 @@
 @synthesize bonjourBrowser = bonjourBrowser_;
 @synthesize playingController = playingController_;
 @synthesize tabBarController = tabBarController_;
+@synthesize wishlist = wishlist_;
 
 - (void)dealloc {
     [bonjourBrowser_ release];
     [playingController_ release];
     [tabBarController_ release];
+    [wishlist_ release];
     [super dealloc];
 }
 
 - (void)startController:(BOOL)isFreshStart {
+    self.wishlist.coreDataStack = self.coreDataStack;
     self.playingController.bonjourBrowser = self.bonjourBrowser;
     [self.bonjourBrowser start];
     // We need to update the playing UI when the program resumes. 

@@ -41,6 +41,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UITapGestureRecognizer *tap = 
+    [[UITapGestureRecognizer alloc] initWithTarget:self 
+                                            action:@selector(toggleFavoriteTrack)];
+    [self.favoriteImage addGestureRecognizer:tap];
+    [tap release];
     
 }
 
@@ -61,14 +66,7 @@
     self.artistLabel.text = self.track.artistName;
     self.trackLabel.text = self.track.title;
     self.albumLabel.text = self.track.albumName;
-    
-    
-    UITapGestureRecognizer *tap = 
-    [[UITapGestureRecognizer alloc] initWithTarget:self 
-                                            action:@selector(toggleFavoriteTrack)];
-    [self.favoriteImage addGestureRecognizer:tap];
-    [tap release];
-    
+    [self updateFavoriteImage];
 }
 
 - (NSString *)message {

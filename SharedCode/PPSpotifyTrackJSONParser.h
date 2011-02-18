@@ -12,10 +12,14 @@
 #import <Cocoa/Cocoa.h>
 #endif
 
-@interface PPTrackParser : NSObject {
+@class PPSpotifyTrack;
+
+@interface PPSpotifyTrackJSONParser : NSObject {
     
 }
 
 - (NSArray *)parseData:(NSData *)data;
 
+- (NSDictionary *)dictionaryFromSpotifyTrack:(PPSpotifyTrack *)spotifyTrack;
+- (NSString *)jsonFromSpotifyTrack:(PPSpotifyTrack *)spotifyTrack;
 @end

@@ -16,6 +16,7 @@
 }
 
 - (id)initWithDictionary:(NSDictionary *)dict;
+- (NSDictionary *)dictionary;
 
 @property (getter=isLoaded) BOOL loaded;
 @property BOOL invalidTrack;

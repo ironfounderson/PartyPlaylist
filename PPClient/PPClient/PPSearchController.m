@@ -7,7 +7,7 @@
 //
 
 #import "PPSearchController.h"
-#import "PPTrackParser.h"
+#import "PPSpotifyTrackJSONParser.h"
 #import "PPSpotifyTrack.h"
 #import "PPWishlistModel.h"
 #import "PPTrackRequestController.h"
@@ -189,7 +189,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     __block __typeof__(self)_self = self;    
     dispatch_async(parseQueue_, ^{
-        PPTrackParser *trackParser = [[PPTrackParser alloc] init];
+        PPSpotifyTrackJSONParser *trackParser = [[PPSpotifyTrackJSONParser alloc] init];
         _self.tracks = [trackParser parseData:response];
         [trackParser release];
         dispatch_async(dispatch_get_main_queue(), ^{

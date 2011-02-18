@@ -7,11 +7,12 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-#import "PPTrackParser.h"
-#import "PPTrack.h"
+#import "PPSpotifyTrackJSONParser.h"
+#import "PPSpotifyTrack.h"
 
 @interface PPTrackParserTests : SenTestCase {
     NSArray *tracks;
+    PPSpotifyTrackJSONParser *trackParser;
 }
 
 @end
@@ -28,13 +29,14 @@
 
 - (void)setUp {
     [super setUp];
-    PPTrackParser *trackParser =[[PPTrackParser alloc] init];
+    trackParser =[[PPSpotifyTrackJSONParser alloc] init];
     tracks = [trackParser parseData:[self dataFromFile:@"track_backstreet"]];
     [tracks retain];
 }
 
 - (void)tearDown {
     [tracks release];
+    [trackParser release];
 }
 
 - (void)testParseData_TestFile_FindsAllTracks {
@@ -42,24 +44,37 @@
 }
 
 - (void)testParseData_TestFile_TrackTitleIsFound {
-    PPTrack *track = [tracks objectAtIndex:0];
+    PPSpotifyTrack *track = [tracks objectAtIndex:0];
     STAssertEqualObjects(@"Everybody (Backstreet's Back) - Radio Edit", track.title, @"title should be found");
 }
 
 - (void)testParseData_TestFile_TrackLinkIsFound {
-    PPTrack *track = [tracks objectAtIndex:0];
+    PPSpotifyTrack *track = [tracks objectAtIndex:0];
     STAssertEqualObjects(@"spotify:track:6hDH3YWFdcUNQjubYztIsG", track.link, @"link should be found");
 }
 
 - (void)testParseData_TestFile_AlbumNameIsFound {
-    PPTrack *track = [tracks objectAtIndex:0];
+    PPSpotifyTrack *track = [tracks objectAtIndex:0];
     STAssertEqualObjects(@"Backstreet's Back", track.albumName, @"album name should be found");
 }
 
 - (void)testParseData_TestFile_ArtistNameIsFound {
-    PPTrack *track = [tracks objectAtIndex:0];
+    PPSpotifyTrack *track = [tracks objectAtIndex:0];
     STAssertEqualObjects(@"Backstreet Boys", track.artistName, @"artist name should be found");
 }
+
+- (void)testDictionaryFromSpotifyTrack_IsEqualWhenCreatingNewTrack {
+    PPSpotifyTrack *spotifyTrack = [tracks objectAtIndex:0];
+    NSDictionary *trackDict = [trackParser dictionaryFromSpotifyTrack:spotifyTrack];
+    PPSpotifyTrack *convertedTrack = [[[PPSpotifyTrack alloc] initWithDictionary:trackDict] autorelease];
+    
+    STAssertEqualObjects(spotifyTrack.link, convertedTrack.link, @"link should be equal");
+    STAssertEqualObjects(spotifyTrack.title, convertedTrack.title, @"title should be equal");    
+    STAssertEqualObjects(spotifyTrack.albumName, convertedTrack.albumName, @"album name should be equal");    
+    STAssertEqualObjects(spotifyTrack.albumLink, convertedTrack.albumLink, @"album link should be equal");    
+    STAssertEqualObjects(spotifyTrack.artistName, convertedTrack.artistName, @"artist name should be equal");
+}
+
 @end
 
 

@@ -6,11 +6,11 @@
 //  Copyright 2011 rhoglund coding. All rights reserved.
 //
 
-#import "PPTrackParser.h"
+#import "PPSpotifyTrackJSONParser.h"
 #import "CJSONDeserializer.h"
 #import "PPSpotifyTrack.h"
 
-@implementation PPTrackParser
+@implementation PPSpotifyTrackJSONParser
 
 - (NSArray *)parseData:(NSData *)data {
     NSDictionary *trackDict = [[CJSONDeserializer deserializer] deserializeAsDictionary:data 
@@ -23,6 +23,14 @@
         [track release];
     }
     return result;
+}
+
+- (NSDictionary *)dictionaryFromSpotifyTrack:(PPSpotifyTrack *)spotifyTrack {    
+    return [spotifyTrack dictionary];
+}
+
+- (NSString *)jsonFromSpotifyTrack:(PPSpotifyTrack *)spotifyTrack {
+    return nil;
 }
 
 /*

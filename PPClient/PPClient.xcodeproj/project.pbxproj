@@ -19,7 +19,6 @@
 		E1292606130DBB8D007A1F3B /* _Track.m in Sources */ = {isa = PBXBuildFile; fileRef = E1292605130DBB8D007A1F3B /* _Track.m */; };
 		E1292609130DBB97007A1F3B /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = E1292608130DBB97007A1F3B /* Track.m */; };
 		E129260B130DBBB8007A1F3B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E129260A130DBBB8007A1F3B /* CoreData.framework */; };
-		E1314D0A130CEDC500758F2A /* TableViewControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = E1314D09130CEDC500758F2A /* TableViewControllerBase.m */; };
 		E1A631C51304548400EFF8E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C41304548400EFF8E5 /* UIKit.framework */; };
 		E1A631C71304548400EFF8E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C61304548400EFF8E5 /* Foundation.framework */; };
 		E1A631C91304548400EFF8E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C81304548400EFF8E5 /* CoreGraphics.framework */; };
@@ -58,8 +57,8 @@
 		E1BED6BE130466AD00064E6A /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6B6130466AD00064E6A /* ASIInputStream.m */; };
 		E1BED6BF130466AD00064E6A /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6B9130466AD00064E6A /* Reachability.m */; };
 		E1BED6C213046C5C00064E6A /* track_backstreet.json in Resources */ = {isa = PBXBuildFile; fileRef = E1BED6C113046C5C00064E6A /* track_backstreet.json */; };
-		E1BED6C513046CB500064E6A /* PPTrackParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6C413046CB400064E6A /* PPTrackParser.m */; };
-		E1BED6C613046CB500064E6A /* PPTrackParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6C413046CB400064E6A /* PPTrackParser.m */; };
+		E1BED6C513046CB500064E6A /* PPSpotifyTrackJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6C413046CB400064E6A /* PPSpotifyTrackJSONParser.m */; };
+		E1BED6C613046CB500064E6A /* PPSpotifyTrackJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6C413046CB400064E6A /* PPSpotifyTrackJSONParser.m */; };
 		E1BED6CD13046CFB00064E6A /* PPTrackParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6CC13046CFB00064E6A /* PPTrackParserTests.m */; };
 		E1BED6E213046E3F00064E6A /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6D013046E3F00064E6A /* CDataScanner.m */; };
 		E1BED6E313046E3F00064E6A /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6D013046E3F00064E6A /* CDataScanner.m */; };
@@ -111,8 +110,6 @@
 		E1292607130DBB97007A1F3B /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
 		E1292608130DBB97007A1F3B /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 		E129260A130DBBB8007A1F3B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		E1314D08130CEDC500758F2A /* TableViewControllerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewControllerBase.h; sourceTree = "<group>"; };
-		E1314D09130CEDC500758F2A /* TableViewControllerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewControllerBase.m; sourceTree = "<group>"; };
 		E1A631C01304548400EFF8E5 /* PPClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A631C41304548400EFF8E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E1A631C61304548400EFF8E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -173,8 +170,8 @@
 		E1BED6B8130466AD00064E6A /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		E1BED6B9130466AD00064E6A /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		E1BED6C113046C5C00064E6A /* track_backstreet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = track_backstreet.json; sourceTree = "<group>"; };
-		E1BED6C313046CB400064E6A /* PPTrackParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTrackParser.h; sourceTree = "<group>"; };
-		E1BED6C413046CB400064E6A /* PPTrackParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTrackParser.m; sourceTree = "<group>"; };
+		E1BED6C313046CB400064E6A /* PPSpotifyTrackJSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifyTrackJSONParser.h; sourceTree = "<group>"; };
+		E1BED6C413046CB400064E6A /* PPSpotifyTrackJSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyTrackJSONParser.m; sourceTree = "<group>"; };
 		E1BED6CC13046CFB00064E6A /* PPTrackParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTrackParserTests.m; sourceTree = "<group>"; };
 		E1BED6CF13046E3F00064E6A /* CDataScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner.h; sourceTree = "<group>"; };
 		E1BED6D013046E3F00064E6A /* CDataScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner.m; sourceTree = "<group>"; };
@@ -367,8 +364,6 @@
 				E1E04002130BAD11001C1806 /* PPAppController.m */,
 				E11CADF0130C19A300BDEC69 /* PPChoosePlaylistController.h */,
 				E11CADF1130C19A400BDEC69 /* PPChoosePlaylistController.m */,
-				E1314D08130CEDC500758F2A /* TableViewControllerBase.h */,
-				E1314D09130CEDC500758F2A /* TableViewControllerBase.m */,
 				E11CADF5130C1B4700BDEC69 /* UIViewController+PPModal.h */,
 				E11CADF6130C1B4700BDEC69 /* UIViewController+PPModal.m */,
 				E12925A6130DAB8B007A1F3B /* PPTrackRequestController.h */,
@@ -407,8 +402,8 @@
 				E1AA4214130E5DCF00254C46 /* PPSpotifyTrack.m */,
 				E1BED68013045D6F00064E6A /* PPSearchURL.h */,
 				E1BED68113045D6F00064E6A /* PPSearchURL.m */,
-				E1BED6C313046CB400064E6A /* PPTrackParser.h */,
-				E1BED6C413046CB400064E6A /* PPTrackParser.m */,
+				E1BED6C313046CB400064E6A /* PPSpotifyTrackJSONParser.h */,
+				E1BED6C413046CB400064E6A /* PPSpotifyTrackJSONParser.m */,
 			);
 			name = SharedCode;
 			path = ../SharedCode;
@@ -634,7 +629,7 @@
 				E1BED6BD130466AD00064E6A /* ASIHTTPRequest.m in Sources */,
 				E1BED6BE130466AD00064E6A /* ASIInputStream.m in Sources */,
 				E1BED6BF130466AD00064E6A /* Reachability.m in Sources */,
-				E1BED6C513046CB500064E6A /* PPTrackParser.m in Sources */,
+				E1BED6C513046CB500064E6A /* PPSpotifyTrackJSONParser.m in Sources */,
 				E1BED6E213046E3F00064E6A /* CDataScanner.m in Sources */,
 				E1BED6E413046E3F00064E6A /* CDataScanner_Extensions.m in Sources */,
 				E1BED6E613046E3F00064E6A /* NSCharacterSet_Extensions.m in Sources */,
@@ -648,7 +643,6 @@
 				E1E04003130BAD11001C1806 /* PPAppController.m in Sources */,
 				E11CADF3130C19A600BDEC69 /* PPChoosePlaylistController.m in Sources */,
 				E11CADF7130C1B4900BDEC69 /* UIViewController+PPModal.m in Sources */,
-				E1314D0A130CEDC500758F2A /* TableViewControllerBase.m in Sources */,
 				E1BB7150130D27F800F13FDB /* PPPlaylistRequest.m in Sources */,
 				E12925A9130DAB91007A1F3B /* PPTrackRequestController.m in Sources */,
 				E12925FC130DB914007A1F3B /* PPClient.xcdatamodeld in Sources */,
@@ -666,7 +660,7 @@
 				E1AA4216130E5FF600254C46 /* PPSpotifyTrack.m in Sources */,
 				E1BED67E13045CFB00064E6A /* PPSearchURLTests.m in Sources */,
 				E1BED68313045D6F00064E6A /* PPSearchURL.m in Sources */,
-				E1BED6C613046CB500064E6A /* PPTrackParser.m in Sources */,
+				E1BED6C613046CB500064E6A /* PPSpotifyTrackJSONParser.m in Sources */,
 				E1BED6CD13046CFB00064E6A /* PPTrackParserTests.m in Sources */,
 				E1BED6E313046E3F00064E6A /* CDataScanner.m in Sources */,
 				E1BED6E513046E3F00064E6A /* CDataScanner_Extensions.m in Sources */,

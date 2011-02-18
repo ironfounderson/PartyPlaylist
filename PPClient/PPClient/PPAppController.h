@@ -10,11 +10,14 @@
 
 @class PPBonjourBrowser;
 @class PPPlayingController;
-
+@class PPWishlistController;
+@class PPCoreDataStack;
 /**
  The main controller
  */
 @interface PPAppController : NSObject {
+@private
+    PPCoreDataStack *coreDataStack_;
 }
 
 @property (nonatomic, retain) PPBonjourBrowser *bonjourBrowser;

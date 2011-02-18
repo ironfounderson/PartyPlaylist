@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E115067C130E462F0024B913 /* star-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = E115067A130E462F0024B913 /* star-selected.png */; };
+		E115067D130E462F0024B913 /* star-unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = E115067B130E462F0024B913 /* star-unselected.png */; };
 		E11CADF3130C19A600BDEC69 /* PPChoosePlaylistController.m in Sources */ = {isa = PBXBuildFile; fileRef = E11CADF1130C19A400BDEC69 /* PPChoosePlaylistController.m */; };
 		E11CADF4130C19A600BDEC69 /* PPChoosePlaylistController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E11CADF2130C19A500BDEC69 /* PPChoosePlaylistController.xib */; };
 		E11CADF7130C1B4900BDEC69 /* UIViewController+PPModal.m in Sources */ = {isa = PBXBuildFile; fileRef = E11CADF6130C1B4700BDEC69 /* UIViewController+PPModal.m */; };
 		E12925A9130DAB91007A1F3B /* PPTrackRequestController.m in Sources */ = {isa = PBXBuildFile; fileRef = E12925A7130DAB8C007A1F3B /* PPTrackRequestController.m */; };
 		E12925AA130DAB91007A1F3B /* PPTrackRequestController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E12925A8130DAB8E007A1F3B /* PPTrackRequestController.xib */; };
+		E12925FC130DB914007A1F3B /* PPClient.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E12925FA130DB911007A1F3B /* PPClient.xcdatamodeld */; };
+		E1292602130DBA27007A1F3B /* PPCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1292601130DBA26007A1F3B /* PPCoreDataStack.m */; };
+		E1292606130DBB8D007A1F3B /* _Track.m in Sources */ = {isa = PBXBuildFile; fileRef = E1292605130DBB8D007A1F3B /* _Track.m */; };
+		E1292609130DBB97007A1F3B /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = E1292608130DBB97007A1F3B /* Track.m */; };
+		E129260B130DBBB8007A1F3B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E129260A130DBBB8007A1F3B /* CoreData.framework */; };
 		E1314D0A130CEDC500758F2A /* TableViewControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = E1314D09130CEDC500758F2A /* TableViewControllerBase.m */; };
 		E1A631C51304548400EFF8E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C41304548400EFF8E5 /* UIKit.framework */; };
 		E1A631C71304548400EFF8E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C61304548400EFF8E5 /* Foundation.framework */; };
@@ -86,6 +93,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E115067A130E462F0024B913 /* star-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-selected.png"; sourceTree = "<group>"; };
+		E115067B130E462F0024B913 /* star-unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-unselected.png"; sourceTree = "<group>"; };
 		E11CADF0130C19A300BDEC69 /* PPChoosePlaylistController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPChoosePlaylistController.h; sourceTree = "<group>"; };
 		E11CADF1130C19A400BDEC69 /* PPChoosePlaylistController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPChoosePlaylistController.m; sourceTree = "<group>"; };
 		E11CADF2130C19A500BDEC69 /* PPChoosePlaylistController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPChoosePlaylistController.xib; sourceTree = "<group>"; };
@@ -94,6 +103,14 @@
 		E12925A6130DAB8B007A1F3B /* PPTrackRequestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPTrackRequestController.h; sourceTree = "<group>"; };
 		E12925A7130DAB8C007A1F3B /* PPTrackRequestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPTrackRequestController.m; sourceTree = "<group>"; };
 		E12925A8130DAB8E007A1F3B /* PPTrackRequestController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPTrackRequestController.xib; sourceTree = "<group>"; };
+		E12925FB130DB914007A1F3B /* PPClient.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PPClient.xcdatamodel; sourceTree = "<group>"; };
+		E1292600130DBA25007A1F3B /* PPCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPCoreDataStack.h; sourceTree = "<group>"; };
+		E1292601130DBA26007A1F3B /* PPCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPCoreDataStack.m; sourceTree = "<group>"; };
+		E1292604130DBB8D007A1F3B /* _Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Track.h; sourceTree = "<group>"; };
+		E1292605130DBB8D007A1F3B /* _Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Track.m; sourceTree = "<group>"; };
+		E1292607130DBB97007A1F3B /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
+		E1292608130DBB97007A1F3B /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
+		E129260A130DBBB8007A1F3B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E1314D08130CEDC500758F2A /* TableViewControllerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewControllerBase.h; sourceTree = "<group>"; };
 		E1314D09130CEDC500758F2A /* TableViewControllerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewControllerBase.m; sourceTree = "<group>"; };
 		E1A631C01304548400EFF8E5 /* PPClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E129260B130DBBB8007A1F3B /* CoreData.framework in Frameworks */,
 				E1BED6A71304667200064E6A /* libz.1.2.3.dylib in Frameworks */,
 				E1BED6A51304666400064E6A /* MobileCoreServices.framework in Frameworks */,
 				E1BED6A31304665900064E6A /* SystemConfiguration.framework in Frameworks */,
@@ -212,9 +230,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E1150679130E462F0024B913 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E115067A130E462F0024B913 /* star-selected.png */,
+				E115067B130E462F0024B913 /* star-unselected.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		E1292603130DBA2C007A1F3B /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				E1292607130DBB97007A1F3B /* Track.h */,
+				E1292608130DBB97007A1F3B /* Track.m */,
+				E1292604130DBB8D007A1F3B /* _Track.h */,
+				E1292605130DBB8D007A1F3B /* _Track.m */,
+				E1292600130DBA25007A1F3B /* PPCoreDataStack.h */,
+				E1292601130DBA26007A1F3B /* PPCoreDataStack.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		E1A631B51304548400EFF8E5 = {
 			isa = PBXGroup;
 			children = (
+				E129260A130DBBB8007A1F3B /* CoreData.framework */,
 				E1BED6A8130466AC00064E6A /* ExternalCode */,
 				E1BED67F13045D5100064E6A /* SharedCode */,
 				E1A631CA1304548400EFF8E5 /* PPClient */,
@@ -254,11 +295,13 @@
 				E1BED6661304584D00064E6A /* Models */,
 				E1BED6651304584900064E6A /* Views */,
 				E1BED6641304584400064E6A /* Controllers */,
+				E1150679130E462F0024B913 /* Images */,
 				E1BED6631304582700064E6A /* xibs */,
 				E1A631CB1304548400EFF8E5 /* Supporting Files */,
 				E1A631D31304548400EFF8E5 /* PPClientAppDelegate.h */,
 				E1A631D41304548400EFF8E5 /* PPClientAppDelegate.m */,
 				E1BED67B13045A9800064E6A /* developmentlog.md */,
+				E12925FA130DB911007A1F3B /* PPClient.xcdatamodeld */,
 			);
 			path = PPClient;
 			sourceTree = "<group>";
@@ -344,6 +387,7 @@
 		E1BED6661304584D00064E6A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E1292603130DBA2C007A1F3B /* Core Data */,
 				E1BED6841304628000064E6A /* PPSearchModel.h */,
 				E1BED6851304628000064E6A /* PPSearchModel.m */,
 				E1FD036713051C290085B2AA /* PPWishlistModel.h */,
@@ -539,6 +583,8 @@
 				E11CADF4130C19A600BDEC69 /* PPChoosePlaylistController.xib in Resources */,
 				E1BBB51B130D481000524485 /* PPConnectingView.xib in Resources */,
 				E12925AA130DAB91007A1F3B /* PPTrackRequestController.xib in Resources */,
+				E115067C130E462F0024B913 /* star-selected.png in Resources */,
+				E115067D130E462F0024B913 /* star-unselected.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,6 +652,10 @@
 				E1314D0A130CEDC500758F2A /* TableViewControllerBase.m in Sources */,
 				E1BB7150130D27F800F13FDB /* PPPlaylistRequest.m in Sources */,
 				E12925A9130DAB91007A1F3B /* PPTrackRequestController.m in Sources */,
+				E12925FC130DB914007A1F3B /* PPClient.xcdatamodeld in Sources */,
+				E1292602130DBA27007A1F3B /* PPCoreDataStack.m in Sources */,
+				E1292606130DBB8D007A1F3B /* _Track.m in Sources */,
+				E1292609130DBB97007A1F3B /* Track.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,6 +853,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E12925FA130DB911007A1F3B /* PPClient.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E12925FB130DB914007A1F3B /* PPClient.xcdatamodel */,
+			);
+			currentVersion = E12925FB130DB914007A1F3B /* PPClient.xcdatamodel */;
+			path = PPClient.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E1A631B71304548400EFF8E5 /* Project object */;
 }

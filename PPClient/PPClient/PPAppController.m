@@ -9,6 +9,11 @@
 #import "PPAppController.h"
 #import "PPPlayingController.h"
 #import "PPBonjourBrowser.h"
+#import "PPCoreDataStack.h"
+
+@interface PPAppController()
+@property (readonly) PPCoreDataStack *coreDataStack;
+@end
 
 @implementation PPAppController
 
@@ -46,5 +51,12 @@
         bonjourBrowser_ = [[PPBonjourBrowser alloc] init];
     }
     return bonjourBrowser_;
+}
+
+- (PPCoreDataStack *)coreDataStack {
+    if (!coreDataStack_) {
+        coreDataStack_ = [[PPCoreDataStack alloc] init];
+    }
+    return coreDataStack_;
 }
 @end

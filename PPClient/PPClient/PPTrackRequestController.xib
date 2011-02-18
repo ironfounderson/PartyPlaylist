@@ -16,6 +16,7 @@
 			<string>IBUIBarButtonItem</string>
 			<string>IBProxyObject</string>
 			<string>IBUILabel</string>
+			<string>IBUIImageView</string>
 			<string>IBUINavigationBar</string>
 			<string>IBUINavigationItem</string>
 			<string>IBUIButton</string>
@@ -63,7 +64,7 @@
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 									<int key="IBUIStyle">1</int>
 									<reference key="IBUINavigationItem" ref="516395745"/>
-									<int key="IBUISystemItemIdentifier">1</int>
+									<int key="IBUISystemItemIdentifier">0</int>
 								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
@@ -72,10 +73,10 @@
 					<object class="IBUIButton" id="958521286">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">269</int>
-						<string key="NSFrame">{{20, 404}, {280, 35}}</string>
+						<string key="NSFrame">{{20, 366}, {280, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSNextKeyView" ref="751925606"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
@@ -103,7 +104,7 @@
 					<object class="IBUIButton" id="87588429">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{20, 359}, {280, 37}}</string>
+						<string key="NSFrame">{{20, 321}, {280, 37}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="958521286"/>
@@ -187,6 +188,20 @@
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">1</int>
 					</object>
+					<object class="IBUIImageView" id="751925606">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">265</int>
+						<string key="NSFrame">{{256, 409}, {44, 44}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
+						<int key="IBUIContentMode">4</int>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">star-unselected.png</string>
+						</object>
+					</object>
 				</object>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 				<reference key="NSSuperview"/>
@@ -264,6 +279,14 @@
 					</object>
 					<int key="connectionID">17</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">favoriteImage</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="751925606"/>
+					</object>
+					<int key="connectionID">21</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -280,11 +303,12 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="391335310"/>
-							<reference ref="87588429"/>
-							<reference ref="958521286"/>
 							<reference ref="610925780"/>
 							<reference ref="703731111"/>
 							<reference ref="94985146"/>
+							<reference ref="751925606"/>
+							<reference ref="958521286"/>
+							<reference ref="87588429"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -347,6 +371,11 @@
 						<reference key="object" ref="94985146"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">20</int>
+						<reference key="object" ref="751925606"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -360,6 +389,7 @@
 					<string>11.IBPluginDependency</string>
 					<string>12.IBPluginDependency</string>
 					<string>13.IBPluginDependency</string>
+					<string>20.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>6.IBPluginDependency</string>
@@ -371,6 +401,7 @@
 					<string>PPTrackRequestController</string>
 					<string>UIResponder</string>
 					<string>{{556, 412}, {320, 480}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -394,7 +425,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">17</int>
+			<int key="maxID">21</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -447,12 +478,14 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>albumLabel</string>
 							<string>artistLabel</string>
+							<string>favoriteImage</string>
 							<string>trackLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UILabel</string>
 							<string>UILabel</string>
+							<string>UIImageView</string>
 							<string>UILabel</string>
 						</object>
 					</object>
@@ -462,6 +495,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>albumLabel</string>
 							<string>artistLabel</string>
+							<string>favoriteImage</string>
 							<string>trackLabel</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
@@ -473,6 +507,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">artistLabel</string>
 								<string key="candidateClassName">UILabel</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">favoriteImage</string>
+								<string key="candidateClassName">UIImageView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">trackLabel</string>
@@ -495,6 +533,10 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">star-unselected.png</string>
+			<string key="NS.object.0">{26, 26}</string>
+		</object>
 		<string key="IBCocoaTouchPluginVersion">294</string>
 	</data>
 </archive>

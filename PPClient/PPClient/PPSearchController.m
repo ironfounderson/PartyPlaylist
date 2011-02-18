@@ -147,6 +147,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     PPTrackRequestController *requestController = [[PPTrackRequestController alloc] init];
     requestController.track = track;
+    requestController.wishlist = self.wishlist;
     __block __typeof__(self) blockSelf = self;
     [requestController setRequestBlock:^(NSString *stringURL) {
         [blockSelf dismissModalViewControllerAnimated:YES];
@@ -157,7 +158,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     }];
     [self presentModalViewController:requestController animated:YES];
     [requestController release];
-    //[self.wishlist toggleFavoriteTrack:track];
 }
 
 - (PPSearchModel *)searchModel {

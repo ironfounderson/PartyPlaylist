@@ -8,6 +8,7 @@
 
 #import "PPSpotifyTrackJSONParser.h"
 #import "CJSONDeserializer.h"
+#import "CJSONSerializer.h"
 #import "PPSpotifyTrack.h"
 
 @implementation PPSpotifyTrackJSONParser
@@ -29,8 +30,8 @@
     return [spotifyTrack dictionary];
 }
 
-- (NSString *)jsonFromSpotifyTrack:(PPSpotifyTrack *)spotifyTrack {
-    return nil;
+- (NSData *)jsonFromSpotifyTrack:(PPSpotifyTrack *)spotifyTrack {
+    return [[CJSONSerializer serializer] serializeObject:[spotifyTrack dictionary] error:nil];
 }
 
 /*

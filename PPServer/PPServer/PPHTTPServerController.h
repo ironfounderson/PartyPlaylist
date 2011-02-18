@@ -11,11 +11,14 @@
 extern NSString * const PPBonjourType;
 
 @class HTTPServer;
+@class PPPlaylist;
 
 @interface PPHTTPServerController : NSObject {
 @private
     HTTPServer *httpServer_;
 }
+
+- (id)initWithPlaylist:(PPPlaylist *)playlist;
 
 - (void)startServer;
 

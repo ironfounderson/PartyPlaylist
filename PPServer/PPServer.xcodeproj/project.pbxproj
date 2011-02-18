@@ -54,6 +54,10 @@
 		E19A8754130855C700BECD44 /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = E18DEAB61307E59200CA4226 /* DDLog.m */; };
 		E1AA420C130E5CC600254C46 /* PPSearchURL.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AA4207130E5CC600254C46 /* PPSearchURL.m */; };
 		E1AA4211130E5D6C00254C46 /* PPSpotifyTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AA4210130E5D6C00254C46 /* PPSpotifyTrack.m */; };
+		E1AA4219130E67EE00254C46 /* PPSpotifyTrackJSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AA4218130E67EE00254C46 /* PPSpotifyTrackJSONParser.m */; };
+		E1AA421F130E76A100254C46 /* PPHTTPURLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AA421E130E769600254C46 /* PPHTTPURLHandler.m */; };
+		E1AA4220130E77BD00254C46 /* PPHTTPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AA421B130E75CF00254C46 /* PPHTTPResponse.m */; };
+		E1AA4223130E7A8100254C46 /* QSStrings.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AA4222130E7A8100254C46 /* QSStrings.m */; };
 		E1D029B81306FED000874960 /* PPUserlist.m in Sources */ = {isa = PBXBuildFile; fileRef = E1D029B71306FECF00874960 /* PPUserlist.m */; };
 		E1E230E213087B62006DD0E9 /* PPTrackRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E230E113087B60006DD0E9 /* PPTrackRequest.m */; };
 		E1E230E513088508006DD0E9 /* PPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E230E413088508006DD0E9 /* PPWebViewController.m */; };
@@ -205,6 +209,14 @@
 		E1AA4207130E5CC600254C46 /* PPSearchURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSearchURL.m; sourceTree = "<group>"; };
 		E1AA420F130E5D6C00254C46 /* PPSpotifyTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifyTrack.h; sourceTree = "<group>"; };
 		E1AA4210130E5D6C00254C46 /* PPSpotifyTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyTrack.m; sourceTree = "<group>"; };
+		E1AA4217130E67EE00254C46 /* PPSpotifyTrackJSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifyTrackJSONParser.h; sourceTree = "<group>"; };
+		E1AA4218130E67EE00254C46 /* PPSpotifyTrackJSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyTrackJSONParser.m; sourceTree = "<group>"; };
+		E1AA421A130E75CC00254C46 /* PPHTTPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPHTTPResponse.h; sourceTree = "<group>"; };
+		E1AA421B130E75CF00254C46 /* PPHTTPResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPHTTPResponse.m; sourceTree = "<group>"; };
+		E1AA421D130E769200254C46 /* PPHTTPURLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPHTTPURLHandler.h; sourceTree = "<group>"; };
+		E1AA421E130E769600254C46 /* PPHTTPURLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPHTTPURLHandler.m; sourceTree = "<group>"; };
+		E1AA4221130E7A8100254C46 /* QSStrings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSStrings.h; sourceTree = "<group>"; };
+		E1AA4222130E7A8100254C46 /* QSStrings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSStrings.m; sourceTree = "<group>"; };
 		E1D029B31306FDF600874960 /* PPPlaylistTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlaylistTests.m; sourceTree = "<group>"; };
 		E1D029B61306FECF00874960 /* PPUserlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPUserlist.h; sourceTree = "<group>"; };
 		E1D029B71306FECF00874960 /* PPUserlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUserlist.m; sourceTree = "<group>"; };
@@ -459,6 +471,8 @@
 		E1AA4205130E5CC600254C46 /* SharedCode */ = {
 			isa = PBXGroup;
 			children = (
+				E1AA4217130E67EE00254C46 /* PPSpotifyTrackJSONParser.h */,
+				E1AA4218130E67EE00254C46 /* PPSpotifyTrackJSONParser.m */,
 				E1AA420F130E5D6C00254C46 /* PPSpotifyTrack.h */,
 				E1AA4210130E5D6C00254C46 /* PPSpotifyTrack.m */,
 				E1AA4206130E5CC600254C46 /* PPSearchURL.h */,
@@ -495,6 +509,10 @@
 				E18DEAD31307E60100CA4226 /* PPHTTPConnection.m */,
 				E1E230E013087B5E006DD0E9 /* PPTrackRequest.h */,
 				E1E230E113087B60006DD0E9 /* PPTrackRequest.m */,
+				E1AA421A130E75CC00254C46 /* PPHTTPResponse.h */,
+				E1AA421B130E75CF00254C46 /* PPHTTPResponse.m */,
+				E1AA421D130E769200254C46 /* PPHTTPURLHandler.h */,
+				E1AA421E130E769600254C46 /* PPHTTPURLHandler.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -638,6 +656,8 @@
 				E1FD046F13054A630085B2AA /* oauthconsumer */,
 				E1FD043013054A410085B2AA /* TouchJSON */,
 				E1FD03C01305483E0085B2AA /* MGTwitterEngine */,
+				E1AA4221130E7A8100254C46 /* QSStrings.h */,
+				E1AA4222130E7A8100254C46 /* QSStrings.m */,
 			);
 			name = ExternalCode;
 			path = ../ExternalCode;
@@ -931,6 +951,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1AA4220130E77BD00254C46 /* PPHTTPResponse.m in Sources */,
 				E1FD03881305479B0085B2AA /* main.m in Sources */,
 				E1FD038E1305479B0085B2AA /* PPServerAppDelegate.m in Sources */,
 				E1FD04101305483E0085B2AA /* MGTwitterEngine.m in Sources */,
@@ -1010,6 +1031,9 @@
 				E1255181130A8EC0002E4027 /* NSFileManager+DirectoryLocations.m in Sources */,
 				E1AA420C130E5CC600254C46 /* PPSearchURL.m in Sources */,
 				E1AA4211130E5D6C00254C46 /* PPSpotifyTrack.m in Sources */,
+				E1AA4219130E67EE00254C46 /* PPSpotifyTrackJSONParser.m in Sources */,
+				E1AA421F130E76A100254C46 /* PPHTTPURLHandler.m in Sources */,
+				E1AA4223130E7A8100254C46 /* QSStrings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,11 +17,10 @@ NSString * const PPBonjourType = @"_spp._tcp";
 
 @implementation PPHTTPServerController
 
-- (id)init
-{
+- (id)initWithPlaylist:(PPPlaylist *)playlist {
     self = [super init];
     if (self) {
-        // Initialization code here.
+        [PPHTTPConnection setPlaylist:playlist];
     }
     
     return self;

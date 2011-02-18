@@ -41,7 +41,7 @@ static int ddLogLevel = LOG_LEVEL_INFO;
     spotifyController_ = [[PPSpotifyController alloc] init];
     userlist_ = [[PPUserlist alloc] init];
     playlist_ = [[PPPlaylist alloc] init];
-    httpServerController_ = [[PPHTTPServerController alloc] init];
+    httpServerController_ = [[PPHTTPServerController alloc] initWithPlaylist:playlist_];
     
     playlist_.spotifyController = spotifyController_;
     playlist_.userlist = userlist_;

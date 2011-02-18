@@ -85,7 +85,12 @@ static void image_load_callback(sp_image* image, void *userData) {
 }
 
 - (NSString *)imagePathForTrack:(PPSpotifyTrack *)track {
-    NSString *filename = [track.albumLink stringByReplacingOccurrencesOfString:@":" withString:@""];
+    return [self imagePathForLink:track.albumLink];
+}
+
+- (NSString *)imagePathForLink:(NSString *)link {
+    NSString *filename = [link stringByReplacingOccurrencesOfString:@":" withString:@""];
     return [NSString stringWithFormat:@"%@/%@.jpg", self.imageDirectory, filename];
 }
+
 @end

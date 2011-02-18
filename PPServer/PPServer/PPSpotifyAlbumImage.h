@@ -24,5 +24,6 @@
                   session:(sp_session *)session;
 - (void)saveImage:(sp_image *)image forTrack:(PPSpotifyTrack *)track;
 - (NSString *)imagePathForTrack:(PPSpotifyTrack *)track;
+- (NSString *)imagePathForLink:(NSString *)link;
 
 @end

@@ -13,6 +13,10 @@
 #import "PPSpotifyTrack.h"
 #import "ASIHTTPRequest.h"
 #import "CJSONDeserializer.h"
+#import "PPPlayingTrackView.h"
+#import "PPPlayingCurrentTrackView.h"
+#import "PPPlayingTrack.h"
+#import "PPAlbumCoverManager.h"
 
 #define PREVIOUS_SECTION 0
 #define CURRENT_SECTION 1
@@ -21,10 +25,15 @@
 @interface PPPlayingController()
 @property (getter=isConnected) BOOL connected;
 @property (nonatomic, readonly) PPPlaylistRequest *playlistRequest;
-@property (retain) PPSpotifyTrack *previousTrack;
-@property (retain) PPSpotifyTrack *currentTrack;
-@property (retain) PPSpotifyTrack *nextTrack;
+@property (readonly) PPPlayingTrack *previousTrack;
+@property (readonly) PPPlayingTrack *currentTrack;
+@property (readonly) PPPlayingTrack *nextTrack;
+@property (readonly) PPPlayingTrackView *previousView;
+@property (readonly) PPPlayingTrackView *currentView;
+@property (readonly) PPPlayingTrackView *nextView;
+
 - (void)requestCurrentPlayingTracks;
+- (void)updateTrackViews;
 @end
 
 @implementation PPPlayingController
@@ -36,7 +45,10 @@
 @synthesize previousTrack = previousTrack_;
 @synthesize currentTrack = currentTrack_;
 @synthesize nextTrack = nextTrack_;
-@synthesize tableView = tableView_;
+@synthesize previousView = previousView_;
+@synthesize nextView = nextView_;
+@synthesize currentView = currentView_;
+@synthesize albumCoverManager = albumCoverManager_;
 
 - (void)dealloc {
     [connectingView_ release];
@@ -44,7 +56,9 @@
     [previousTrack_ release];
     [currentTrack_ release];
     [nextTrack_ release];
-    [tableView_ release];
+    [previousView_ release];
+    [currentView_ release];
+    [previousView_ release];
     [super dealloc];
 }
 
@@ -89,6 +103,27 @@
     if (self.connectingView.superview) {
         [self.connectingView removeFromSuperview];
     }
+    CGFloat top = 0;
+    if (!self.previousView.superview) {
+        CGRect frame = self.previousView.frame;
+        frame.origin.y = top;
+        self.previousView.frame = frame;
+        top += frame.size.height;
+        [self.view addSubview:self.previousView];
+        
+        frame = self.currentView.frame;
+        frame.origin.y = top;
+        self.currentView.frame = frame;
+        top += frame.size.height;
+        [self.view addSubview:self.currentView];
+        
+        frame = self.nextView.frame;
+        frame.origin.y = top;
+        self.nextView.frame = frame;
+        top += frame.size.height;
+        [self.view addSubview:self.nextView];
+    }
+    
     isActive_ = YES;
     [self requestCurrentPlayingTracks];
 }
@@ -165,78 +200,32 @@
     [playlistController release];
 }
 
-#pragma mark - Table View
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    PPSpotifyTrack *track = nil;
-    switch (indexPath.section) {
-        case PREVIOUS_SECTION:
-            track = self.previousTrack;
-            break;
-        case CURRENT_SECTION:
-            track = self.currentTrack;
-            break;
-        case NEXT_SECTION:
-            track = self.nextTrack;
-            break;
-    }
-    
-    cell.textLabel.text = track.title;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", track.artistName, track.albumName];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case PREVIOUS_SECTION:
-            return NSLocalizedString(@"Previous", @"");
-        case CURRENT_SECTION:
-            return NSLocalizedString(@"Current", @"");
-        case NEXT_SECTION:
-            return NSLocalizedString(@"Next", @"");
-
-    }
-    
-    return nil;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == CURRENT_SECTION) {
-        return 88.0;
-    }
-    return tableView.rowHeight;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView 
- numberOfRowsInSection:(NSInteger)section {
-    return 1;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView 
-         cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"TrackCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
-                                       reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    [self configureCell:cell atIndexPath:indexPath];
-    return cell;
-}
-
 - (void)clearPlayingTracks {
-    self.currentTrack = nil;
-    self.previousTrack = nil;
-    self.nextTrack = nil;  
+    self.currentTrack.track = nil;
+    self.currentTrack.albumCover = nil;
+    self.previousTrack.track = nil;
+    self.previousTrack.albumCover = nil;
+    self.nextTrack.track = nil;  
+    self.nextTrack.albumCover = nil;  
 }
 
+- (void)updateTrackViews {
+    [self.previousView displaySpotifyTrack:self.previousTrack];
+    [self.currentView displaySpotifyTrack:self.currentTrack];
+    [self.nextView displaySpotifyTrack:self.nextTrack];
+}
+
+- (void)assignPlayingTrack:(PPPlayingTrack *)track fromDictionary:(NSDictionary *)trackDict {
+    if (trackDict) {
+        track.track = [[[PPSpotifyTrack alloc] initWithDictionary:trackDict] autorelease];
+        [self.albumCoverManager findAlbumCoverForTrack:track];
+    }
+
+}
 - (void)requestCurrentPlayingTracks {
+    
+    //TODO: Smarter update of playing tracks so we don't update if we get the same tracks as we already are playing
+    
     NSLog(@"Requesting current playing tracks");
     if (!self.bonjourBrowser.isPlaylistAvailable) {
         return;
@@ -252,27 +241,21 @@
             NSDictionary *tracks = 
             [[CJSONDeserializer deserializer] deserializeAsDictionary:request.responseData 
                                                                 error:nil];
-            NSDictionary *nextTrack = [tracks objectForKey:@"next"];
-            if (nextTrack) {
-                self.nextTrack = [[[PPSpotifyTrack alloc] initWithDictionary:nextTrack] autorelease];
-            }
-            NSDictionary *currentTrack = [tracks objectForKey:@"current"];
-            if (nextTrack) {
-                self.currentTrack = [[[PPSpotifyTrack alloc] initWithDictionary:currentTrack] autorelease];
-            }
-            NSDictionary *previousTrack = [tracks objectForKey:@"previous"];
-            if (nextTrack) {
-                self.previousTrack = [[[PPSpotifyTrack alloc] initWithDictionary:previousTrack] autorelease];
-            }
+            [blockSelf assignPlayingTrack:self.nextTrack 
+                           fromDictionary:[tracks objectForKey:@"next"]];
+            [blockSelf assignPlayingTrack:self.currentTrack 
+                           fromDictionary:[tracks objectForKey:@"current"]];
+            [blockSelf assignPlayingTrack:self.previousTrack 
+                           fromDictionary:[tracks objectForKey:@"previous"]];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [blockSelf.tableView reloadData];
+            [blockSelf updateTrackViews];
         });
     }];
     [request setFailedBlock:^ {
         [blockSelf clearPlayingTracks];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [blockSelf.tableView reloadData];
+            [blockSelf updateTrackViews];
         });
 
     }];
@@ -289,5 +272,65 @@
     }
 }
 
+- (PPPlayingTrack *)currentTrack {
+    if (!currentTrack_) {
+        currentTrack_ = [[PPPlayingTrack alloc] init];
+    }
+    return currentTrack_;
+}
+
+- (PPPlayingTrack *)nextTrack {
+    if (!nextTrack_) {
+        nextTrack_ = [[PPPlayingTrack alloc] init];
+    }
+    return nextTrack_;
+}
+
+- (PPPlayingTrack *)previousTrack {
+    if (!previousTrack_) {
+        previousTrack_ = [[PPPlayingTrack alloc] init];
+    }
+    return previousTrack_;
+}
+
+#define TRACK_VIEW_SIZE 120
+
+- (PPPlayingTrackView *)previousView {
+    if (!previousView_) {
+        previousView_ = [[PPPlayingTrackView alloc] initWithFrame:CGRectMake(0, 0, 320, TRACK_VIEW_SIZE)];
+        previousView_.title = NSLocalizedString(@"Just played", @"Just played");
+        previousView_.arrowSize = 0;
+        previousView_.imageMargin = 10;
+    }
+    return previousView_;
+}
+
+- (PPPlayingTrackView *)currentView {
+    if (!currentView_) {
+        currentView_ = [[PPPlayingTrackView alloc] initWithFrame:CGRectMake(0, 0, 320, TRACK_VIEW_SIZE)];
+        currentView_.title = NSLocalizedString(@"Currently grooving", @"Currently grooving");
+        currentView_.arrowSize = 8.0f;
+        currentView_.imageMargin = 0;
+    }
+    return currentView_;
+}
+
+- (PPPlayingTrackView *)nextView {
+    if (!nextView_) {
+        nextView_ = [[PPPlayingTrackView alloc] initWithFrame:CGRectMake(0, 0, 320, TRACK_VIEW_SIZE)];
+        nextView_.arrowSize = 0.0f;
+        nextView_.title = NSLocalizedString(@"Upcoming track", @"Upcoming track");
+        nextView_.imageMargin = 10;
+    }
+    return nextView_;
+}
+
+- (PPAlbumCoverManager *)albumCoverManager {
+    if (!albumCoverManager_) {
+        albumCoverManager_ = [[PPAlbumCoverManager alloc] init];
+        albumCoverManager_.bonjourBrowser = self.bonjourBrowser;
+    }
+    return albumCoverManager_;
+}
 
 @end

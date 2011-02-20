@@ -19,6 +19,10 @@
 		E1292606130DBB8D007A1F3B /* _Track.m in Sources */ = {isa = PBXBuildFile; fileRef = E1292605130DBB8D007A1F3B /* _Track.m */; };
 		E1292609130DBB97007A1F3B /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = E1292608130DBB97007A1F3B /* Track.m */; };
 		E129260B130DBBB8007A1F3B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E129260A130DBBB8007A1F3B /* CoreData.framework */; };
+		E12DE5A7130FD02A0024CE96 /* PPPlayingCurrentTrackView.m in Sources */ = {isa = PBXBuildFile; fileRef = E12DE5A6130FD02A0024CE96 /* PPPlayingCurrentTrackView.m */; };
+		E12DE5AA130FD0510024CE96 /* PPPlayingCurrentTrackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E12DE5A9130FD0510024CE96 /* PPPlayingCurrentTrackView.xib */; };
+		E16AEF05130ED03B00DD014C /* PPPlayingTrackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E16AEF04130ED03B00DD014C /* PPPlayingTrackView.xib */; };
+		E16AEF08130ED12400DD014C /* PPPlayingTrackView.m in Sources */ = {isa = PBXBuildFile; fileRef = E16AEF07130ED12400DD014C /* PPPlayingTrackView.m */; };
 		E1A631C51304548400EFF8E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C41304548400EFF8E5 /* UIKit.framework */; };
 		E1A631C71304548400EFF8E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C61304548400EFF8E5 /* Foundation.framework */; };
 		E1A631C91304548400EFF8E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A631C81304548400EFF8E5 /* CoreGraphics.framework */; };
@@ -76,6 +80,8 @@
 		E1BED6EF13046E3F00064E6A /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6DE13046E3F00064E6A /* CJSONScanner.m */; };
 		E1BED6F013046E3F00064E6A /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6E013046E3F00064E6A /* CJSONSerializer.m */; };
 		E1BED6F113046E3F00064E6A /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BED6E013046E3F00064E6A /* CJSONSerializer.m */; };
+		E1C3263313110BF7001470F8 /* PPAlbumCoverManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C3263213110BF7001470F8 /* PPAlbumCoverManager.m */; };
+		E1C3263713110C91001470F8 /* PPPlayingTrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C3263613110C91001470F8 /* PPPlayingTrack.m */; };
 		E1E03FFF130BA31A001C1806 /* PPBonjourBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E03FFE130BA31A001C1806 /* PPBonjourBrowser.m */; };
 		E1E04003130BAD11001C1806 /* PPAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1E04002130BAD11001C1806 /* PPAppController.m */; };
 		E1FD036913051C290085B2AA /* PPWishlistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FD036813051C290085B2AA /* PPWishlistModel.m */; };
@@ -110,6 +116,12 @@
 		E1292607130DBB97007A1F3B /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
 		E1292608130DBB97007A1F3B /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 		E129260A130DBBB8007A1F3B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E12DE5A5130FD02A0024CE96 /* PPPlayingCurrentTrackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPlayingCurrentTrackView.h; sourceTree = "<group>"; };
+		E12DE5A6130FD02A0024CE96 /* PPPlayingCurrentTrackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlayingCurrentTrackView.m; sourceTree = "<group>"; };
+		E12DE5A9130FD0510024CE96 /* PPPlayingCurrentTrackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPPlayingCurrentTrackView.xib; sourceTree = "<group>"; };
+		E16AEF04130ED03B00DD014C /* PPPlayingTrackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPPlayingTrackView.xib; sourceTree = "<group>"; };
+		E16AEF06130ED12400DD014C /* PPPlayingTrackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPlayingTrackView.h; sourceTree = "<group>"; };
+		E16AEF07130ED12400DD014C /* PPPlayingTrackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlayingTrackView.m; sourceTree = "<group>"; };
 		E1A631C01304548400EFF8E5 /* PPClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PPClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A631C41304548400EFF8E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E1A631C61304548400EFF8E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -190,6 +202,10 @@
 		E1BED6DF13046E3F00064E6A /* CJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializer.h; sourceTree = "<group>"; };
 		E1BED6E013046E3F00064E6A /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
 		E1BED6E113046E3F00064E6A /* JSONRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRepresentation.h; sourceTree = "<group>"; };
+		E1C3263113110BF7001470F8 /* PPAlbumCoverManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPAlbumCoverManager.h; sourceTree = "<group>"; };
+		E1C3263213110BF7001470F8 /* PPAlbumCoverManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPAlbumCoverManager.m; sourceTree = "<group>"; };
+		E1C3263513110C90001470F8 /* PPPlayingTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PPPlayingTrack.h; sourceTree = "<group>"; };
+		E1C3263613110C91001470F8 /* PPPlayingTrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlayingTrack.m; sourceTree = "<group>"; };
 		E1E03FFD130BA31A001C1806 /* PPBonjourBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPBonjourBrowser.h; sourceTree = "<group>"; };
 		E1E03FFE130BA31A001C1806 /* PPBonjourBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPBonjourBrowser.m; sourceTree = "<group>"; };
 		E1E04001130BAD11001C1806 /* PPAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPAppController.h; sourceTree = "<group>"; };
@@ -345,6 +361,8 @@
 				E1BED673130458F100064E6A /* PPSearchController.xib */,
 				E1BED6781304590700064E6A /* PPSettingsController.xib */,
 				E1BBB51A130D481000524485 /* PPConnectingView.xib */,
+				E16AEF04130ED03B00DD014C /* PPPlayingTrackView.xib */,
+				E12DE5A9130FD0510024CE96 /* PPPlayingCurrentTrackView.xib */,
 			);
 			name = xibs;
 			sourceTree = "<group>";
@@ -375,6 +393,10 @@
 		E1BED6651304584900064E6A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E16AEF06130ED12400DD014C /* PPPlayingTrackView.h */,
+				E16AEF07130ED12400DD014C /* PPPlayingTrackView.m */,
+				E12DE5A5130FD02A0024CE96 /* PPPlayingCurrentTrackView.h */,
+				E12DE5A6130FD02A0024CE96 /* PPPlayingCurrentTrackView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -391,6 +413,10 @@
 				E1E03FFE130BA31A001C1806 /* PPBonjourBrowser.m */,
 				E1BB714E130D27F800F13FDB /* PPPlaylistRequest.h */,
 				E1BB714F130D27F800F13FDB /* PPPlaylistRequest.m */,
+				E1C3263113110BF7001470F8 /* PPAlbumCoverManager.h */,
+				E1C3263213110BF7001470F8 /* PPAlbumCoverManager.m */,
+				E1C3263513110C90001470F8 /* PPPlayingTrack.h */,
+				E1C3263613110C91001470F8 /* PPPlayingTrack.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -580,6 +606,8 @@
 				E12925AA130DAB91007A1F3B /* PPTrackRequestController.xib in Resources */,
 				E115067C130E462F0024B913 /* star-selected.png in Resources */,
 				E115067D130E462F0024B913 /* star-unselected.png in Resources */,
+				E16AEF05130ED03B00DD014C /* PPPlayingTrackView.xib in Resources */,
+				E12DE5AA130FD0510024CE96 /* PPPlayingCurrentTrackView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,6 +678,10 @@
 				E1292606130DBB8D007A1F3B /* _Track.m in Sources */,
 				E1292609130DBB97007A1F3B /* Track.m in Sources */,
 				E1AA4215130E5DCF00254C46 /* PPSpotifyTrack.m in Sources */,
+				E16AEF08130ED12400DD014C /* PPPlayingTrackView.m in Sources */,
+				E12DE5A7130FD02A0024CE96 /* PPPlayingCurrentTrackView.m in Sources */,
+				E1C3263313110BF7001470F8 /* PPAlbumCoverManager.m in Sources */,
+				E1C3263713110C91001470F8 /* PPPlayingTrack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

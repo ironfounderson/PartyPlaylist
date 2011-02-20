@@ -10,6 +10,8 @@
 #import "PPPlaylistRequest.h"
 
 @class PPBonjourBrowser;
+@class PPPlayingTrackView;
+@class PPAlbumCoverManager;
 
 @interface PPPlayingController : UIViewController <PPPlaylistRequestDelegate> {
 @private
@@ -18,9 +20,8 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *connectingMessage;
 @property (nonatomic, retain) IBOutlet UIView *connectingView;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, assign) PPBonjourBrowser *bonjourBrowser;
-
+@property (nonatomic, retain) PPAlbumCoverManager *albumCoverManager;
 - (void)refreshView;
 - (void)stop;
 

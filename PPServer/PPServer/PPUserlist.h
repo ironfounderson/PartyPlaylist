@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MGTwitterEngine.h"
 
 @class PPPlaylistUser;
 
@@ -16,7 +15,7 @@
     NSMutableArray *users_;
 }
 
-- (PPPlaylistUser *)userWithTwitterId:(MGTwitterEngineID)userId;
-- (PPPlaylistUser *)createTwitterUser:(NSDictionary *)userDict;
+- (PPPlaylistUser *)userWithId:(NSString *)userId service:(NSString *)service;
+- (void)addUser:(PPPlaylistUser *)user;
 
 @end

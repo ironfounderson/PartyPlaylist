@@ -20,6 +20,7 @@
 @property (copy) NSString *name;
 @property (copy) NSString *screenName;
 @property (copy) NSString *userId;
+@property (copy) NSString *serviceName;
 @property (copy) NSString *profileImageURL;
 
 @end

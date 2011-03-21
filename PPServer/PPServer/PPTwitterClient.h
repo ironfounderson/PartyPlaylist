@@ -14,6 +14,7 @@ extern NSString * const PPTwitterConsumerKey;
 extern NSString * const PPTwitterConsumerSecret;
 extern NSString * const PPTwitterAccessToken;
 extern NSString * const PPTwitterAccessTokenSecret;
+extern NSString * const PPTwitterServiceName;
 
 @class PPUserlist;
 @class PPPlaylist;

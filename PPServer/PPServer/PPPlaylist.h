@@ -57,13 +57,14 @@ extern NSString * const PPPlaylistAlbumCoverLoadedNotification;
 - (PPPlaylistTrack *)addTrackFromLink:(NSString *)link byUser:(PPPlaylistUser *)user;
 
 /**
- Returns the tracj that should be scheduled as the next one to play.
+ Returns the track that should be scheduled as the next one to play.
  */
 - (PPPlaylistTrack *)nextScheduledTrack;
 
 /**
- Moves the playlist to the next track as well as finds the track that should be played next. The first time this
- method is called it just sets the next track so when starting out it's necessary to call step twice.
+ Moves the playlist to the next track as well as finds the track that should be played next. The 
+ first time this method is called it just sets the next track so when starting out it's necessary 
+ to call step twice.
  */
 - (void)step;
 

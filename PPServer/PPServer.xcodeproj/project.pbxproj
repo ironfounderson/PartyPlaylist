@@ -13,6 +13,7 @@
 		E125517D130A78DB002E4027 /* less.js in Resources */ = {isa = PBXBuildFile; fileRef = E1255179130A78C0002E4027 /* less.js */; };
 		E125517E130A78DE002E4027 /* style.less.css in Resources */ = {isa = PBXBuildFile; fileRef = E125517A130A78C0002E4027 /* style.less.css */; };
 		E1255181130A8EC0002E4027 /* NSFileManager+DirectoryLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = E1255180130A8EC0002E4027 /* NSFileManager+DirectoryLocations.m */; };
+		E13E9CC813379672009E5B26 /* PPUserlistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E13E9CC713379672009E5B26 /* PPUserlistTests.m */; };
 		E16337BA1307D8DA0051471A /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E16337B91307D8DA0051471A /* WebKit.framework */; };
 		E163692A1309178200D71EE1 /* PPSpotifyAlbumImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E16369291309178100D71EE1 /* PPSpotifyAlbumImage.m */; };
 		E163692C1309434900D71EE1 /* jquery.tmpl.js in Resources */ = {isa = PBXBuildFile; fileRef = E163692B1309433400D71EE1 /* jquery.tmpl.js */; };
@@ -147,6 +148,7 @@
 		E125517A130A78C0002E4027 /* style.less.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.less.css; sourceTree = "<group>"; };
 		E125517F130A8EC0002E4027 /* NSFileManager+DirectoryLocations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+DirectoryLocations.h"; sourceTree = "<group>"; };
 		E1255180130A8EC0002E4027 /* NSFileManager+DirectoryLocations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+DirectoryLocations.m"; sourceTree = "<group>"; };
+		E13E9CC713379672009E5B26 /* PPUserlistTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPUserlistTests.m; sourceTree = "<group>"; };
 		E16337B91307D8DA0051471A /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		E16369281309178100D71EE1 /* PPSpotifyAlbumImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifyAlbumImage.h; sourceTree = "<group>"; };
 		E16369291309178100D71EE1 /* PPSpotifyAlbumImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyAlbumImage.m; sourceTree = "<group>"; };
@@ -382,6 +384,39 @@
 			name = Xibs;
 			sourceTree = "<group>";
 		};
+		E13E9CC91337982C009E5B26 /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				E124C8E413059F330097A72F /* PPSpotifyTweetParser.h */,
+				E124C8E513059F330097A72F /* PPSpotifyTweetParser.m */,
+				E1E75806130556F70048344E /* PPTwitterClient.h */,
+				E1E75807130556F70048344E /* PPTwitterClient.m */,
+			);
+			name = Twitter;
+			sourceTree = "<group>";
+		};
+		E13E9CCB13379877009E5B26 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				E1D029B61306FECF00874960 /* PPUserlist.h */,
+				E1D029B71306FECF00874960 /* PPUserlist.m */,
+				E1E7583B1305763F0048344E /* PPPlaylistUser.h */,
+				E1E7583C130576400048344E /* PPPlaylistUser.m */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		E13E9CCC13379881009E5B26 /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				E1E7582B130570F70048344E /* PPPlaylistTrack.h */,
+				E1E7582C130570F70048344E /* PPPlaylistTrack.m */,
+				E1E75827130570E50048344E /* PPPlaylist.h */,
+				E1E75828130570E50048344E /* PPPlaylist.m */,
+			);
+			name = Playlist;
+			sourceTree = "<group>";
+		};
 		E18DEA831307DFC300CA4226 /* HTML */ = {
 			isa = PBXGroup;
 			children = (
@@ -492,19 +527,10 @@
 		E1E75805130556A70048344E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E1E75806130556F70048344E /* PPTwitterClient.h */,
-				E1E75807130556F70048344E /* PPTwitterClient.m */,
-				E1E75827130570E50048344E /* PPPlaylist.h */,
-				E1E75828130570E50048344E /* PPPlaylist.m */,
+				E13E9CCC13379881009E5B26 /* Playlist */,
+				E13E9CCB13379877009E5B26 /* User */,
+				E13E9CC91337982C009E5B26 /* Twitter */,
 				E1E230DF130860C5006DD0E9 /* PPTrackScheduler.h */,
-				E1E7582B130570F70048344E /* PPPlaylistTrack.h */,
-				E1E7582C130570F70048344E /* PPPlaylistTrack.m */,
-				E1E7583B1305763F0048344E /* PPPlaylistUser.h */,
-				E1E7583C130576400048344E /* PPPlaylistUser.m */,
-				E124C8E413059F330097A72F /* PPSpotifyTweetParser.h */,
-				E124C8E513059F330097A72F /* PPSpotifyTweetParser.m */,
-				E1D029B61306FECF00874960 /* PPUserlist.h */,
-				E1D029B71306FECF00874960 /* PPUserlist.m */,
 				E18DEAD21307E60100CA4226 /* PPHTTPConnection.h */,
 				E18DEAD31307E60100CA4226 /* PPHTTPConnection.m */,
 				E1E230E013087B5E006DD0E9 /* PPTrackRequest.h */,
@@ -549,6 +575,7 @@
 				E124C8EA13059F690097A72F /* PPSpotifyTweetParserTests.m */,
 				E1D029B31306FDF600874960 /* PPPlaylistTests.m */,
 				E18DEAE01308102E00CA4226 /* PPPlaylistTrackTests.m */,
+				E13E9CC713379672009E5B26 /* PPUserlistTests.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -944,6 +971,7 @@
 				E19A87301308555000BECD44 /* PPSpotifyTweetParserTests.m in Sources */,
 				E19A87311308555000BECD44 /* PPPlaylistTests.m in Sources */,
 				E19A87321308555000BECD44 /* PPPlaylistTrackTests.m in Sources */,
+				E13E9CC813379672009E5B26 /* PPUserlistTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

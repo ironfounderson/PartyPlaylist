@@ -24,6 +24,11 @@ body {
  background-color: #AAA;
 }
 
+.current-playing-info {
+  position: relative;
+  top: -100px;
+}
+
 #next-track {
   float: left;
   height: 300px;

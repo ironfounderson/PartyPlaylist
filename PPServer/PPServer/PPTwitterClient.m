@@ -15,6 +15,8 @@
 #import "PPUserlist.h"
 #import "DDLog.h"
 
+NSString * const PPTwitterServiceName = @"TWITTER";
+
 static int ddLogLevel = LOG_LEVEL_WARN;
 
 @implementation PPTwitterClient
@@ -105,6 +107,64 @@ static int ddLogLevel = LOG_LEVEL_WARN;
     return twitterEngine_;
 }
 
+- (NSString *)userId:(NSDictionary *)userDict {
+    return [NSString stringWithFormat:@"%llu", [[userDict objectForKey:@"id"] longLongValue]];
+    
+}
+
+/*
+ {
+ "contributors_enabled" = 0;
+ "created_at" = "Wed Mar 28 21:35:47 +0000 2007";
+ description = "";
+ "favourites_count" = 0;
+ "follow_request_sent" = 0;
+ "followers_count" = 3;
+ following = 0;
+ "friends_count" = 1;
+ "geo_enabled" = 0;
+ id = 2728501;
+ "id_str" = 2728501;
+ "is_translator" = 0;
+ lang = en;
+ "listed_count" = 0;
+ location = Sweden;
+ name = "Robert H\U00f6glund";
+ notifications = 0;
+ "profile_background_color" = C6E2EE;
+ "profile_background_image_url" = "http://a1.twimg.com/a/1297446951/images/themes/theme2/bg.gif";
+ "profile_background_tile" = 0;
+ "profile_image_url" = "http://a3.twimg.com/sticky/default_profile_images/default_profile_6_normal.png";
+ "profile_link_color" = 1F98C7;
+ "profile_sidebar_border_color" = C6E2EE;
+ "profile_sidebar_fill_color" = DAECF4;
+ "profile_text_color" = 663B12;
+ "profile_use_background_image" = 1;
+ protected = 0;
+ "screen_name" = roho9035;
+ "show_all_inline_media" = 0;
+ "statuses_count" = 38;
+ "time_zone" = Stockholm;
+ url = "http://www.roberthoglund.com";
+ "utc_offset" = 3600;
+ verified = 0;
+ }
+ */
+
+
+- (PPPlaylistUser *)playlistUserFromTwitterUser:(NSDictionary *)userDict {
+    NSString *userId = [self userId:userDict];
+
+    PPPlaylistUser *user = [[PPPlaylistUser alloc] init];
+    user.name = [userDict objectForKey:@"name"];
+    user.screenName = [userDict objectForKey:@"screen_name"];
+    user.userId = userId;
+    user.profileImageURL = [userDict objectForKey:@"profile_image_url"];
+    user.serviceName = PPTwitterServiceName;
+    return [user autorelease];
+}
+
+
 #pragma mark MGTwitterEngineDelegate methods
 
 - (void)statusesReceived:(NSArray *)statuses forRequest:(NSString *)connectionIdentifier {
@@ -129,10 +189,11 @@ static int ddLogLevel = LOG_LEVEL_WARN;
         // Get or create a user associated with the twitter account that sent the request
         //
         NSDictionary *userDict = [reply objectForKey:@"user"];
-        MGTwitterEngineID userId = [[userDict objectForKey:@"id"] longLongValue];
-        PPPlaylistUser *playlistUser = [self.userlist userWithTwitterId:userId];
+        PPPlaylistUser *playlistUser = [self.userlist userWithId:[self userId:userDict]
+                                                         service:PPTwitterServiceName];
         if (!playlistUser) {
-            playlistUser = [self.userlist createTwitterUser:userDict];
+            playlistUser = [self playlistUserFromTwitterUser:userDict];
+            [self.userlist addUser:playlistUser];
         }
         
         // How can I make sure this is not hanging up the program ??

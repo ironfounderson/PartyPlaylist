@@ -52,8 +52,13 @@ body {
 
 .current-playing-info {
   .playing-info;
-  top: @playing-info-height *-1;
+  top: @playing-info-height *-1 - 100;
   background: @playing-info-bgcolor;
+}
+
+.text-info {
+	foregroud-color: #FFF;
+	
 }
 
 .next-playing-info {

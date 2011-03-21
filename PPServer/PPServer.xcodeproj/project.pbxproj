@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E124C8E613059F340097A72F /* PPSpotifyTweetParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8E513059F330097A72F /* PPSpotifyTweetParser.m */; };
-		E124C8EF1305CA160097A72F /* PPPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E124C8ED1305CA160097A72F /* PPPlayingViewController.m */; };
 		E124C8F31305CB510097A72F /* PPTrackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E124C8F21305CB510097A72F /* PPTrackView.xib */; };
 		E125517D130A78DB002E4027 /* less.js in Resources */ = {isa = PBXBuildFile; fileRef = E1255179130A78C0002E4027 /* less.js */; };
 		E125517E130A78DE002E4027 /* style.less.css in Resources */ = {isa = PBXBuildFile; fileRef = E125517A130A78C0002E4027 /* style.less.css */; };
@@ -141,8 +140,6 @@
 		E124C8E413059F330097A72F /* PPSpotifyTweetParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPSpotifyTweetParser.h; sourceTree = "<group>"; };
 		E124C8E513059F330097A72F /* PPSpotifyTweetParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyTweetParser.m; sourceTree = "<group>"; };
 		E124C8EA13059F690097A72F /* PPSpotifyTweetParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPSpotifyTweetParserTests.m; sourceTree = "<group>"; };
-		E124C8EC1305CA160097A72F /* PPPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPPlayingViewController.h; sourceTree = "<group>"; };
-		E124C8ED1305CA160097A72F /* PPPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPPlayingViewController.m; sourceTree = "<group>"; };
 		E124C8F21305CB510097A72F /* PPTrackView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PPTrackView.xib; sourceTree = "<group>"; };
 		E1255179130A78C0002E4027 /* less.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = less.js; sourceTree = "<group>"; };
 		E125517A130A78C0002E4027 /* style.less.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.less.css; sourceTree = "<group>"; };
@@ -413,6 +410,9 @@
 				E1E7582C130570F70048344E /* PPPlaylistTrack.m */,
 				E1E75827130570E50048344E /* PPPlaylist.h */,
 				E1E75828130570E50048344E /* PPPlaylist.m */,
+				E1E230E013087B5E006DD0E9 /* PPTrackRequest.h */,
+				E1E230E113087B60006DD0E9 /* PPTrackRequest.m */,
+				E1E230DF130860C5006DD0E9 /* PPTrackScheduler.h */,
 			);
 			name = Playlist;
 			sourceTree = "<group>";
@@ -530,11 +530,8 @@
 				E13E9CCC13379881009E5B26 /* Playlist */,
 				E13E9CCB13379877009E5B26 /* User */,
 				E13E9CC91337982C009E5B26 /* Twitter */,
-				E1E230DF130860C5006DD0E9 /* PPTrackScheduler.h */,
 				E18DEAD21307E60100CA4226 /* PPHTTPConnection.h */,
 				E18DEAD31307E60100CA4226 /* PPHTTPConnection.m */,
-				E1E230E013087B5E006DD0E9 /* PPTrackRequest.h */,
-				E1E230E113087B60006DD0E9 /* PPTrackRequest.m */,
 				E1AA421A130E75CC00254C46 /* PPHTTPResponse.h */,
 				E1AA421B130E75CF00254C46 /* PPHTTPResponse.m */,
 				E1AA421D130E769200254C46 /* PPHTTPURLHandler.h */,
@@ -833,8 +830,6 @@
 			children = (
 				E1E75833130573960048344E /* PPPlaylistViewController.h */,
 				E1E75834130573960048344E /* PPPlaylistViewController.m */,
-				E124C8EC1305CA160097A72F /* PPPlayingViewController.h */,
-				E124C8ED1305CA160097A72F /* PPPlayingViewController.m */,
 				E18DEAD81307E6B200CA4226 /* PPHTTPServerController.h */,
 				E18DEAD91307E6B200CA4226 /* PPHTTPServerController.m */,
 				E1E230E313088508006DD0E9 /* PPWebViewController.h */,
@@ -1031,7 +1026,6 @@
 				E1E75836130573960048344E /* PPPlaylistViewController.m in Sources */,
 				E1E7583D130576430048344E /* PPPlaylistUser.m in Sources */,
 				E124C8E613059F340097A72F /* PPSpotifyTweetParser.m in Sources */,
-				E124C8EF1305CA160097A72F /* PPPlayingViewController.m in Sources */,
 				E1D029B81306FED000874960 /* PPUserlist.m in Sources */,
 				E18DEABB1307E59200CA4226 /* DDData.m in Sources */,
 				E18DEABC1307E59200CA4226 /* DDNumber.m in Sources */,

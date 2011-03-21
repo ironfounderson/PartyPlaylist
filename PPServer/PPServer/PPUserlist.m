@@ -8,6 +8,9 @@
 
 #import "PPUserlist.h"
 #import "PPPlaylistUser.h"
+#import "DDLog.h"
+
+static int ddLogLevel = LOG_LEVEL_INFO;
 
 @interface PPUserlist()
 - (PPPlaylistUser *)findUserWithId:(NSString *)userId service:(NSString *)service;
@@ -35,6 +38,7 @@
 
 - (void)addUser:(PPPlaylistUser *)user {
     if (![self findUserWithId:user.userId service:user.serviceName]) {
+        DDLogInfo(@"Adding new user %@", user.screenName);
         [users_ addObject:user];
     }
 }
@@ -49,7 +53,6 @@
         return NO;
     }];
     return index != NSNotFound ? [users_ objectAtIndex:index] : nil;
-
 }
 
 @end
